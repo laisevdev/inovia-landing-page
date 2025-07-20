@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap, Brain, Rocket } from "lucide-react";
+import { GradientButton } from "@/components/ui/gradient-button";
+import { Zap } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import { useTypewriter } from "@/hooks/useTypewriter";
 
@@ -45,11 +45,10 @@ const HeroSection = () => {
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
-          {/* CTA Buttons */}
           <div className="flex justify-center items-center mb-16">
-            <Button size="lg" className="btn-hero">
+            <GradientButton>
               Agendar uma chamada
-            </Button>
+            </GradientButton>
           </div>
 
         </div>
