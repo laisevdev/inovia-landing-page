@@ -5,9 +5,9 @@ import { useTypewriter } from "@/hooks/useTypewriter";
 
 const HeroSection = () => {
   const typewriterText = useTypewriter({
-    text: "Elimine tarefas manuais com soluções de IA confiáveis e personalizadas",
+    text: "Elimine tarefas manuais com nossas soluções de IA",
     speed: 80,
-    loop: true,
+    loop: false,
     pauseAfterComplete: 3000
   });
 
@@ -41,51 +41,18 @@ const HeroSection = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="font-inter text-[22px] text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-inter text-[20px] text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex justify-center items-center mb-16">
             <Button size="lg" className="btn-hero group">
               Descobrir Soluções
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="bg-transparent border-border/50 hover:bg-card/50 backdrop-blur-sm"
-            >
-              Ver Demo ao Vivo
-            </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="glass-card text-center float-animation">
-              <div className="w-12 h-12 bg-gradient-to-r from-primary to-primary-glow rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Brain className="h-6 w-6 text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">99.8%</h3>
-              <p className="text-muted-foreground">Precisão nas Tarefas</p>
-            </div>
-
-            <div className="glass-card text-center float-animation" style={{ animationDelay: '1s' }}>
-              <div className="w-12 h-12 bg-gradient-to-r from-accent to-accent-glow rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Rocket className="h-6 w-6 text-accent-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">10x</h3>
-              <p className="text-muted-foreground">Mais Rápido</p>
-            </div>
-
-            <div className="glass-card text-center float-animation" style={{ animationDelay: '2s' }}>
-              <div className="w-12 h-12 bg-gradient-to-r from-success to-success rounded-xl flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-6 w-6 text-success-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">24/7</h3>
-              <p className="text-muted-foreground">Disponibilidade</p>
-            </div>
-          </div>
         </div>
       </div>
 
