@@ -25,16 +25,15 @@ const HeroSection = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            Agentes Autônomos de{" "}
-            <span className="gradient-text">Inteligência Artificial</span>{" "}
-            Super Personalizados
+          <h1 className="font-poppins text-[48px] font-bold mb-6 leading-tight">
+            Elimine tarefas manuais com soluções de{" "}
+            <span className="gradient-text">IA confiáveis</span>{" "}
+            e personalizadas
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
-            Transforme sua empresa com agentes de IA que trabalham 24/7, aprendem continuamente 
-            e executam tarefas complexas com precisão humana.
+          <p className="font-inter text-[26px] text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+            Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
           {/* CTA Buttons */}
