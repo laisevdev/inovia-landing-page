@@ -110,24 +110,6 @@ const AgentCapabilitiesSection = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20 rounded-2xl p-8 max-w-4xl mx-auto">
-            <div className="text-left flex-1">
-              <h3 className="text-2xl font-bold text-foreground mb-2">
-                Experimente o Poder da Automação Inteligente
-              </h3>
-              <p className="text-muted-foreground">
-                Veja como nossos agentes podem transformar seus processos em uma demonstração personalizada.
-              </p>
-            </div>
-            <div className="flex-shrink-0">
-              <button className="btn-hero">
-                Agendar Demo
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
