@@ -172,6 +172,57 @@
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 
+  .light {
+    /* Light theme colors */
+    --background: 0 0% 100%;
+    --background-secondary: 210 40% 98%;
+    --foreground: 240 23% 3%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 240 23% 3%;
+    --card-accent: 210 40% 95%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 23% 3%;
+
+    /* Primary brand colors remain the same */
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 262 100% 75%;
+    --primary-dark: 262 83% 48%;
+
+    /* Secondary colors */
+    --secondary: 210 40% 95%;
+    --secondary-foreground: 240 23% 3%;
+
+    /* Muted colors */
+    --muted: 210 40% 95%;
+    --muted-foreground: 215 25% 35%;
+
+    /* Accent colors remain the same */
+    --accent: 197 71% 52%;
+    --accent-foreground: 210 40% 98%;
+    --accent-glow: 197 100% 70%;
+
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+    --warning: 48 96% 53%;
+    --warning-foreground: 240 23% 3%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* UI elements */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 262 83% 58%;
+
+    /* Light theme gradients */
+    --gradient-background: radial-gradient(ellipse at top, hsl(var(--background-secondary)), hsl(var(--background)));
+  }
+
   * {
     @apply border-border;
   }

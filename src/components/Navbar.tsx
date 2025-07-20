@@ -1,5 +1,8 @@
 import { NavBar } from "@/components/ui/tubelight-navbar";
-import { Settings, Heart, TrendingUp, HelpCircle } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { Button } from "@/components/ui/button";
+import { Settings, Heart, TrendingUp, HelpCircle, Mail } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const navItems = [
@@ -9,7 +12,26 @@ const Navbar = () => {
     { name: "FAQ", url: "#faq", icon: HelpCircle },
   ];
 
-  return <NavBar items={navItems} />;
+  const rightActions = (
+    <>
+      <ThemeToggle />
+      <Button
+        variant="ghost"
+        size="sm"
+        className={cn(
+          "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors",
+          "text-foreground/80 hover:text-primary hover:bg-muted/50"
+        )}
+      >
+        <span className="hidden md:inline">Entrar em contato</span>
+        <span className="md:hidden">
+          <Mail size={18} strokeWidth={2.5} />
+        </span>
+      </Button>
+    </>
+  );
+
+  return <NavBar items={navItems} rightActions={rightActions} />;
 };
 
 export default Navbar;
