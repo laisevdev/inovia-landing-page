@@ -1,0 +1,136 @@
+import { 
+  Clock, 
+  Brain, 
+  Target, 
+  Zap, 
+  Shield, 
+  TrendingUp,
+  Database,
+  Network
+} from "lucide-react";
+
+const AgentCapabilitiesSection = () => {
+  const capabilities = [
+    {
+      icon: Clock,
+      title: "Operação 24/7",
+      description: "Trabalham ininterruptamente, sem pausas, feriados ou períodos de descanso.",
+      benefit: "Produtividade contínua"
+    },
+    {
+      icon: Brain,
+      title: "Aprendizado Contínuo",
+      description: "Evoluem constantemente através de machine learning e análise de dados.",
+      benefit: "Melhoria constante"
+    },
+    {
+      icon: Target,
+      title: "Precisão Cirúrgica",
+      description: "Executam tarefas com precisão de 99.8%, eliminando erros humanos.",
+      benefit: "Zero margem de erro"
+    },
+    {
+      icon: Zap,
+      title: "Velocidade Extrema",
+      description: "Processam milhares de tarefas simultaneamente em frações de segundo.",
+      benefit: "10x mais rápido"
+    },
+    {
+      icon: Shield,
+      title: "Segurança Máxima",
+      description: "Protocolos avançados de segurança e criptografia de dados.",
+      benefit: "Proteção total"
+    },
+    {
+      icon: TrendingUp,
+      title: "Escalabilidade Infinita",
+      description: "Adaptam-se instantaneamente ao crescimento da demanda do seu negócio.",
+      benefit: "Crescimento sem limites"
+    },
+    {
+      icon: Database,
+      title: "Integração Universal",
+      description: "Conectam-se com qualquer sistema, API ou plataforma existente.",
+      benefit: "Compatibilidade total"
+    },
+    {
+      icon: Network,
+      title: "Análise Multicanal",
+      description: "Monitoram e analisam dados de múltiplas fontes simultaneamente.",
+      benefit: "Visão 360°"
+    }
+  ];
+
+  return (
+    <section className="section-spacing">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            O que nossos{" "}
+            <span className="gradient-text">Agentes Autônomos</span>{" "}
+            podem fazer por você
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Capacidades extraordinárias que superam as limitações humanas, 
+            entregando resultados consistentes e revolucionários para sua empresa.
+          </p>
+        </div>
+
+        {/* Capabilities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {capabilities.map((capability, index) => (
+            <div 
+              key={index}
+              className="glass-card group hover:bg-card-accent/50 transition-all duration-300 hover:scale-105"
+            >
+              {/* Icon with gradient background */}
+              <div className="relative mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <capability.icon className="h-8 w-8 text-primary group-hover:text-primary-glow transition-colors duration-300" />
+                </div>
+                {/* Glow effect */}
+                <div className="absolute inset-0 w-16 h-16 bg-gradient-to-br from-primary/30 to-accent/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity duration-300"></div>
+              </div>
+
+              {/* Content */}
+              <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                {capability.title}
+              </h3>
+              
+              <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                {capability.description}
+              </p>
+
+              {/* Benefit Badge */}
+              <div className="inline-flex items-center bg-primary/10 border border-primary/20 rounded-full px-3 py-1 text-xs font-medium text-primary">
+                {capability.benefit}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-4 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border border-primary/20 rounded-2xl p-8 max-w-4xl mx-auto">
+            <div className="text-left flex-1">
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                Experimente o Poder da Automação Inteligente
+              </h3>
+              <p className="text-muted-foreground">
+                Veja como nossos agentes podem transformar seus processos em uma demonstração personalizada.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <button className="btn-hero">
+                Agendar Demo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AgentCapabilitiesSection;
