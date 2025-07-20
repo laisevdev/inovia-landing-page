@@ -33,7 +33,7 @@ const HeroSection = () => {
           </div>
 
           {/* Main Heading */}
-          <h1 className="font-poppins text-[44px] font-bold mb-6 leading-tight min-h-[140px] flex items-center justify-center">
+          <h1 className="font-poppins text-[44px] font-bold mb-3 leading-tight min-h-[140px] flex items-center justify-center">
             <span>
               {typewriterText}
               <span className="animate-pulse">|</span>
@@ -41,15 +41,14 @@ const HeroSection = () => {
           </h1>
 
           {/* Subtitle */}
-          <p className="font-inter text-[20px] text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="font-inter text-[18px] text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
           {/* CTA Buttons */}
           <div className="flex justify-center items-center mb-16">
-            <Button size="lg" className="btn-hero group">
-              Descobrir Soluções
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <Button size="lg" className="btn-hero">
+              Agendar uma chamada
             </Button>
           </div>
 
