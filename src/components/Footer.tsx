@@ -16,9 +16,6 @@ const Footer = () => {
 
   const companyLinks = [
     { name: "Sobre Nós", href: "#" },
-    { name: "Nossa Equipe", href: "#" },
-    { name: "Carreiras", href: "#" },
-    { name: "Imprensa", href: "#" },
   ];
 
   const solutionLinks = [
@@ -28,12 +25,6 @@ const Footer = () => {
     { name: "Integração de Sistemas", href: "#" },
   ];
 
-  const resourceLinks = [
-    { name: "Blog", href: "#" },
-    { name: "Case Studies", href: "#" },
-    { name: "Documentação", href: "#" },
-    { name: "Webinars", href: "#" },
-  ];
 
   const legalLinks = [
     { name: "Política de Privacidade", href: "#" },
@@ -46,7 +37,7 @@ const Footer = () => {
     <footer className="relative bg-background-secondary border-t border-border/50">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <h3 className="text-3xl font-bold gradient-text mb-6">InovIA</h3>
@@ -73,7 +64,7 @@ const Footer = () => {
                 <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
-                <span className="text-muted-foreground">São Paulo, SP - Brasil</span>
+                <span className="text-muted-foreground">Tangará da Serra-MT</span>
               </div>
             </div>
           </div>
@@ -112,55 +103,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-6">Recursos</h4>
-            <ul className="space-y-4">
-              {resourceLinks.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
-        {/* Newsletter Signup */}
-        <div className="mt-16 pt-12 border-t border-border/50">
-          <div className="max-w-2xl mx-auto text-center">
-            <h4 className="text-2xl font-bold text-foreground mb-4">
-              Fique por dentro das inovações em IA
-            </h4>
-            <p className="text-muted-foreground mb-8">
-              Receba insights exclusivos, cases de sucesso e tendências em agentes autônomos.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input 
-                type="email"
-                placeholder="Seu melhor e-mail"
-                className="flex-1 bg-card border border-border/50 rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-              />
-              <Button className="btn-hero whitespace-nowrap">
-                Inscrever-se
-              </Button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-border/50 bg-background">
+      <div className="mt-16 border-t border-border/50 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Copyright */}
             <div className="text-center md:text-left">
               <p className="text-muted-foreground text-sm">
-                © 2024 InovIA. Todos os direitos reservados.
+                © 2025 InovIA. Todos os direitos reservados.
               </p>
             </div>
 
