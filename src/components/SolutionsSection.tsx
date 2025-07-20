@@ -1,51 +1,51 @@
 import { Button } from "@/components/ui/button";
 import { 
+  Calendar, 
   MessageSquare, 
-  BarChart, 
-  Users, 
-  ShoppingCart, 
-  FileText, 
-  Headphones,
+  Phone, 
+  Cog, 
+  TrendingDown, 
+  UserCheck,
   ArrowRight 
 } from "lucide-react";
 
 const SolutionsSection = () => {
   const solutions = [
     {
+      icon: Calendar,
+      title: "IA de Agendamentos",
+      description: "Agente que gerencia automaticamente sua agenda, marca reuniões e confirma compromissos com inteligência total.",
+      features: ["Agendamento automático", "Confirmação inteligente", "Otimização de horários"]
+    },
+    {
       icon: MessageSquare,
-      title: "Atendimento Inteligente",
-      description: "Agentes que compreendem contexto, resolvem problemas complexos e oferecem experiências personalizadas para cada cliente.",
-      features: ["Compreensão de linguagem natural", "Integração com sistemas", "Aprendizado contínuo"]
+      title: "Atendente IA WhatsApp Humanizado",
+      description: "Conversas naturais que seus clientes não conseguem distinguir de um atendimento humano real.",
+      features: ["Conversação natural", "Respostas contextuais", "Integração WhatsApp"]
     },
     {
-      icon: BarChart,
-      title: "Análise Preditiva",
-      description: "Agentes que analisam dados em tempo real, identificam padrões e fornecem insights estratégicos para tomada de decisão.",
-      features: ["Análise de big data", "Previsões precisas", "Relatórios automáticos"]
+      icon: Phone,
+      title: "Agente IA de Ligação",
+      description: "Agente que faz e recebe ligações com voz humana, conduzindo conversas complexas e qualificando leads.",
+      features: ["Voz humanizada", "Qualificação de leads", "Scripts inteligentes"]
     },
     {
-      icon: Users,
-      title: "Gestão de Recursos Humanos",
-      description: "Automatize recrutamento, treinamento e gestão de funcionários com agentes especializados em pessoas.",
-      features: ["Triagem de candidatos", "Onboarding personalizado", "Análise de performance"]
+      icon: Cog,
+      title: "Automação de Tarefas Repetitivas",
+      description: "Elimine trabalhos manuais com agentes que executam tarefas repetitivas com precisão 24/7.",
+      features: ["Processos automatizados", "Execução contínua", "Zero erros humanos"]
     },
     {
-      icon: ShoppingCart,
-      title: "E-commerce Inteligente",
-      description: "Agentes que otimizam vendas, gerenciam estoque e personalizam a experiência de compra de cada cliente.",
-      features: ["Recomendações personalizadas", "Gestão de inventário", "Otimização de preços"]
+      icon: TrendingDown,
+      title: "Redução de Custos Operacionais",
+      description: "Diminua drasticamente seus custos operacionais com eficiência máxima e ROI comprovado.",
+      features: ["Redução de 60-80% dos custos", "ROI em 30 dias", "Eficiência comprovada"]
     },
     {
-      icon: FileText,
-      title: "Automação de Documentos",
-      description: "Processamento, análise e geração automática de documentos com precisão e velocidade incomparáveis.",
-      features: ["Extração de dados", "Validação automática", "Geração de relatórios"]
-    },
-    {
-      icon: Headphones,
-      title: "Suporte Técnico Avançado",
-      description: "Agentes especializados que diagnosticam, resolvem e previnem problemas técnicos antes que afetem sua operação.",
-      features: ["Diagnóstico automático", "Resolução proativa", "Monitoramento contínuo"]
+      icon: UserCheck,
+      title: "Sistema de Follow-UP",
+      description: "Nunca mais perca uma oportunidade com follow-ups automáticos personalizados e estratégicos.",
+      features: ["Follow-up inteligente", "Timing personalizado", "Conversão otimizada"]
     }
   ];
 
