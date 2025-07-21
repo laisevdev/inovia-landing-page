@@ -83,13 +83,10 @@ const ImplementationStepsSection = () => {
                 {/* Step Content */}
                 <div className="flex-1 max-w-xl">
                   <div className="glass-card hover:scale-105 transition-all duration-300">
-                    {/* Step Number and Duration */}
-                    <div className="flex items-center justify-between mb-6">
+                    {/* Step Number */}
+                    <div className="flex items-center mb-6">
                       <span className="text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                         {step.number}
-                      </span>
-                      <span className="text-sm font-medium text-accent bg-accent/10 px-3 py-1 rounded-full">
-                        {step.duration}
                       </span>
                     </div>
 
