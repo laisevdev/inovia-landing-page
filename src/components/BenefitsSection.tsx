@@ -28,14 +28,6 @@ const BenefitsSection = () => {
       color: "from-primary to-primary-glow"
     },
     {
-      icon: Clock,
-      title: "Tempo de Resposta",
-      description: "Respostas instantâneas e processamento em tempo real para máxima satisfação do cliente.",
-      metric: "<1s",
-      metricLabel: "Resposta",
-      color: "from-accent to-accent-glow"
-    },
-    {
       icon: Users,
       title: "Satisfação do Cliente",
       description: "Experiências personalizadas e atendimento de qualidade superior elevam a satisfação.",
@@ -50,14 +42,6 @@ const BenefitsSection = () => {
       metric: "99.8%",
       metricLabel: "Precisão",
       color: "from-orange-500 to-red-500"
-    },
-    {
-      icon: Zap,
-      title: "ROI Acelerado",
-      description: "Retorno sobre investimento em apenas 90 dias com resultados mensuráveis e comprovados.",
-      metric: "90",
-      metricLabel: "Dias p/ ROI",
-      color: "from-cyan-500 to-blue-500"
     }
   ];
 
@@ -123,28 +107,6 @@ const BenefitsSection = () => {
           ))}
         </div>
 
-        {/* ROI Calculator CTA */}
-        <div className="glass-card max-w-4xl mx-auto bg-primary/5 border-primary/20 pulse-glow">
-          <div className="text-center">
-            <h3 className="text-3xl font-bold text-foreground mb-4">
-              Calcule seu ROI Personalizado
-            </h3>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Descubra quanto sua empresa pode economizar e ganhar com agentes autônomos. 
-              Nossa calculadora mostra projeções reais baseadas no seu negócio.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="btn-hero group">
-                Calcular Meu ROI
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
-              <button className="bg-transparent border border-primary/30 hover:bg-primary/10 text-primary px-8 py-4 rounded-xl font-semibold transition-all duration-300">
-                Ver Case Studies
-              </button>
-            </div>
-          </div>
-        </div>
 
         {/* Bottom Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
