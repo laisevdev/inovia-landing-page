@@ -106,11 +106,6 @@ const SolutionsSection = () => {
                 ))}
               </ul>
 
-              {/* Learn More */}
-              <div className="flex items-center text-primary text-sm font-medium group-hover:text-primary-glow transition-colors cursor-pointer">
-                <span>Saiba mais</span>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </div>
             </div>
           ))}
         </div>
