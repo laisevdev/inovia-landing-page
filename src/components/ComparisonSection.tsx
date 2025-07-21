@@ -108,7 +108,7 @@ const ComparisonSection = () => {
                 className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center p-4 bg-card/50 backdrop-blur-sm rounded-xl border border-border/50 hover:bg-card-accent/50 transition-all duration-300"
               >
                 {/* Feature Name */}
-                <div className="md:text-center">
+                <div className="text-left">
                   <h4 className="font-semibold text-foreground">{item.feature}</h4>
                 </div>
 
