@@ -8,6 +8,7 @@ import {
   ArrowRight 
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
 
 const BenefitsSection = () => {
   const benefits = [
@@ -75,7 +76,7 @@ const BenefitsSection = () => {
         <div className="text-center mb-16">
           <h2 className="font-poppins text-[44px] font-bold mb-6">
             Benefícios Reais com{" "}
-            <span className="gradient-text">Agentes Autônomos de IA</span>
+            <span className="gradient-text">Agentes de IA</span>
           </h2>
           <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Resultados mensuráveis e impacto imediato no seu negócio. 
@@ -84,11 +85,14 @@ const BenefitsSection = () => {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <ContainerScroll className="min-h-[400vh] space-y-8 mb-16">
           {benefits.map((benefit, index) => (
-            <div 
+            <CardSticky 
               key={index}
-              className="glass-card group hover:scale-105 transition-all duration-300 relative overflow-hidden"
+              index={index}
+              incrementY={20}
+              incrementZ={5}
+              className="glass-card group hover:scale-105 transition-all duration-300 relative overflow-hidden rounded-2xl border p-6 shadow-md backdrop-blur-md"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -119,9 +123,9 @@ const BenefitsSection = () => {
                   {benefit.description}
                 </p>
               </div>
-            </div>
+            </CardSticky>
           ))}
-        </div>
+        </ContainerScroll>
 
         {/* ROI Calculator CTA */}
         <div className="glass-card max-w-4xl mx-auto bg-primary/5 border-primary/20 pulse-glow">
