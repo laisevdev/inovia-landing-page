@@ -92,16 +92,16 @@ const SolutionsSection = () => {
               <h3 className="text-xl font-bold text-foreground mb-4">
                 {solution.title}
               </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-6 leading-relaxed text-justify">
                 {solution.description}
               </p>
 
               {/* Features */}
               <ul className="space-y-2 mb-6">
                 {solution.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3"></div>
-                    {feature}
+                  <li key={featureIndex} className="flex items-start text-sm text-muted-foreground text-justify">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -121,7 +121,7 @@ const SolutionsSection = () => {
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Pronto para Revolucionar seu Negócio?
             </h3>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 text-justify">
               Descubra como nossos agentes autônomos podem ser personalizados para suas necessidades específicas.
             </p>
             <Button className="btn-hero">
