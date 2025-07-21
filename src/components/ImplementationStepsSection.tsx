@@ -145,7 +145,7 @@ const ImplementationStepsSection = () => {
         <div className="mt-20">
           <div className="glass-card max-w-4xl mx-auto text-center bg-primary/5 border-primary/20">
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Cronograma de Implementação
+              Quero meu Agente IA
             </h3>
             <p className="text-muted-foreground mb-8">
               Da primeira consulta até ter seus agentes autônomos operando em produção, 
