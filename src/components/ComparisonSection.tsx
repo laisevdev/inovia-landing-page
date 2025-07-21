@@ -129,32 +129,10 @@ const ComparisonSection = () => {
 
           {/* Bottom Summary */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Chatbot Summary */}
-            <div className="glass-card bg-destructive/5 border-destructive/20 text-center">
-              <h3 className="text-xl font-bold text-destructive mb-4">Chatbot Tradicional</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Respostas limitadas e pré-definidas</li>
-                <li>• Não aprende com interações</li>
-                <li>• Funcionalidade básica de FAQ</li>
-                <li>• Requer constante manutenção manual</li>
-              </ul>
-            </div>
-
+            
+           
             {/* Agent Summary */}
-            <div className="glass-card bg-primary/5 border-primary/20 text-center pulse-glow">
-              <h3 className="text-xl font-bold text-primary mb-4">Agente Autônomo InovIA</h3>
-              <ul className="space-y-2 text-sm text-foreground">
-                <li>• Inteligência adaptativa e evolutiva</li>
-                <li>• Execução de tarefas complexas</li>
-                <li>• Integração total com seus sistemas</li>
-                <li>• Melhoria contínua automática</li>
-              </ul>
-              <div className="mt-6">
-                <button className="btn-hero w-full">
-                  Fazer a Migração
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
