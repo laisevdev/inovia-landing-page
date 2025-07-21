@@ -108,8 +108,7 @@ const BenefitsSection = () => {
         </div>
 
 
-        {/* Bottom Stats */}
-        
+      </div>
     </motion.section>
   );
 };
