@@ -38,10 +38,9 @@ export function NavBar({ items, className, rightActions }: NavBarProps) {
         className,
       )}
     >
-      <div className="relative w-full max-w-6xl mx-auto px-4">
+      <div className="flex items-center justify-between w-full max-w-6xl mx-auto px-4 gap-8">
         {/* Navigation items */}
-        <div className="flex items-center justify-center">
-          <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg w-4/5">
+        <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
           {items.map((item) => {
             const Icon = item.icon
             const isActive = activeTab === item.name
@@ -82,12 +81,11 @@ export function NavBar({ items, className, rightActions }: NavBarProps) {
               </a>
             )
           })}
-          </div>
         </div>
 
         {/* Right actions */}
         {rightActions && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+          <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
             {rightActions}
           </div>
         )}
