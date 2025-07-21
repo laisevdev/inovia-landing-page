@@ -8,7 +8,6 @@ import {
   ArrowRight 
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
 
 const BenefitsSection = () => {
   const benefits = [
@@ -72,32 +71,24 @@ const BenefitsSection = () => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <ContainerScroll className="min-h-[600vh] space-y-8">
-          {/* Header */}
-          <CardSticky
-            index={0}
-            incrementY={30}
-            incrementZ={10}
-            className="text-center mb-16 rounded-2xl border border-transparent p-8"
-          >
-            <h2 className="font-poppins text-[44px] font-bold mb-6">
-              Benefícios Reais com{" "}
-              <span className="gradient-text">Agentes de IA</span>
-            </h2>
-            <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
-              Resultados mensuráveis e impacto imediato no seu negócio. 
-              Veja como nossa tecnologia transforma empresas em líderes de mercado.
-            </p>
-          </CardSticky>
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-poppins text-[44px] font-bold mb-6">
+            Benefícios Reais com{" "}
+            <span className="gradient-text">Agentes Autônomos de IA</span>
+          </h2>
+          <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
+            Resultados mensuráveis e impacto imediato no seu negócio. 
+            Veja como nossa tecnologia transforma empresas em líderes de mercado.
+          </p>
+        </div>
 
-          {/* Benefits Cards */}
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {benefits.map((benefit, index) => (
-            <CardSticky 
+            <div 
               key={index}
-              index={index + 1}
-              incrementY={30}
-              incrementZ={10}
-              className="glass-card group hover:scale-105 transition-all duration-300 relative overflow-hidden rounded-2xl border p-6 shadow-md backdrop-blur-md max-w-md mx-auto"
+              className="glass-card group hover:scale-105 transition-all duration-300 relative overflow-hidden"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -128,62 +119,52 @@ const BenefitsSection = () => {
                   {benefit.description}
                 </p>
               </div>
-            </CardSticky>
+            </div>
           ))}
+        </div>
 
-          {/* ROI Calculator CTA */}
-          <CardSticky
-            index={benefits.length + 1}
-            incrementY={30}
-            incrementZ={10}
-            className="glass-card max-w-4xl mx-auto bg-primary/5 border-primary/20 pulse-glow rounded-2xl border p-8 shadow-md backdrop-blur-md"
-          >
-            <div className="text-center">
-              <h3 className="text-3xl font-bold text-foreground mb-4">
-                Calcule seu ROI Personalizado
-              </h3>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Descubra quanto sua empresa pode economizar e ganhar com agentes autônomos. 
-                Nossa calculadora mostra projeções reais baseadas no seu negócio.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="btn-hero group">
-                  Calcular Meu ROI
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </button>
-                <button className="bg-transparent border border-primary/30 hover:bg-primary/10 text-primary px-8 py-4 rounded-xl font-semibold transition-all duration-300">
-                  Ver Case Studies
-                </button>
-              </div>
+        {/* ROI Calculator CTA */}
+        <div className="glass-card max-w-4xl mx-auto bg-primary/5 border-primary/20 pulse-glow">
+          <div className="text-center">
+            <h3 className="text-3xl font-bold text-foreground mb-4">
+              Calcule seu ROI Personalizado
+            </h3>
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Descubra quanto sua empresa pode economizar e ganhar com agentes autônomos. 
+              Nossa calculadora mostra projeções reais baseadas no seu negócio.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="btn-hero group">
+                Calcular Meu ROI
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </button>
+              <button className="bg-transparent border border-primary/30 hover:bg-primary/10 text-primary px-8 py-4 rounded-xl font-semibold transition-all duration-300">
+                Ver Case Studies
+              </button>
             </div>
-          </CardSticky>
+          </div>
+        </div>
 
-          {/* Bottom Stats */}
-          <CardSticky
-            index={benefits.length + 2}
-            incrementY={30}
-            incrementZ={10}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 rounded-2xl border border-transparent p-8"
-          >
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-sm text-muted-foreground">Empresas Transformadas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">99.8%</div>
-              <div className="text-sm text-muted-foreground">Taxa de Sucesso</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-success mb-2">$2.5M</div>
-              <div className="text-sm text-muted-foreground">Economia Gerada</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-warning mb-2">24/7</div>
-              <div className="text-sm text-muted-foreground">Suporte Disponível</div>
-            </div>
-          </CardSticky>
-        </ContainerScroll>
+        {/* Bottom Stats */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-primary mb-2">500+</div>
+            <div className="text-sm text-muted-foreground">Empresas Transformadas</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-accent mb-2">99.8%</div>
+            <div className="text-sm text-muted-foreground">Taxa de Sucesso</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-success mb-2">$2.5M</div>
+            <div className="text-sm text-muted-foreground">Economia Gerada</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-warning mb-2">24/7</div>
+            <div className="text-sm text-muted-foreground">Suporte Disponível</div>
+          </div>
+        </div>
       </div>
     </motion.section>
   );
