@@ -71,7 +71,7 @@ const AgentCapabilitiesSection = () => {
             <span className="gradient-text">Agentes de IA</span>{" "}
             podem fazer
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Capacidades extraordinárias que superam as limitações humanas, 
             entregando resultados consistentes e revolucionários para sua empresa.
           </p>

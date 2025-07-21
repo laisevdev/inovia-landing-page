@@ -70,7 +70,7 @@ const ComparisonSection = () => {
             vs{" "}
             <span className="gradient-text">Agente Autônomo</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Veja a diferença revolucionária entre tecnologias antigas e a nova geração de IA autônoma.
           </p>
         </div>

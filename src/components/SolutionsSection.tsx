@@ -58,7 +58,7 @@ const SolutionsSection = () => {
             Soluções de IA que{" "}
             <span className="gradient-text">Transformam Negócios</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Nossos agentes autônomos são desenvolvidos especificamente para o seu negócio,
             garantindo máxima eficiência.
           </p>

@@ -60,7 +60,7 @@ const ImplementationStepsSection = () => {
             Etapas de{" "}
             <span className="gradient-text">Implementação</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Um processo estruturado e transparente que garante a implementação perfeita 
             dos seus agentes autônomos, do conceito até os resultados.
           </p>

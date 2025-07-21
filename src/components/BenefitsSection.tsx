@@ -69,7 +69,7 @@ const BenefitsSection = () => {
             Benefícios Reais com{" "}
             <span className="gradient-text">Agentes Autônomos de IA</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Resultados mensuráveis e impacto imediato no seu negócio. 
             Veja como nossa tecnologia transforma empresas em líderes de mercado.
           </p>

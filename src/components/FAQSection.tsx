@@ -63,7 +63,7 @@ const FAQSection = () => {
             Dúvidas{" "}
             <span className="gradient-text">Frequentes</span>
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="font-inter text-[18px] text-muted-foreground">
             Encontre respostas para as principais questões sobre nossos agentes autônomos de IA.
           </p>
         </div>
