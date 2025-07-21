@@ -152,13 +152,10 @@ const ImplementationStepsSection = () => {
               oferecemos um processo rápido e eficiente.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <button className="btn-hero group">
                 Iniciar Implementação
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </button>
-              <button className="bg-transparent border border-primary/30 hover:bg-primary/10 text-primary px-8 py-4 rounded-xl font-semibold transition-all duration-300">
-                Ver Cronograma Detalhado
               </button>
             </div>
           </div>
