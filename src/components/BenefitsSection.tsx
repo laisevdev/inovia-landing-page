@@ -68,11 +68,11 @@ const BenefitsSection = () => {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {benefits.map((benefit, index) => (
             <div 
               key={index}
-              className="glass-card group hover:scale-105 transition-all duration-300 relative overflow-hidden"
+              className="glass-card group hover:scale-105 transition-all duration-300 relative overflow-hidden cursor-pointer hover:shadow-xl"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-5 group-hover:opacity-10 transition-opacity duration-300`}></div>
