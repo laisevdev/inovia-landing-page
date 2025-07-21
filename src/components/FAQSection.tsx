@@ -59,7 +59,7 @@ const FAQSection = () => {
           <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
             <HelpCircle className="h-8 w-8 text-primary-foreground" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="font-poppins text-[44px] font-bold mb-6">
             Dúvidas{" "}
             <span className="gradient-text">Frequentes</span>
           </h2>
