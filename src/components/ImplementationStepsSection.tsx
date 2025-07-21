@@ -145,7 +145,7 @@ const ImplementationStepsSection = () => {
         <div className="mt-20">
           <div className="glass-card max-w-4xl mx-auto text-center bg-primary/5 border-primary/20">
             <h3 className="text-2xl font-bold text-foreground mb-4">
-              Cronograma Total: 6-8 semanas
+              Cronograma de Implementação
             </h3>
             <p className="text-muted-foreground mb-8">
               Da primeira consulta até ter seus agentes autônomos operando em produção, 
@@ -155,7 +155,7 @@ const ImplementationStepsSection = () => {
             <div className="flex justify-center">
               <button className="btn-hero group">
                 Iniciar Implementação
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                
               </button>
             </div>
           </div>
