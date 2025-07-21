@@ -59,8 +59,8 @@ const SolutionsSection = () => {
             <span className="gradient-text">Transformam Negócios</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Nossos agentes autônomos são desenvolvidos especificamente para cada área do seu negócio,
-            garantindo máxima eficiência e resultados mensuráveis.
+            Nossos agentes autônomos são desenvolvidos especificamente para o seu negócio,
+            garantindo máxima eficiência.
           </p>
         </div>
 
