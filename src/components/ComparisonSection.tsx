@@ -68,7 +68,7 @@ const ComparisonSection = () => {
           <h2 className="font-poppins text-[44px] font-bold mb-6">
             <span className="gradient-text">Chatbot Tradicional</span>{" "}
             vs{" "}
-            <span className="gradient-text">Agente Autônomo</span>
+            <span className="gradient-text">Agente de IA</span>
           </h2>
           <p className="font-inter text-[18px] text-muted-foreground max-w-3xl mx-auto">
             Veja a diferença revolucionária entre tecnologias antigas e a nova geração de IA autônoma.
