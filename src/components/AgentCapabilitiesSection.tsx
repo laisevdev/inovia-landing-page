@@ -68,8 +68,8 @@ const AgentCapabilitiesSection = () => {
         <div className="text-center mb-16">
           <h2 className="font-poppins text-[44px] font-bold mb-6">
             O que nossos{" "}
-            <span className="gradient-text">Agentes Autônomos</span>{" "}
-            podem fazer por você
+            <span className="gradient-text">Agentes </span>{" "}
+            podem fazer
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Capacidades extraordinárias que superam as limitações humanas, 
