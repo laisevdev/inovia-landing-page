@@ -109,25 +109,7 @@ const BenefitsSection = () => {
 
 
         {/* Bottom Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary mb-2">500+</div>
-            <div className="text-sm text-muted-foreground">Empresas Transformadas</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-accent mb-2">99.8%</div>
-            <div className="text-sm text-muted-foreground">Taxa de Sucesso</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-success mb-2">$2.5M</div>
-            <div className="text-sm text-muted-foreground">Economia Gerada</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-warning mb-2">24/7</div>
-            <div className="text-sm text-muted-foreground">Suporte Disponível</div>
-          </div>
-        </div>
-      </div>
+        
     </motion.section>
   );
 };
