@@ -6,6 +6,7 @@ import {
   BarChart,
   ArrowRight
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const ImplementationStepsSection = () => {
   const steps = [
@@ -52,7 +53,14 @@ const ImplementationStepsSection = () => {
   ];
 
   return (
-    <section id="etapas" className="section-spacing">
+    <motion.section 
+      id="etapas" 
+      className="section-spacing"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -156,7 +164,7 @@ const ImplementationStepsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

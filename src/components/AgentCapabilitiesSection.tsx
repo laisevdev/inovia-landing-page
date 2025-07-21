@@ -8,6 +8,7 @@ import {
   Database,
   Network
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const AgentCapabilitiesSection = () => {
   const capabilities = [
@@ -62,7 +63,13 @@ const AgentCapabilitiesSection = () => {
   ];
 
   return (
-    <section className="section-spacing">
+    <motion.section 
+      className="section-spacing"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -111,7 +118,7 @@ const AgentCapabilitiesSection = () => {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 

@@ -8,6 +8,7 @@ import {
   ArrowUp 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -34,7 +35,13 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-background-secondary border-t border-border/50">
+    <motion.footer 
+      className="relative bg-background-secondary border-t border-border/50"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -164,7 +171,7 @@ const Footer = () => {
       >
         <ArrowUp className="h-6 w-6 text-primary-foreground" />
       </button>
-    </footer>
+    </motion.footer>
   );
 };
 

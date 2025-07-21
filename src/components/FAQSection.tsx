@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { HelpCircle, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 const FAQSection = () => {
   const faqs = [
@@ -52,7 +53,14 @@ const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="section-spacing">
+    <motion.section 
+      id="faq" 
+      className="section-spacing"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -111,7 +119,7 @@ const FAQSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

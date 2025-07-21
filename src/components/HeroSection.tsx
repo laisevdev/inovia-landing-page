@@ -2,6 +2,7 @@ import { StarBorder } from "@/components/ui/star-border";
 import { Zap } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import { useTypewriter } from "@/hooks/useTypewriter";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   const typewriterText = useTypewriter({
@@ -12,7 +13,12 @@ const HeroSection = () => {
   });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16">
+    <motion.section 
+      className="relative min-h-screen flex items-center justify-center pt-16"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -54,7 +60,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-    </section>
+    </motion.section>
   );
 };
 

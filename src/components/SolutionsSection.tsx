@@ -8,6 +8,7 @@ import {
   UserCheck,
   ArrowRight 
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const SolutionsSection = () => {
   const solutions = [
@@ -50,7 +51,14 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <section id="solucoes" className="section-spacing bg-background-secondary/50">
+    <motion.section 
+      id="solucoes" 
+      className="section-spacing bg-background-secondary/50"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -123,7 +131,7 @@ const SolutionsSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
