@@ -69,7 +69,7 @@ const SolutionsSection = () => {
           {solutions.map((solution, index) => (
             <div 
               key={index} 
-              className="glass-card group hover:scale-105 transition-transform duration-300"
+              className="glass-card group hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 cursor-pointer hover:border-primary/30"
             >
               {/* Icon */}
               <div className="w-14 h-14 bg-gradient-to-r from-primary to-primary-glow rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
