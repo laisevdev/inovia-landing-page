@@ -15,9 +15,10 @@ interface NavBarProps {
   items: NavItem[]
   className?: string
   rightActions?: React.ReactNode
+  logo?: React.ReactNode
 }
 
-export function NavBar({ items, className, rightActions }: NavBarProps) {
+export function NavBar({ items, className, rightActions, logo }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -39,6 +40,13 @@ export function NavBar({ items, className, rightActions }: NavBarProps) {
       )}
     >
       <div className="relative w-full">
+        {/* Logo - positioned absolutely on the left */}
+        {logo && (
+          <div className="absolute top-1/2 -translate-y-1/2 left-6 flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-3 rounded-full shadow-lg">
+            {logo}
+          </div>
+        )}
+
         {/* Navigation items - centralized */}
         <div className="flex justify-center w-full max-w-[1302px] mx-auto px-4">
           <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
