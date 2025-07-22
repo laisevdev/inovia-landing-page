@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const navItems = [
+    { name: "Home", url: "#hero", icon: Settings },
     { name: "Soluções", url: "#solucoes", icon: Settings },
+    { name: "Capacidades", url: "#capacidades", icon: TrendingUp },
     { name: "Benefícios", url: "#beneficios", icon: Heart },
     { name: "Como Funciona", url: "#etapas", icon: TrendingUp },
     { name: "FAQ", url: "#faq", icon: HelpCircle },
