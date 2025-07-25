@@ -153,13 +153,7 @@ const MobileMenu = () => {
 
               {/* Footer */}
               <div className="p-6">
-                <Button
-                  onClick={() => handleLinkClick("#contato")}
-                  className="w-full"
-                  size="lg"
-                >
-                  Entrar em contato
-                </Button>
+                {/* Theme toggle will be added here if needed */}
               </div>
             </div>
           </motion.div>
