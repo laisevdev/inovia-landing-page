@@ -14,11 +14,11 @@ const Footer = () => {
   };
 
   const navigationLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "Soluções", href: "#solucoes" },
-    { name: "Capacidades", href: "#capacidades" },
-    { name: "Como Funciona", href: "#etapas" },
-    { name: "Benefícios", href: "#beneficios" },
+    { name: "Home", url: "#hero" },
+    { name: "Soluções", url: "#solucoes" },
+    { name: "Capacidades", url: "#capacidades" },
+    { name: "Como Funciona", url: "#etapas" },
+    { name: "Benefícios", url: "#beneficios" },
   ];
 
 
@@ -75,11 +75,11 @@ const Footer = () => {
               {navigationLinks.map((link, index) => (
                 <li key={index}>
                   <a 
-                    href={link.href}
+                    href={link.url}
                     className="text-muted-foreground hover:text-primary transition-colors duration-200"
                     onClick={(e) => {
                       e.preventDefault();
-                      const element = document.querySelector(link.href);
+                      const element = document.querySelector(link.url);
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth' });
                       }
