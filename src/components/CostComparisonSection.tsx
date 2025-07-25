@@ -134,7 +134,6 @@ const CostComparisonSection = () => {
           className="bg-gradient-to-br from-red-900/90 to-red-800/70 backdrop-blur-sm rounded-2xl p-8 border border-red-700/50 text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <DollarSign className="w-8 h-8 text-primary" />
             <div className="text-4xl md:text-5xl font-bold text-primary">R$ 40.800</div>
           </div>
           <div className="text-xl font-semibold text-red-100 mb-4">
@@ -142,7 +141,7 @@ const CostComparisonSection = () => {
           </div>
           <div className="text-red-200/90 text-base max-w-3xl mx-auto">
             Esse é o custo anual de apenas 1 funcionário. E com apenas 1 pessoa você não vai 
-            escalar vendas. Na prática, precisaria de 3 a 5 pessoas — multiplicando tudo.
+            escalar su negócio. Na prática, precisaria de 2 ou mais pessoas, multiplicando mais seus gastos.
           </div>
         </motion.div>
       </div>
