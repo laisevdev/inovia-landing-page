@@ -77,11 +77,6 @@ const Footer = () => {
                   <a 
                     href={link.url}
                     className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const element = document.querySelector(link.url);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
                   >
