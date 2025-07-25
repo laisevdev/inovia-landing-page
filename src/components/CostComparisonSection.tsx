@@ -141,7 +141,7 @@ const CostComparisonSection = () => {
           </div>
           <div className="text-red-200/90 text-base max-w-3xl mx-auto">
             Esse é o custo anual de apenas 1 funcionário. E com apenas 1 pessoa você não vai 
-            escalar su negócio. Na prática, precisaria de 2 ou mais pessoas, multiplicando mais seus gastos.
+            escalar seu negócio. Na prática, precisaria de 2 ou mais pessoas, multiplicando mais seus gastos.
           </div>
         </motion.div>
       </div>
