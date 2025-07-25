@@ -84,11 +84,11 @@ const CostComparisonSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 * index }}
               viewport={{ once: true }}
-              className="bg-gradient-to-br from-red-900/80 to-red-800/60 backdrop-blur-sm rounded-xl p-6 border border-red-700/50 hover:border-red-600/70 transition-colors"
+              className="bg-gradient-to-br from-primary/80 to-primary-glow/60 backdrop-blur-sm rounded-xl p-6 border border-primary/50 hover:border-primary/70 transition-colors"
             >
-              <div className="text-2xl font-bold text-foreground dark:text-red-200 mb-2">{cost.value}</div>
-              <div className="text-lg font-semibold text-red-100 mb-3">{cost.label}</div>
-              <div className="text-red-200/80 text-sm">{cost.description}</div>
+              <div className="text-2xl font-bold text-foreground dark:text-white mb-2">{cost.value}</div>
+              <div className="text-lg font-semibold text-foreground dark:text-white/90 mb-3">{cost.label}</div>
+              <div className="text-muted-foreground dark:text-white/80 text-sm">{cost.description}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -110,16 +110,16 @@ const CostComparisonSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-red-900/80 to-red-800/60 backdrop-blur-sm rounded-xl p-6 border border-red-700/50 hover:border-red-600/70 transition-colors"
+                className="bg-gradient-to-br from-primary/80 to-primary-glow/60 backdrop-blur-sm rounded-xl p-6 border border-primary/50 hover:border-primary/70 transition-colors"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <Icon className="w-6 h-6 text-red-300" />
+                  <Icon className="w-6 h-6 text-primary-foreground dark:text-white" />
                   <div>
-                    <div className="text-xl font-bold text-foreground dark:text-red-200">{limitation.title}</div>
-                    <div className="text-lg font-semibold text-foreground dark:text-red-100">{limitation.subtitle}</div>
+                    <div className="text-xl font-bold text-foreground dark:text-white">{limitation.title}</div>
+                    <div className="text-lg font-semibold text-foreground dark:text-white/90">{limitation.subtitle}</div>
                   </div>
                 </div>
-                <div className="text-red-200/80 text-sm">{limitation.description}</div>
+                <div className="text-muted-foreground dark:text-white/80 text-sm">{limitation.description}</div>
               </motion.div>
             );
           })}
@@ -131,15 +131,15 @@ const CostComparisonSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-red-900/90 to-red-800/70 backdrop-blur-sm rounded-2xl p-8 border border-red-700/50 text-center"
+          className="bg-gradient-to-br from-primary/90 to-primary-glow/70 backdrop-blur-sm rounded-2xl p-8 border border-primary/50 text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="text-4xl md:text-5xl font-bold text-primary">R$ 40.800</div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-foreground dark:text-white">R$ 40.800</div>
           </div>
-          <div className="text-xl font-semibold text-red-100 mb-4">
+          <div className="text-xl font-semibold text-foreground dark:text-white mb-4">
             Média de gastos anuais somente com 1 funcionário.
           </div>
-          <div className="text-red-200/90 text-base max-w-3xl mx-auto">
+          <div className="text-muted-foreground dark:text-white/90 text-base max-w-3xl mx-auto">
             Esse é o custo anual de apenas 1 funcionário. E com apenas 1 pessoa você não vai 
             escalar seu negócio. Na prática, precisaria de 2 ou mais pessoas, multiplicando mais seus gastos.
           </div>
