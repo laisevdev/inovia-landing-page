@@ -122,11 +122,8 @@ const MobileMenu = () => {
             className="fixed inset-0 bg-background z-40 md:hidden"
           >
             <div className="flex flex-col h-full">
-              {/* Header with logo */}
-              <div className="flex items-center justify-between p-6 pt-16">
-                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-white" />
-                </div>
+              {/* Header without logo - just spacing */}
+              <div className="p-6 pt-16">
               </div>
 
               {/* Navigation Links */}
