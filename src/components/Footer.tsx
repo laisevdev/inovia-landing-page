@@ -77,7 +77,6 @@ const Footer = () => {
                   <a 
                     href={link.url}
                     className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                      }
                     }}
                   >
                     {link.name}
