@@ -95,7 +95,7 @@ export default function FAQSection() {
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
+                      animate=scaleY: isOpen ? 1 : 0, opacity: isOpen ? 1 : 0,
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="px-6 pb-4 text-muted-foreground text-sm"
