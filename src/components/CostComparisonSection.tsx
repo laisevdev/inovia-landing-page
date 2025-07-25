@@ -86,8 +86,8 @@ const CostComparisonSection = () => {
               viewport={{ once: true }}
               className="bg-gradient-to-br from-primary/80 to-primary-glow/60 backdrop-blur-sm rounded-xl p-6 border border-primary/50 hover:border-primary/70 transition-colors"
             >
-              <div className="text-2xl font-bold text-foreground dark:text-white mb-2">{cost.value}</div>
-              <div className="text-lg font-semibold text-white mb-3">{cost.label}</div>
+              <div className="text-2xl font-bold text-foreground dark:text-white mb-2 font-poppins">{cost.value}</div>
+              <div className="text-lg font-semibold text-white mb-3 font-inter">{cost.label}</div>
               <div className="text-muted-foreground dark:text-white/80 text-sm">{cost.description}</div>
             </motion.div>
           ))}
@@ -115,8 +115,8 @@ const CostComparisonSection = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <Icon className="w-6 h-6 text-primary-foreground dark:text-white" />
                   <div>
-                    <div className="text-xl font-bold text-foreground dark:text-white">{limitation.title}</div>
-                    <div className="text-lg font-semibold text-white">{limitation.subtitle}</div>
+                    <div className="text-xl font-bold text-foreground dark:text-white font-poppins">{limitation.title}</div>
+                    <div className="text-lg font-semibold text-white font-inter">{limitation.subtitle}</div>
                   </div>
                 </div>
                 <div className="text-muted-foreground dark:text-white/80 text-sm">{limitation.description}</div>
@@ -134,9 +134,9 @@ const CostComparisonSection = () => {
           className="bg-gradient-to-br from-primary/90 to-primary-glow/70 backdrop-blur-sm rounded-2xl p-8 border border-primary/50 text-center"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="text-4xl md:text-5xl font-bold text-primary-foreground dark:text-white">R$ 40.800</div>
+            <div className="text-4xl md:text-5xl font-bold text-primary-foreground dark:text-white font-poppins">R$ 40.800</div>
           </div>
-          <div className="text-xl font-semibold text-foreground dark:text-white mb-4">
+          <div className="text-xl font-semibold text-foreground dark:text-white mb-4 font-inter">
             Média de gastos anuais somente com 1 funcionário.
           </div>
           <div className="text-muted-foreground dark:text-white/90 text-base max-w-3xl mx-auto">
