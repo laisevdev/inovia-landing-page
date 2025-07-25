@@ -7,6 +7,7 @@ import CostComparisonSection from "@/components/CostComparisonSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import ImplementationStepsSection from "@/components/ImplementationStepsSection";
 import FAQSection from "@/components/FAQSection";
+import { Component as AccordionComponent } from "@/components/ui/accordian";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -21,6 +22,9 @@ const Index = () => {
       <BenefitsSection />
       <ImplementationStepsSection />
       <FAQSection />
+      <div className="py-16 flex justify-center">
+        <AccordionComponent />
+      </div>
       <Footer />
     </div>
   );
