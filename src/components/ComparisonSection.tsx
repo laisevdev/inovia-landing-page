@@ -63,7 +63,7 @@ const ComparisonSection = () => {
 
   return (
     <motion.section 
-      className="section-spacing bg-background-secondary/30"
+      className="section-spacing bg-background-secondary/30 hidden md:block"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
