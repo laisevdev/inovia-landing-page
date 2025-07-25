@@ -65,15 +65,14 @@ export function FAQSection() {
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
-                      key="content"
-                      initial="collapsed"
-                      animate="open"
-                      exit="collapsed"
-                      variants={{
-                        open: { height: "auto", opacity: 1 },
-                        collapsed: { height: 0, opacity: 0 }
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ 
+                        duration: 0.3, 
+                        ease: "easeInOut",
+                        opacity: { duration: 0.2 }
                       }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
                       style={{ overflow: "hidden" }}
                     >
                       <div className="px-6 pb-4 text-muted-foreground text-sm leading-relaxed">
