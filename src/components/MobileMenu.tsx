@@ -116,11 +116,8 @@ const MobileMenu = () => {
             <div className="flex flex-col h-full">
               {/* Header with logo */}
               <div className="flex items-center justify-between p-6 pt-16">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                    <Brain className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-lg font-bold text-foreground">InovIA</span>
+                <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
+                  <Brain className="w-5 h-5 text-white" />
                 </div>
               </div>
 
