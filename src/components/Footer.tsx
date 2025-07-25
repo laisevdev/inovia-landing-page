@@ -14,11 +14,11 @@ const Footer = () => {
   };
 
   const navigationLinks = [
-    { name: "Home", url: "#hero" },
-    { name: "Soluções", url: "#solucoes" },
-    { name: "Capacidades", url: "#capacidades" },
-    { name: "Como Funciona", url: "#etapas" },
-    { name: "Benefícios", url: "#beneficios" },
+    { name: "Home", href: "#hero" },
+    { name: "Soluções", href: "#solucoes" },
+    { name: "Capacidades", href: "#capacidades" },
+    { name: "Como Funciona", href: "#etapas" },
+    { name: "Benefícios", href: "#beneficios" },
   ];
 
 
