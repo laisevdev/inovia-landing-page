@@ -40,7 +40,11 @@ const Navbar = () => {
     </>
   );
 
-  return <NavBar items={navItems} rightActions={rightActions} logo={logo} />;
+  return (
+    <div className="hidden md:block">
+      <NavBar items={navItems} rightActions={rightActions} logo={logo} />
+    </div>
+  );
 };
 
 export default Navbar;
