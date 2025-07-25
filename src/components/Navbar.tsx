@@ -3,6 +3,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Settings, Heart, TrendingUp, HelpCircle, Mail, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
+import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
   const navItems = [
@@ -30,14 +31,13 @@ const Navbar = () => {
         size="sm"
         className={cn(
           "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors",
-          "text-foreground/80 hover:text-primary hover:bg-muted/50"
+          "text-foreground/80 hover:text-primary hover:bg-muted/50",
+          "hidden md:flex"
         )}
       >
-        <span className="hidden md:inline">Entrar em contato</span>
-        <span className="md:hidden">
-          <Mail size={18} strokeWidth={2.5} />
-        </span>
+        <span>Entrar em contato</span>
       </Button>
+      <MobileMenu />
     </>
   );
 
