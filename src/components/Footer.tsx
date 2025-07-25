@@ -3,9 +3,7 @@ import {
   Phone, 
   MapPin, 
   Instagram,
-  ArrowUp,
-  Linkedin,
-  Twitter
+  ArrowUp
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -124,18 +122,6 @@ const Footer = () => {
 
             {/* Social Media */}
             <div className="flex items-center gap-4">
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-card hover:bg-primary/10 border border-border/50 rounded-lg flex items-center justify-center transition-all duration-200 hover:border-primary/30"
-              >
-                <Linkedin className="h-5 w-5 text-muted-foreground hover:text-primary" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-card hover:bg-primary/10 border border-border/50 rounded-lg flex items-center justify-center transition-all duration-200 hover:border-primary/30"
-              >
-                <Twitter className="h-5 w-5 text-muted-foreground hover:text-primary" />
-              </a>
               <a 
                 href="#" 
                 className="w-10 h-10 bg-card hover:bg-primary/10 border border-border/50 rounded-lg flex items-center justify-center transition-all duration-200 hover:border-primary/30"
