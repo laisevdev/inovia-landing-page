@@ -87,7 +87,7 @@ const CostComparisonSection = () => {
               className="bg-gradient-to-br from-primary/80 to-primary-glow/60 backdrop-blur-sm rounded-xl p-6 border border-primary/50 hover:border-primary/70 transition-colors"
             >
               <div className="text-2xl font-bold text-foreground dark:text-white mb-2">{cost.value}</div>
-              <div className="text-lg font-semibold text-foreground dark:text-white/90 mb-3">{cost.label}</div>
+              <div className="text-lg font-semibold text-white mb-3">{cost.label}</div>
               <div className="text-muted-foreground dark:text-white/80 text-sm">{cost.description}</div>
             </motion.div>
           ))}
@@ -116,7 +116,7 @@ const CostComparisonSection = () => {
                   <Icon className="w-6 h-6 text-primary-foreground dark:text-white" />
                   <div>
                     <div className="text-xl font-bold text-foreground dark:text-white">{limitation.title}</div>
-                    <div className="text-lg font-semibold text-foreground dark:text-white/90">{limitation.subtitle}</div>
+                    <div className="text-lg font-semibold text-white">{limitation.subtitle}</div>
                   </div>
                 </div>
                 <div className="text-muted-foreground dark:text-white/80 text-sm">{limitation.description}</div>
