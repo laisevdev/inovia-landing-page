@@ -1,52 +1,63 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { HelpCircle, MessageCircle } from "lucide-react";
+
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { HelpCircle, MessageCircle, Plus, Minus, Brain, Clock, Zap, User, BookOpen, Settings, Target, Headphones } from "lucide-react";
 
 const FAQSection = () => {
+  const [openItem, setOpenItem] = useState<string | null>(null);
+  const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  const toggleItem = (id: string) => {
+    setOpenItem((current) => (current === id ? null : id));
+  };
+
   const faqs = [
     {
+      id: "1",
+      icon: Brain,
       question: "O que são agentes autônomos de IA e como diferem de chatbots?",
       answer: "Agentes autônomos de IA são sistemas avançados que podem tomar decisões, aprender continuamente e executar tarefas complexas de forma independente. Diferente dos chatbots que apenas respondem perguntas, nossos agentes podem integrar com sistemas, analisar dados, executar processos completos e evoluir constantemente através de machine learning."
     },
     {
+      id: "2",
+      icon: Clock,
       question: "Quanto tempo leva para implementar os agentes na minha empresa?",
       answer: "O processo completo leva entre 6-8 semanas, desde a consulta inicial até o go-live. Isso inclui análise detalhada (1-2 semanas), desenvolvimento personalizado (2-4 semanas), implementação (1-2 semanas) e otimização inicial. O cronograma pode variar dependendo da complexidade e tamanho do projeto."
     },
     {
+      id: "3",
+      icon: Zap,
       question: "Os agentes podem se integrar com nossos sistemas existentes?",
       answer: "Sim, completamente. Nossos agentes são desenvolvidos para integração universal com qualquer sistema, API, banco de dados ou plataforma existente. Utilizamos tecnologias modernas de integração que garantem compatibilidade total sem necessidade de reestruturação dos seus sistemas atuais."
     },
     {
-      question: "Qual é o ROI esperado e quando verei resultados?",
-      answer: "Nossos clientes typically veem ROI em 90 dias ou menos. A economia média é de 70% em custos operacionais, aumento de 10x na produtividade e melhoria de 95% na satisfação do cliente. Os resultados começam a aparecer já nas primeiras semanas após a implementação."
-    },
-    {
-      question: "Como garantem a segurança e proteção dos nossos dados?",
-      answer: "Implementamos protocolos de segurança de nível militar, incluindo criptografia end-to-end, compliance com LGPD/GDPR, auditoria contínua de segurança, e isolamento completo dos dados. Nossos agentes operam dentro de ambientes seguros e todos os dados permanecem sob seu controle total."
-    },
-    {
+      id: "4",
+      icon: User,
       question: "Preciso de uma equipe técnica para gerenciar os agentes?",
       answer: "Não necessariamente. Nossos agentes são projetados para operação autônoma com interface intuitiva. Oferecemos treinamento completo para sua equipe e suporte 24/7. A manutenção é mínima e a maioria das otimizações acontece automaticamente através do aprendizado contínuo."
     },
     {
+      id: "5",
+      icon: BookOpen,
       question: "Como os agentes aprendem e evoluem ao longo do tempo?",
       answer: "Nossos agentes utilizam machine learning avançado, processamento de linguagem natural e análise preditiva. Eles aprendem com cada interação, identificam padrões nos dados, ajustam automaticamente suas respostas e processos, e se adaptam às mudanças no seu negócio sem intervenção manual."
     },
     {
+      id: "6",
+      icon: Headphones,
       question: "Que tipo de suporte oferecem após a implementação?",
       answer: "Oferecemos suporte completo 24/7 incluindo: monitoramento contínuo de performance, otimizações automáticas, atualizações regulares, treinamento adicional da equipe, relatórios detalhados de performance, e um gerente de conta dedicado para garantir o sucesso contínuo."
     },
     {
+      id: "7",
+      icon: Settings,
       question: "Os agentes podem trabalhar com nossa indústria específica?",
       answer: "Absolutamente. Nossos agentes são completamente personalizados para cada indústria e negócio. Temos experiência em diversos setores incluindo e-commerce, saúde, finanças, manufatura, educação, e muitos outros. Cada agente é treinado com conhecimento específico do seu setor."
     },
     {
+      id: "8",
+      icon: Target,
       question: "Qual é o investimento necessário para começar?",
       answer: "O investimento varia de acordo com o escopo e complexidade do projeto. Oferecemos consulta gratuita para análise das suas necessidades e elaboração de proposta personalizada. Também disponibilizamos modelos de pagamento flexíveis e calculadora de ROI para demonstrar o retorno esperado."
     }
@@ -77,25 +88,64 @@ const FAQSection = () => {
         </div>
 
         {/* FAQ Accordion */}
-        <div className="glass-card p-6">
-          <Accordion type="single" collapsible className="w-full space-y-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`} 
-                className="border border-border/20 rounded-lg bg-card/30 backdrop-blur-sm hover:bg-card/50 transition-all duration-200 overflow-hidden"
-              >
-                <AccordionTrigger className="text-left text-foreground hover:text-primary transition-colors px-6 py-4 hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                  <span className="font-medium pr-4">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed px-6 pb-4 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                  <div className="pt-2">
-                    {faq.answer}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div className="max-w-2xl mx-auto bg-card/30 backdrop-blur-md border border-border/30 rounded-lg shadow-lg">
+          <div>
+            {faqs.map(({ id, icon: Icon, question, answer }) => {
+              const isOpen = openItem === id;
+
+              return (
+                <div
+                  key={id}
+                  className="border-t border-border/30 first:border-t-0"
+                >
+                  <button
+                    onClick={() => toggleItem(id)}
+                    aria-expanded={isOpen}
+                    className="flex items-center justify-between w-full px-6 py-4 text-foreground text-base font-medium cursor-pointer bg-transparent transition-colors duration-300 hover:bg-card/50 select-none focus:outline-none"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Icon
+                        className="w-5 h-5 text-primary flex-shrink-0"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      <span className="text-left">{question}</span>
+                    </div>
+
+                    <div className="relative w-4 h-4 flex-shrink-0">
+                      <Plus
+                        className={`absolute inset-0 text-foreground transition-opacity duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                      <Minus
+                        className={`absolute inset-0 text-foreground transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0"}`}
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </button>
+
+                  {/* Content wrapper */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    style={{ overflow: "hidden" }}
+                  >
+                    <div
+                      ref={(el) => {
+                        contentRefs.current[id] = el;
+                      }}
+                      className="px-6 pb-4 text-muted-foreground text-sm leading-relaxed select-text"
+                    >
+                      {answer}
+                    </div>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Contact CTA */}
