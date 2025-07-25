@@ -16,8 +16,8 @@ const Index = () => {
       <SolutionsSection />
       <AgentCapabilitiesSection />
       <ComparisonSection />
-      <ImplementationStepsSection />
       <BenefitsSection />
+      <ImplementationStepsSection />
       <FAQSection />
       <Footer />
     </div>
