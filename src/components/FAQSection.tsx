@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HelpCircle, Plus, Minus, Brain, Clock, Zap, User, BookOpen, Settings, Target, Headphones } from "lucide-react";
@@ -95,7 +94,7 @@ export default function FAQSection() {
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
-                      animate={{ scaleY: isOpen ? 1 : 0, opacity: isOpen ? 1 : 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="px-6 pb-4 text-muted-foreground text-sm"
@@ -112,4 +111,3 @@ export default function FAQSection() {
     </section>
   );
 }
-
