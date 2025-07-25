@@ -2,8 +2,6 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Linkedin, 
-  Twitter, 
   Instagram,
   ArrowUp 
 } from "lucide-react";
@@ -21,7 +19,6 @@ const Footer = () => {
     { name: "Capacidades", href: "#capacidades" },
     { name: "Como Funciona", href: "#etapas" },
     { name: "Benefícios", href: "#beneficios" },
-    { name: "FAQ", href: "#faq" },
   ];
 
 
