@@ -54,16 +54,16 @@ const CostComparisonSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-poppins">
             VEJA A DIFERENÇA DE{" "}
             <span className="text-primary">CUSTOS:</span>
           </h2>
-          <div className="text-2xl md:text-3xl font-semibold mb-6">
+          <div className="text-2xl md:text-3xl font-semibold mb-6 font-poppins">
             <span className="text-red-400">FUNCIONÁRIO CLT</span>
             <span className="text-muted-foreground mx-4">VS</span>
             <span className="text-primary">INTELIGÊNCIA ARTIFICIAL</span>
           </div>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-inter">
             Entenda o peso de manter um atendente tradicional CLT, com altos custos fixos, baixa 
             escalabilidade e diversas limitações operacionais.
           </p>
