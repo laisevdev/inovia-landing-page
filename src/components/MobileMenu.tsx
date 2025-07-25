@@ -87,21 +87,29 @@ const MobileMenu = () => {
 
   return (
     <>
-      {/* Hamburger Button - Fixed top right */}
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={toggleMenu}
-        className="md:hidden fixed top-4 right-4 z-50 bg-background/80 backdrop-blur-sm border border-border/50"
-        aria-label="Toggle menu"
-      >
-        <motion.div
-          animate={isOpen ? "open" : "closed"}
-          className="w-6 h-6 flex items-center justify-center"
+      {/* Top bar with logo and menu button - Always visible */}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background/80 backdrop-blur-sm border-b border-border/50">
+        {/* Logo - Always visible */}
+        <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
+          <Brain className="w-5 h-5 text-white" />
+        </div>
+        
+        {/* Hamburger Button */}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={toggleMenu}
+          className="bg-background/80 backdrop-blur-sm border border-border/50"
+          aria-label="Toggle menu"
         >
-          {isOpen ? <X size={20} /> : <Menu size={20} />}
-        </motion.div>
-      </Button>
+          <motion.div
+            animate={isOpen ? "open" : "closed"}
+            className="w-6 h-6 flex items-center justify-center"
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </motion.div>
+        </Button>
+      </div>
 
       {/* Fullscreen Menu Overlay */}
       <AnimatePresence>
