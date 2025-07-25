@@ -91,3 +91,4 @@ export function FAQSection() {
   );
 }
 
+export default FAQSection;
