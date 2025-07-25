@@ -15,15 +15,12 @@ const Footer = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const companyLinks = [
-    { name: "Sobre Nós", href: "#" },
-  ];
-
-  const solutionLinks = [
-    { name: "Agentes de Atendimento", href: "#" },
-    { name: "Análise Preditiva", href: "#" },
-    { name: "Automação de Processos", href: "#" },
-    { name: "Integração de Sistemas", href: "#" },
+  const navigationLinks = [
+    { name: "Home", href: "#hero" },
+    { name: "Soluções", href: "#solucoes" },
+    { name: "Capacidades", href: "#capacidades" },
+    { name: "Benefícios", href: "#beneficios" },
+    { name: "Como funciona", href: "#etapas" },
   ];
 
 
@@ -76,32 +73,22 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Company Links */}
+          {/* Navigation Links */}
           <div>
-            <h4 className="text-lg font-semibold text-foreground mb-6">Empresa</h4>
+            <h4 className="text-lg font-semibold text-foreground mb-6">Navegação</h4>
             <ul className="space-y-4">
-              {companyLinks.map((link, index) => (
+              {navigationLinks.map((link, index) => (
                 <li key={index}>
                   <a 
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Solutions Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-6">Soluções</h4>
-            <ul className="space-y-4">
-              {solutionLinks.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                   >
                     {link.name}
                   </a>
