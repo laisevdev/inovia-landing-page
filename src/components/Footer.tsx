@@ -116,7 +116,9 @@ const Footer = () => {
             {/* Social Media */}
             <div className="flex items-center gap-4">
               <a 
-                href="#" 
+                href="https://www.instagram.com/inovia.tech" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-card hover:bg-primary/10 border border-border/50 rounded-lg flex items-center justify-center transition-all duration-200 hover:border-primary/30"
               >
                 <Instagram className="h-5 w-5 text-muted-foreground hover:text-primary" />
