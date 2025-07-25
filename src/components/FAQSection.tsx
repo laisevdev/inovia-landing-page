@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { HelpCircle, Brain, Clock, Zap, User, BookOpen, Headphones, Settings, Target } from "lucide-react";
+import { HelpCircle, Brain, Clock, Zap, User, BookOpen, Headphones, Settings, Target, Plus, Minus } from "lucide-react";
 
 const faqs = [
   { id: "1", icon: Brain, question: "O que são agentes autônomos de IA e como diferem de chatbots?", answer: "Agentes autônomos de IA são sistemas avançados que podem tomar decisões..." },
