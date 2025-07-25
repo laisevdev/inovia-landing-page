@@ -129,10 +129,14 @@ const FAQSection = () => {
                   {/* Content wrapper */}
                   <motion.div
                     initial={false}
-                    animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                    animate={{
+                      height: isOpen ? contentRefs.current[id]?.scrollHeight : 0,
+                      opacity: isOpen ? 1 : 0
+                    }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
                     style={{ overflow: "hidden" }}
                   >
+
                     <div
                       ref={(el) => {
                         contentRefs.current[id] = el;
