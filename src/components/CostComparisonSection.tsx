@@ -86,7 +86,7 @@ const CostComparisonSection = () => {
               viewport={{ once: true }}
               className="bg-gradient-to-br from-red-900/80 to-red-800/60 backdrop-blur-sm rounded-xl p-6 border border-red-700/50 hover:border-red-600/70 transition-colors"
             >
-              <div className="text-2xl font-bold text-red-200 mb-2">{cost.value}</div>
+              <div className="text-2xl font-bold text-foreground dark:text-red-200 mb-2">{cost.value}</div>
               <div className="text-lg font-semibold text-red-100 mb-3">{cost.label}</div>
               <div className="text-red-200/80 text-sm">{cost.description}</div>
             </motion.div>
@@ -115,8 +115,8 @@ const CostComparisonSection = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <Icon className="w-6 h-6 text-red-300" />
                   <div>
-                    <div className="text-xl font-bold text-red-200">{limitation.title}</div>
-                    <div className="text-lg font-semibold text-red-100">{limitation.subtitle}</div>
+                    <div className="text-xl font-bold text-foreground dark:text-red-200">{limitation.title}</div>
+                    <div className="text-lg font-semibold text-foreground dark:text-red-100">{limitation.subtitle}</div>
                   </div>
                 </div>
                 <div className="text-red-200/80 text-sm">{limitation.description}</div>
