@@ -87,104 +87,82 @@ const MobileMenu = () => {
 
   return (
     <>
-      {/* Hamburger Button - Only visible on mobile */}
+      {/* Hamburger Button - Fixed top right */}
       <Button
         variant="ghost"
         size="icon"
         onClick={toggleMenu}
-        className="md:hidden relative z-50"
+        className="md:hidden fixed top-4 right-4 z-50 bg-background/80 backdrop-blur-sm border border-border/50"
         aria-label="Toggle menu"
       >
         <motion.div
           animate={isOpen ? "open" : "closed"}
           className="w-6 h-6 flex items-center justify-center"
         >
-          <motion.div
-            variants={{
-              closed: { rotate: 0 },
-              open: { rotate: 180 }
-            }}
-            transition={{ duration: 0.2 }}
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </motion.div>
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </motion.div>
       </Button>
 
-      {/* Menu Overlay and Sidebar */}
+      {/* Fullscreen Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <>
-            {/* Overlay */}
-            <motion.div
-              variants={overlayVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40 md:hidden"
-            />
-
-            {/* Sidebar Menu */}
-            <motion.div
-              variants={menuVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className="fixed top-0 right-0 h-full w-80 bg-background/95 backdrop-blur-md border-l border-border z-50 md:hidden"
-            >
-              <div className="flex flex-col h-full">
-                {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-border">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
-                      <Brain className="w-5 h-5 text-white" />
-                    </div>
-                    <span className="text-lg font-bold text-foreground">InovIA</span>
+          <motion.div
+            variants={overlayVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="fixed inset-0 bg-background z-40 md:hidden"
+          >
+            <div className="flex flex-col h-full">
+              {/* Header with logo */}
+              <div className="flex items-center justify-between p-6 pt-16">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-white" />
                   </div>
-                </div>
-
-                {/* Navigation Links */}
-                <nav className="flex-1 px-6 py-8">
-                  <ul className="space-y-2">
-                    {navItems.map((item, index) => (
-                      <motion.li
-                        key={item.name}
-                        custom={index}
-                        variants={itemVariants}
-                        initial="closed"
-                        animate="open"
-                        exit="closed"
-                      >
-                        <button
-                          onClick={() => handleLinkClick(item.url)}
-                          className={cn(
-                            "w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-left",
-                            "text-foreground/80 hover:text-primary hover:bg-muted/50",
-                            "focus:outline-none focus:ring-2 focus:ring-primary/20"
-                          )}
-                        >
-                          <item.icon size={20} />
-                          <span className="font-medium">{item.name}</span>
-                        </button>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </nav>
-
-                {/* Footer */}
-                <div className="p-6 border-t border-border">
-                  <Button
-                    onClick={() => handleLinkClick("#contato")}
-                    className="w-full"
-                    size="lg"
-                  >
-                    Entrar em contato
-                  </Button>
+                  <span className="text-lg font-bold text-foreground">InovIA</span>
                 </div>
               </div>
-            </motion.div>
-          </>
+
+              {/* Navigation Links */}
+              <nav className="flex-1 px-6 py-8">
+                <ul className="space-y-6">
+                  {navItems.map((item, index) => (
+                    <motion.li
+                      key={item.name}
+                      custom={index}
+                      variants={itemVariants}
+                      initial="closed"
+                      animate="open"
+                      exit="closed"
+                    >
+                      <button
+                        onClick={() => handleLinkClick(item.url)}
+                        className={cn(
+                          "w-full text-left text-2xl font-medium py-4",
+                          "text-foreground hover:text-primary transition-colors",
+                          "focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg px-2"
+                        )}
+                      >
+                        {item.name}
+                      </button>
+                    </motion.li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* Footer */}
+              <div className="p-6">
+                <Button
+                  onClick={() => handleLinkClick("#contato")}
+                  className="w-full"
+                  size="lg"
+                >
+                  Entrar em contato
+                </Button>
+              </div>
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

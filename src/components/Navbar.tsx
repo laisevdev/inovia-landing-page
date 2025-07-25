@@ -37,7 +37,6 @@ const Navbar = () => {
       >
         <span>Entrar em contato</span>
       </Button>
-      <MobileMenu />
     </>
   );
 
