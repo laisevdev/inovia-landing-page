@@ -6,30 +6,30 @@ const items = [
     {
         id: "1",
         icon: Info,
-        title: "What is the core philosophy of Origin UI?",
+        title: "O que são agentes autônomos de IA?",
         content:
-            "Origin UI emphasizes developer experience by offering lightweight, accessible components with strong TypeScript support and excellent documentation.",
+            "Agentes autônomos de IA são sistemas avançados que podem tomar decisões, aprender continuamente e executar tarefas complexas de forma independente, sem intervenção humana constante.",
     },
     {
         id: "2",
         icon: Settings,
-        title: "How do I customize styles in Origin UI?",
+        title: "Como personalizar os agentes para minha empresa?",
         content:
-            "You can easily customize styles using CSS variables, Tailwind, or traditional CSS by overriding classNames or using the style prop.",
+            "Nossos agentes são completamente personalizáveis através de configurações específicas, integração com seus sistemas existentes e treinamento com dados da sua empresa.",
     },
     {
         id: "3",
         icon: Code,
-        title: "How performant is Origin UI?",
+        title: "Quanto tempo leva para implementar?",
         content:
-            "Optimized for performance with minimal bundle size, tree shaking, and fast rendering to keep your apps light and fast.",
+            "O processo completo leva entre 6-8 semanas, incluindo análise, desenvolvimento personalizado, integração e treinamento da equipe.",
     },
     {
         id: "4",
         icon: Accessibility,
-        title: "Is accessibility a priority in Origin UI?",
+        title: "Os agentes são seguros e confiáveis?",
         content:
-            "Absolutely! All components follow WAI-ARIA guidelines and support keyboard navigation and screen readers out of the box.",
+            "Sim! Seguimos os mais altos padrões de segurança, com criptografia avançada, monitoramento 24/7 e compliance com regulamentações de proteção de dados.",
     },
 ];
 
@@ -44,7 +44,7 @@ export const Component = () => {
     return (
         <div className="max-w-md bg-white/30 dark:bg-black/30 backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg shadow-black/20 dark:shadow-white/10 transition-colors duration-500">
             <h2 className="text-2xl font-extrabold text-black dark:text-white px-5 pt-5 select-none">
-                FAQs
+                Dúvidas Frequentes
             </h2>
 
             <div>
