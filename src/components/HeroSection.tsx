@@ -1,4 +1,3 @@
-import { StarBorder } from "@/components/ui/star-border";
 import { Zap } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import { useTypewriter } from "@/hooks/useTypewriter";
@@ -52,11 +51,6 @@ const HeroSection = () => {
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
-          <div className="flex justify-center items-center mb-16">
-            <StarBorder as="a" href="https://calendly.com/laisevdev" target="_blank" rel="noopener noreferrer">
-              Agendar uma chamada
-            </StarBorder>
-          </div>
 
         </div>
       </div>
