@@ -143,7 +143,7 @@ const ImplementationStepsSection = () => {
 
         {/* Timeline Summary */}
         <div className="mt-20">
-          <div className="glass-card max-w-4xl mx-auto text-center bg-primary/5 border-primary/20">
+          <div className="relative glass-card max-w-4xl mx-auto text-center bg-primary/5 border-primary/20 z-0">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Quero meu Agente IA
             </h3>
