@@ -20,13 +20,16 @@ export function StarBorder<T extends ElementType = "button">({
   const Component = as || "button"
   const defaultColor = color || "hsl(var(--foreground))"
 
+  // Filter out StarBorder-specific props to avoid passing them to DOM
+  const { as: _, color: __, speed: ___, ...domProps } = { as, color, speed, ...props }
+
   return (
     <Component 
       className={cn(
         "relative inline-block py-[1px] overflow-hidden rounded-[20px]",
         className
       )} 
-      {...props}
+      {...domProps}
     >
       <div
         className={cn(
