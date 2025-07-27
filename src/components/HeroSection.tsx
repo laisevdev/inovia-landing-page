@@ -53,7 +53,7 @@ const HeroSection = () => {
           </p>
 
           <div className="flex justify-center items-center mb-16">
-            <StarBorder>
+            <StarBorder as="a" href="https://calendly.com/laisevdev" target="_blank" rel="noopener noreferrer">
               Agendar uma chamada
             </StarBorder>
           </div>
