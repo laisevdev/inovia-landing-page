@@ -153,10 +153,14 @@ const ImplementationStepsSection = () => {
             </p>
             
             <div className="flex justify-center">
-              <button className="btn-hero group">
+              <a 
+                href="https://calendly.com/laisevdev" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn-hero group"
+              >
                 Iniciar Implementação
-                
-              </button>
+              </a>
             </div>
           </div>
         </div>
