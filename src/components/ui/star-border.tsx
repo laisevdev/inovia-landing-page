@@ -31,7 +31,7 @@ export function StarBorder<T extends ElementType = "button">({
       <div
         className={cn(
           "absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0",
-          "opacity-20 dark:opacity-70 pointer-events-none"  // <-- aqui sim!
+          "opacity-20 dark:opacity-70" 
         )}
         style={{
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
@@ -41,19 +41,20 @@ export function StarBorder<T extends ElementType = "button">({
       <div
         className={cn(
           "absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0",
-          "opacity-20 dark:opacity-70 pointer-events-none"  // <-- aqui também!
+          "opacity-20 dark:opacity-70"
         )}
         style={{
           background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
           animationDuration: speed,
         }}
       />
-      <div className={cn(
-        "relative z-10 border text-center text-base py-4 px-6 rounded-[20px]",
+      <span className={cn(
+        "relative z-10 inline-flex items-center justify-center border text-base py-4 px-6 rounded-[20px]",
         "bg-[#6F43F7] text-white border-transparent dark:bg-gradient-to-b dark:from-background/90 dark:to-muted/90 dark:border-border/40 dark:text-foreground"
       )}>
         {children}
-      </div>
+      </span>
+
     </Component>
   )
 }
