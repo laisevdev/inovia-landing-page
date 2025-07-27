@@ -157,7 +157,7 @@ const ImplementationStepsSection = () => {
                 href="https://calendly.com/laisevdev" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn-hero group"
+                className="relative inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-base font-semibold transition-transform hover:scale-105 z-10"
               >
                 Iniciar Implementação
               </a>
