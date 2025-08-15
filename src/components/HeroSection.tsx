@@ -52,21 +52,6 @@ const HeroSection = () => {
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
-          <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
-            <div className="bg-card/95 backdrop-blur-sm border border-border/50 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
-              <a 
-                href="https://calendly.com/laisevdev/30min" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-4 text-foreground hover:text-primary transition-colors no-underline"
-              >
-                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Zap className="w-4 h-4 text-primary" />
-                </div>
-                <span className="font-semibold">Agendar uma chamada</span>
-              </a>
-            </div>
-          </div>
 
         </div>
       </div>
