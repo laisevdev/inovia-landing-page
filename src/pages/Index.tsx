@@ -9,6 +9,7 @@ import BenefitsSection from "@/components/BenefitsSection";
 import ImplementationStepsSection from "@/components/ImplementationStepsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+import MiniCalendlyCard from "@/components/MiniCalendlyCard";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <ImplementationStepsSection />
       <FAQSection />
       <Footer />
+      <MiniCalendlyCard />
     </div>
   );
 };
