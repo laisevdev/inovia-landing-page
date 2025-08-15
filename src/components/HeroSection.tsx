@@ -52,9 +52,18 @@ const HeroSection = () => {
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
-          <div className="flex justify-center items-center mb-16">
-            <Button asChild className="px-8 py-4 text-lg">
-              <a href="https://calendly.com/laisevdev/30min" target="_blank" rel="noopener noreferrer">
+          <div className="flex justify-center items-center mb-16 relative z-20">
+            <Button 
+              asChild 
+              className="px-8 py-4 text-lg hover:scale-105 transition-transform cursor-pointer"
+              size="lg"
+            >
+              <a 
+                href="https://calendly.com/laisevdev/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="no-underline"
+              >
                 Agendar uma chamada
               </a>
             </Button>
