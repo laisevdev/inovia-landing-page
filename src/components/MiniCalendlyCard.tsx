@@ -16,7 +16,7 @@ const MiniCalendlyCard = () => {
               <Calendar className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="font-semibold text-sm">Agende uma Consulta</p>
+              <p className="font-semibold text-sm">Agende uma chamada</p>
               <p className="text-xs text-muted-foreground">Gratuita • 30min</p>
             </div>
           </a>
