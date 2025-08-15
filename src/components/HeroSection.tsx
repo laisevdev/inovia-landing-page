@@ -1,4 +1,4 @@
-import { StarBorder } from "@/components/ui/star-border";
+import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 import { useTypewriter } from "@/hooks/useTypewriter";
@@ -53,9 +53,11 @@ const HeroSection = () => {
           </p>
 
           <div className="flex justify-center items-center mb-16">
-            <StarBorder as="a" href="https://calendly.com/laisevdev/30min" target="_blank" rel="noopener noreferrer">
-              Agendar uma chamada
-            </StarBorder>
+            <Button asChild className="px-8 py-4 text-lg">
+              <a href="https://calendly.com/laisevdev/30min" target="_blank" rel="noopener noreferrer">
+                Agendar uma chamada
+              </a>
+            </Button>
           </div>
 
         </div>
