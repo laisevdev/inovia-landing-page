@@ -143,7 +143,7 @@ const ImplementationStepsSection = () => {
 
         {/* Timeline Summary */}
         <div className="mt-20">
-          <div className="relative glass-card max-w-4xl mx-auto text-center bg-primary/5 border-primary/20 z-0">
+          <div className="glass-card max-w-4xl mx-auto text-center bg-primary/5 border-primary/20">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Quero meu Agente IA
             </h3>
@@ -153,14 +153,10 @@ const ImplementationStepsSection = () => {
             </p>
             
             <div className="flex justify-center">
-              <a 
-                href="https://calendly.com/laisevdev" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="relative inline-flex items-center justify-center px-6 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white text-base font-semibold transition-transform hover:scale-105 z-10"
-              >
+              <button className="btn-hero group">
                 Iniciar Implementação
-              </a>
+                
+              </button>
             </div>
           </div>
         </div>
