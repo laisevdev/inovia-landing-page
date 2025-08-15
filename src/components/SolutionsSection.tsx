@@ -119,9 +119,15 @@ const SolutionsSection = () => {
             <p className="text-muted-foreground mb-6 text-justify">
               Descubra como nossos agentes autônomos podem ser personalizados para suas necessidades específicas.
             </p>
-            <Button className="btn-hero">
-              Consulta Gratuita
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button asChild className="btn-hero">
+              <a 
+                href="https://calendly.com/laisevdev/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                Consulta Gratuita
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
           </div>
         </div>
