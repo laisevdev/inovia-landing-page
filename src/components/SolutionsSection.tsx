@@ -60,6 +60,7 @@ const SolutionsSection = () => {
       viewport={{ once: true }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="font-poppins text-[44px] font-bold mb-6">
@@ -112,14 +113,17 @@ const SolutionsSection = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="glass-card max-w-2xl mx-auto">
+          <div className="glass-card max-w-2xl mx-auto relative z-10">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Pronto para Revolucionar seu Negócio?
             </h3>
             <p className="text-muted-foreground mb-6 text-justify">
               Descubra como nossos agentes autônomos podem ser personalizados para suas necessidades específicas.
             </p>
-            <Button asChild className="btn-hero">
+            <Button 
+              asChild 
+              className="btn-hero bg-primary text-white hover:bg-primary/80 relative z-10 pointer-events-auto"
+            >
               <a 
                 href="https://calendly.com/laisevdev/30min" 
                 target="_blank" 
@@ -137,3 +141,4 @@ const SolutionsSection = () => {
 };
 
 export default SolutionsSection;
+
