@@ -89,7 +89,7 @@ const Footer = () => {
                         }
                       }, 100);
                     }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
                   >
                     {link.name}
                   </a>
