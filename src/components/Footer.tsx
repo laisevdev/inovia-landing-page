@@ -72,30 +72,25 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-6">Navegação</h4>
             <ul className="space-y-4">
-              {navigationLinks.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.url}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      // Wait for any pending renders
-                      setTimeout(() => {
-                        const element = document.querySelector(link.url);
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        } else {
-                          // Fallback: try to navigate to the URL if element not found
-                          window.location.hash = link.url.substring(1);
-                        }
-                      }, 100);
-                    }}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            {navigationLinks.map((link, index) => (
+              <li key={index}>
+                <a 
+                  href={link.url}
+                  onClick={(e) => {
+                    const element = document.querySelector(link.url);
+                    if (element) {
+                      e.preventDefault(); // só previne se o elemento existe
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+
           </div>
 
         </div>
