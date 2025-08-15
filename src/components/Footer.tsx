@@ -78,10 +78,16 @@ const Footer = () => {
                     href={link.url}
                     onClick={(e) => {
                       e.preventDefault();
-                      const element = document.querySelector(link.url);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
+                      // Wait for any pending renders
+                      setTimeout(() => {
+                        const element = document.querySelector(link.url);
+                        if (element) {
+                          element.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          // Fallback: try to navigate to the URL if element not found
+                          window.location.hash = link.url.substring(1);
+                        }
+                      }, 100);
                     }}
                     className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer"
                   >
