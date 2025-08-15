@@ -77,10 +77,21 @@ const Footer = () => {
                 <a 
                   href={link.url}
                   onClick={(e) => {
-                    const element = document.querySelector(link.url);
+                    e.preventDefault();
+                    const targetId = link.url.substring(1); // remove #
+                    const element = document.getElementById(targetId);
                     if (element) {
-                      e.preventDefault(); // só previne se o elemento existe
                       element.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                      // Fallback: tenta encontrar por querySelector
+                      setTimeout(() => {
+                        const fallbackElement = document.querySelector(link.url);
+                        if (fallbackElement) {
+                          fallbackElement.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          window.location.hash = link.url;
+                        }
+                      }, 100);
                     }
                   }}
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
