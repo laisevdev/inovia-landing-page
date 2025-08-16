@@ -79,30 +79,23 @@ const Footer = () => {
           </div>
 
           {/* Navigation Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-6">Navegação</h4>
-            <ul className="space-y-4">
-            {navigationLinks.map((link, index) => (
-              <li key={index}>
-                <a 
-                  href={link.url}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const targetId = link.url.substring(1); // remove #
-                    const element = document.getElementById(targetId);
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Navigation Links */}
+<div>
+  <h4 className="text-lg font-semibold text-foreground mb-6">Navegação</h4>
+  <ul className="space-y-4">
+    {navigationLinks.map((link, index) => (
+      <li key={index}>
+        <a 
+          href={link.url}
+          className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
+        >
+          {link.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
 
-          </div>
 
         </div>
 
