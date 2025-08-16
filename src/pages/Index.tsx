@@ -37,21 +37,15 @@ const Index = () => {
             <p className="text-lg text-muted-foreground max-w-2xl">
               Entre em contato conosco agora mesmo e descubra como a automação com IA pode transformar seu negócio.
             </p>
-            <Button
-              size="lg"
-              asChild
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            <a 
+              href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <a 
-                href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3"
-              >
-                <MessageCircle className="w-6 h-6" />
-                Conversar no WhatsApp
-              </a>
-            </Button>
+              <MessageCircle className="w-6 h-6" />
+              Conversar no WhatsApp
+            </a>
           </div>
         </div>
       </section>
