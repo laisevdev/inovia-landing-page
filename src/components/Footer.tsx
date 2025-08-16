@@ -92,16 +92,6 @@ const Footer = () => {
                     const element = document.getElementById(targetId);
                     if (element) {
                       element.scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                      // Fallback: tenta encontrar por querySelector
-                      setTimeout(() => {
-                        const fallbackElement = document.querySelector(link.url);
-                        if (fallbackElement) {
-                          fallbackElement.scrollIntoView({ behavior: 'smooth' });
-                        } else {
-                          window.location.hash = link.url;
-                        }
-                      }, 100);
                     }
                   }}
                   className="text-muted-foreground hover:text-primary transition-colors duration-200 cursor-pointer hover:underline"
