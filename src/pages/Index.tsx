@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar";
+import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import MobileMenu from "@/components/MobileMenu";
 import HeroSection from "@/components/HeroSection";
 import SolutionsSection from "@/components/SolutionsSection";
@@ -24,6 +26,36 @@ const Index = () => {
       <BenefitsSection />
       <ImplementationStepsSection />
       <FAQSection />
+      
+      {/* WhatsApp CTA Section */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center text-center space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">
+              Pronto para começar?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl">
+              Entre em contato conosco agora mesmo e descubra como a automação com IA pode transformar seu negócio.
+            </p>
+            <Button
+              size="lg"
+              asChild
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <a 
+                href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3"
+              >
+                <MessageCircle className="w-6 h-6" />
+                Conversar no WhatsApp
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
       <MiniCalendlyCard />
     </div>
