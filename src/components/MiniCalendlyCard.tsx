@@ -1,7 +1,36 @@
 import { Calendar } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useState } from "react";
 
 const MiniCalendlyCard = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Hide card when footer is visible on screen
+        if (footerRect.top <= windowHeight) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Check initial state
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!isVisible) return null;
+
   return (
     <div className="fixed bottom-6 left-6 z-50 hidden md:block">
       <Card className="w-44 bg-card/95 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group">
