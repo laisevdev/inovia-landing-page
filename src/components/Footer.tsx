@@ -54,10 +54,16 @@ const Footer = () => {
                 <span className="text-muted-foreground">contato@inovia.com.br</span>
               </div>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <a 
+                  href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 cursor-pointer"
+                  title="Entrar em contato via WhatsApp"
+                >
                   <Phone className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-muted-foreground">+55 (11) 99999-9999</span>
+                </a>
+                <span className="text-muted-foreground">+55 (65) 99925-4990</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
