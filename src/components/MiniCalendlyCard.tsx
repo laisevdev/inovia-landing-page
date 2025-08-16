@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const MiniCalendlyCard = () => {
   return (
-    <div className="fixed bottom-6 right-6 z-50 hidden md:block">
+    <div className="fixed bottom-6 left-6 z-50 hidden md:block">
       <Card className="w-64 bg-card/95 backdrop-blur-sm border-border/50 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group">
         <CardContent className="p-4">
           <a 
