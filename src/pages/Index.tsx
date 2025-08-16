@@ -51,6 +51,7 @@ const Index = () => {
       </section>
       
       <Footer />
+      <MiniCalendlyCard />
     </div>
   );
 };
