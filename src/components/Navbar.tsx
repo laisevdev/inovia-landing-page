@@ -29,13 +29,20 @@ const Navbar = () => {
       <Button
         variant="ghost"
         size="sm"
+        asChild
         className={cn(
           "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors",
           "text-foreground/80 hover:text-primary hover:bg-muted/50",
           "hidden md:flex"
         )}
       >
-        <span>Entrar em contato</span>
+        <a 
+          href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>Entrar em contato</span>
+        </a>
       </Button>
     </>
   );
