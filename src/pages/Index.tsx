@@ -44,7 +44,6 @@ const Index = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              <MessageCircle className="w-6 h-6" />
               Nos chame no whatsapp 👉
             </a>
           </div>
