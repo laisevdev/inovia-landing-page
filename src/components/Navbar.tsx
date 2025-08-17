@@ -11,7 +11,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroSection = document.getElementById('hero');
+      const heroSection = document.getElementById('home');
       if (heroSection) {
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         const currentScroll = window.scrollY + 100; // Add offset for better UX
@@ -71,7 +71,7 @@ const Navbar = () => {
 
   return (
     <div className={cn(
-      "hidden md:block transition-all duration-60000",
+      "hidden md:block transition-all duration-300",
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
     )}>
       <NavBar items={navItems} rightActions={rightActions} logo={logo} />
