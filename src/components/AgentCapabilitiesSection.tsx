@@ -63,8 +63,8 @@ const AgentCapabilitiesSection = () => {
   ];
 
   return (
-    <motion.section 
-      id="capacidades"
+    <motion.section
+      id="funcionalidades"
       className="section-spacing"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

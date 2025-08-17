@@ -13,7 +13,7 @@ const HeroSection = () => {
   });
 
   return (
-    <motion.section 
+    <motion.section
       id="hero"
       className="relative min-h-screen flex items-center justify-center pt-16"
       initial={{ opacity: 0, y: 50 }}

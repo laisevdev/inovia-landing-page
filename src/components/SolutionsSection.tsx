@@ -51,8 +51,8 @@ const SolutionsSection = () => {
   ];
 
   return (
-    <motion.section 
-      id="solucoes" 
+    <motion.section
+      id="solucoes"
       className="section-spacing bg-background-secondary/50"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

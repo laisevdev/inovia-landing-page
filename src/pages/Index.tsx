@@ -13,6 +13,7 @@ import FAQSection from "@/components/FAQSection";
 
 import MiniCalendlyCard from "@/components/MiniCalendlyCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -53,6 +54,7 @@ const Index = () => {
       
       <MiniCalendlyCard />
       <WhatsAppButton />
+      <Footer />
     </div>
   );
 };
