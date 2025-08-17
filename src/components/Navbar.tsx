@@ -5,13 +5,13 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Settings, Heart, TrendingUp, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
-  const pathname = usePathname();
+  const location = useLocation();
 
   // só mostra se estiver na Home
-  if (pathname !== "/") return null;
+  if (location.pathname !== "/") return null;
 
   const navItems = [
     { name: "Home", url: "#hero", icon: Settings },
