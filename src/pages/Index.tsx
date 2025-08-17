@@ -10,7 +10,7 @@ import CostComparisonSection from "@/components/CostComparisonSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import ImplementationStepsSection from "@/components/ImplementationStepsSection";
 import FAQSection from "@/components/FAQSection";
-import Footer from "@/components/Footer";
+
 import MiniCalendlyCard from "@/components/MiniCalendlyCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -50,7 +50,7 @@ const Index = () => {
         </div>
       </section>
       
-      <Footer />
+      
       <MiniCalendlyCard />
       <WhatsAppButton />
     </div>
