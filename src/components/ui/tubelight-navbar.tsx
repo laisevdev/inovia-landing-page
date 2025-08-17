@@ -97,7 +97,7 @@ export function NavBar({ items, className, rightActions, logo }: NavBarProps) {
 
         {/* Right actions - positioned absolutely */}
         {rightActions && (
-          <div className="absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+          <div className="absolute top-1/2 -translate-y-1/2 right-6 flex items-center gap-1 md:gap-0.5 lg:gap-1 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
             {rightActions}
           </div>
         )}
