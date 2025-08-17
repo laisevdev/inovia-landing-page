@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Calendar } from "lucide-react";
 import MobileMenu from "@/components/MobileMenu";
 import HeroSection from "@/components/HeroSection";
 import SolutionsSection from "@/components/SolutionsSection";
@@ -39,14 +39,27 @@ const Index = () => {
             <p className="text-lg text-muted-foreground max-w-2xl">
               Entre em contato conosco agora mesmo e descubra como a automação com IA pode transformar seu negócio.
             </p>
-            <a 
-              href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              Nos chame no whatsapp 
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 items-center">
+              <a 
+                href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                Nos chame no whatsapp 
+              </a>
+              
+              {/* Calendly Button - Desktop and Tablet only */}
+              <a 
+                href="https://calendly.com/laisevdev/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:inline-flex items-center gap-3 btn-hero px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <Calendar className="w-5 h-5" />
+                Agendar Consulta
+              </a>
+            </div>
           </div>
         </div>
       </section>
