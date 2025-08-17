@@ -1,32 +1,17 @@
+"use client";
+
 import { NavBar } from "@/components/ui/tubelight-navbar";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Settings, Heart, TrendingUp, HelpCircle, Mail, Brain } from "lucide-react";
+import { Settings, Heart, TrendingUp, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
-import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('home');
-      if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        const currentScroll = window.scrollY + 100; // Add offset for better UX
-        
-        // Show navbar when in hero section or at the top
-        setIsVisible(currentScroll <= heroBottom);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    // Ensure navbar is visible on initial load
-    setIsVisible(true);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // só mostra se estiver na Home
+  if (pathname !== "/") return null;
 
   const navItems = [
     { name: "Home", url: "#hero", icon: Settings },
@@ -70,10 +55,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className={cn(
-      "hidden md:block transition-all duration-300",
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
-    )}>
+    <div className="block w-full bg-background border-b border-border/50">
       <NavBar items={navItems} rightActions={rightActions} logo={logo} />
     </div>
   );
