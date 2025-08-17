@@ -142,7 +142,7 @@ const Footer = () => {
                 viewport={{ once: true }}
               >
                 <motion.a
-                  href="https://instagram.com/inovia"
+                  href="https://www.instagram.com/inovia.tech"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
