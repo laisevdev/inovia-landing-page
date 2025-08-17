@@ -56,8 +56,9 @@ const Navbar = () => {
         size="sm"
         asChild
         className={cn(
-          "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors",
+          "relative cursor-pointer text-sm font-semibold rounded-full transition-colors",
           "text-foreground/80 hover:text-primary hover:bg-muted/50",
+          "px-4 py-2 md:px-2 md:py-1 md:text-xs lg:px-4 lg:py-2 lg:text-sm",
           "hidden md:flex"
         )}
       >
@@ -66,7 +67,8 @@ const Navbar = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span>Entrar em contato</span>
+          <span className="lg:inline md:hidden">Entrar em contato</span>
+          <span className="md:inline lg:hidden">Contato</span>
         </a>
       </Button>
     </>
