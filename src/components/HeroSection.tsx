@@ -52,6 +52,24 @@ const HeroSection = () => {
             Agentes de IA sob medida para o seu negócio - gerando receita, trabalhando 24/7 sem folgas
           </p>
 
+          {/* Desktop/Tablet CTA Button */}
+          <div className="hidden md:flex justify-center mb-8">
+            <Button 
+              asChild 
+              className="px-8 py-4 text-lg hover:scale-105 transition-transform"
+              size="lg"
+            >
+              <a 
+                href="https://calendly.com/laisevdev/30min" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="no-underline"
+              >
+                Agendar uma chamada
+              </a>
+            </Button>
+          </div>
+
           {/* Mobile CTA Button */}
           <div className="flex justify-center mb-8 md:hidden">
             <Button 
