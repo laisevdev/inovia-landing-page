@@ -20,13 +20,25 @@ const Index = () => {
       <Navbar />
       <MobileMenu />
       <HeroSection />
-      <SolutionsSection />
-      <AgentCapabilitiesSection />
-      <ComparisonSection />
-      <CostComparisonSection />
-      <BenefitsSection />
-      <ImplementationStepsSection />
-      <FAQSection />
+      <div id="solucoes">
+        <SolutionsSection />
+      </div>
+      <div id="funcionalidades">
+        <AgentCapabilitiesSection />
+      </div>
+      <div id="comparacao">
+        <ComparisonSection />
+        <CostComparisonSection />
+      </div>
+      <div id="beneficios">
+        <BenefitsSection />
+      </div>
+      <div id="implementacao">
+        <ImplementationStepsSection />
+      </div>
+      <div id="faq">
+        <FAQSection />
+      </div>
       
       {/* WhatsApp CTA Section */}
       <section className="py-16 bg-background">
