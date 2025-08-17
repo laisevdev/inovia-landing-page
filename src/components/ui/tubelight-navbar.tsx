@@ -49,7 +49,7 @@ export function NavBar({ items, className, rightActions, logo }: NavBarProps) {
 
         {/* Navigation items - centralized */}
         <div className="flex justify-center w-full max-w-[1302px] mx-auto px-4">
-          <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
+          <div className="flex items-center gap-3 md:gap-1 lg:gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg">
             {items.map((item) => {
               const Icon = item.icon
               const isActive = activeTab === item.name
@@ -60,12 +60,14 @@ export function NavBar({ items, className, rightActions, logo }: NavBarProps) {
                   href={item.url}
                   onClick={() => setActiveTab(item.name)}
                   className={cn(
-                    "relative cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors",
+                    "relative cursor-pointer text-sm font-semibold rounded-full transition-colors",
                     "text-foreground/80 hover:text-primary",
+                    "px-6 py-2 md:px-4 md:py-1.5 lg:px-6 lg:py-2",
                     isActive && "bg-muted text-primary",
                   )}
                 >
-                  <span className="hidden md:inline">{item.name}</span>
+                  <span className="hidden lg:inline">{item.name}</span>
+                  <span className="hidden md:inline lg:hidden text-xs">{item.name}</span>
                   <span className="md:hidden">
                     <Icon size={18} strokeWidth={2.5} />
                   </span>
