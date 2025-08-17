@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 
 const MiniCalendlyCard = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [isInHeroSection, setIsInHeroSection] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       const footer = document.querySelector('footer');
+      const heroSection = document.querySelector('#hero');
+      
       if (footer) {
         const footerRect = footer.getBoundingClientRect();
         const windowHeight = window.innerHeight;
@@ -17,6 +20,19 @@ const MiniCalendlyCard = () => {
           setIsVisible(false);
         } else {
           setIsVisible(true);
+        }
+      }
+      
+      // Check if user is in hero section
+      if (heroSection) {
+        const heroRect = heroSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Hide card when hero section is visible
+        if (heroRect.bottom > 0 && heroRect.top < windowHeight) {
+          setIsInHeroSection(true);
+        } else {
+          setIsInHeroSection(false);
         }
       }
     };
@@ -29,7 +45,7 @@ const MiniCalendlyCard = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (!isVisible) return null;
+  if (!isVisible || isInHeroSection) return null;
 
   return (
     <div className="fixed bottom-6 left-6 z-50 hidden md:block">
