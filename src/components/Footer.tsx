@@ -15,15 +15,6 @@ const Footer = () => {
 
 
 
-  const navigationLinks = [
-    { name: "Soluções", href: "#solucoes" },
-    { name: "Funcionalidades", href: "#funcionalidades" },
-    { name: "Comparação", href: "#comparacao" },
-    { name: "Benefícios", href: "#beneficios" },
-    { name: "Implementação", href: "#implementacao" },
-    { name: "FAQ", href: "#faq" },
-  ];
-
   const legalLinks = [
     { name: "Política de Privacidade", href: "#" },
   ];
@@ -37,69 +28,51 @@ const Footer = () => {
       viewport={{ once: true }}
     >
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Company Info */}
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold gradient-text">InovIA</h3>
+          <div>
+            <h3 className="text-3xl font-bold gradient-text mb-6">InovIA</h3>
             <p className="text-muted-foreground leading-relaxed">
               Revolucionamos negócios com agentes autônomos de IA super personalizados. 
               Transforme sua empresa com tecnologia de ponta que entrega resultados reais.
             </p>
           </div>
 
-          {/* Navigation Links */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-6">Navegação</h4>
-            <ul className="space-y-4">
-              {navigationLinks.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:underline"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-6">Contato</h4>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Mail className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-muted-foreground">contato@inovia.com.br</span>
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <Mail className="h-5 w-5 text-primary" />
               </div>
-              <div className="flex items-center gap-3">
-                <a 
-                  href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.open("https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta", "_blank");
-                  }}
-                  className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 cursor-pointer"
-                  title="Entrar em contato via WhatsApp"
-                >
-                  <Phone className="h-5 w-5 text-primary" />
-                </a>
-                <span className="text-muted-foreground">+55 (65) 99925-4990</span>
+              <span className="text-muted-foreground">contato@inovia.com.br</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <a 
+                href="https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open("https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta", "_blank");
+                }}
+                className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 cursor-pointer"
+                title="Entrar em contato via WhatsApp"
+              >
+                <Phone className="h-5 w-5 text-primary" />
+              </a>
+              <span className="text-muted-foreground">+55 (65) 99925-4990</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <MapPin className="h-5 w-5 text-primary" />
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <MapPin className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-muted-foreground">Tangará da Serra-MT</span>
-              </div>
+              <span className="text-muted-foreground">Tangará da Serra-MT</span>
             </div>
           </div>
+
         </div>
+
       </div>
 
       {/* Bottom Footer */}
