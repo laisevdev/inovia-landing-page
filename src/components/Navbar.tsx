@@ -3,9 +3,30 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Settings, Heart, TrendingUp, HelpCircle, Mail, Brain } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
 import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const currentScroll = window.scrollY;
+        
+        // Show navbar only when in hero section
+        setIsVisible(currentScroll <= heroBottom - 100);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navItems = [
     { name: "Home", url: "#hero", icon: Settings },
     { name: "Soluções", url: "#solucoes", icon: Settings },
@@ -48,7 +69,10 @@ const Navbar = () => {
   );
 
   return (
-    <div className="hidden md:block">
+    <div className={cn(
+      "hidden md:block transition-all duration-300",
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+    )}>
       <NavBar items={navItems} rightActions={rightActions} logo={logo} />
     </div>
   );
