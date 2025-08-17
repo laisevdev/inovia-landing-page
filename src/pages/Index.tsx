@@ -52,6 +52,7 @@ const Index = () => {
       </section>
       
       <Footer />
+      <MiniCalendlyCard />
       <WhatsAppButton />
     </div>
   );
