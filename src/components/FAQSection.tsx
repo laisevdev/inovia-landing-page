@@ -62,7 +62,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="py-16 block md:hidden">
+    <section id="faq" className="py-16 hidden">
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-12">
           <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-6">
