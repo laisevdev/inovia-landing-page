@@ -41,14 +41,6 @@ const ImplementationStepsSection = () => {
       description: "Integração completa com seus sistemas existentes e lançamento controlado dos agentes.",
       duration: "1-2 semanas",
       deliverables: ["Integração completa", "Testes finais", "Go-live controlado"]
-    },
-    {
-      number: "05",
-      icon: BarChart,
-      title: "Monitoramento e Otimização",
-      description: "Acompanhamento contínuo da performance e ajustes para maximizar os resultados.",
-      duration: "Contínuo",
-      deliverables: ["Relatórios de performance", "Otimizações contínuas", "Suporte 24/7"]
     }
   ];
 
