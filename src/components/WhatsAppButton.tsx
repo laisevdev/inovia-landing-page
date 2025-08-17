@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 
 const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
+    console.log("WhatsApp button clicked!");
     window.open("https://wa.me/5565999254990?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta", "_blank");
   };
 
   return (
     <motion.div 
-      className="fixed bottom-24 right-6 z-50"
+      className="fixed bottom-24 right-6 z-[60]"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 0.5, duration: 0.3 }}
