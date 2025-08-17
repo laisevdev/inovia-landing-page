@@ -10,11 +10,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface SolutionsSectionProps {
-  id?: string;
-}
-
-const SolutionsSection = ({ id }: SolutionsSectionProps) => {
+const SolutionsSection = () => {
   const solutions = [
     {
       icon: Calendar,
@@ -56,7 +52,7 @@ const SolutionsSection = ({ id }: SolutionsSectionProps) => {
 
   return (
     <motion.section 
-      id={id || "solucoes"}
+      id="solucoes" 
       className="section-spacing bg-background-secondary/50"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

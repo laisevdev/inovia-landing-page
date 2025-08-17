@@ -10,11 +10,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface AgentCapabilitiesSectionProps {
-  id?: string;
-}
-
-const AgentCapabilitiesSection = ({ id }: AgentCapabilitiesSectionProps) => {
+const AgentCapabilitiesSection = () => {
   const capabilities = [
     {
       icon: Clock,
@@ -68,7 +64,7 @@ const AgentCapabilitiesSection = ({ id }: AgentCapabilitiesSectionProps) => {
 
   return (
     <motion.section 
-      id={id || "capacidades"}
+      id="capacidades"
       className="section-spacing"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}

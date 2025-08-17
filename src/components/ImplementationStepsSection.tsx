@@ -8,11 +8,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface ImplementationStepsSectionProps {
-  id?: string;
-}
-
-const ImplementationStepsSection = ({ id }: ImplementationStepsSectionProps) => {
+const ImplementationStepsSection = () => {
   const steps = [
     {
       number: "01",
@@ -58,7 +54,7 @@ const ImplementationStepsSection = ({ id }: ImplementationStepsSectionProps) => 
 
   return (
     <motion.section 
-      id={id || "etapas"}
+      id="etapas" 
       className="section-spacing"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
