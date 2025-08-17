@@ -44,7 +44,7 @@ const Navbar = () => {
       <div className="w-8 h-8 md:w-6 md:h-6 lg:w-8 lg:h-8 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center">
         <Brain className="w-5 h-5 md:w-4 md:h-4 lg:w-5 lg:h-5 text-white" />
       </div>
-      <span className="text-lg md:text-base lg:text-lg font-bold text-foreground">InovIA</span>
+      <span className="text-lg font-bold text-foreground hidden lg:inline">InovIA</span>
     </div>
   );
 
