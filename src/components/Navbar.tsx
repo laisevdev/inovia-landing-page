@@ -14,12 +14,16 @@ const Navbar = () => {
       const heroSection = document.getElementById('hero');
       if (heroSection) {
         const heroRect = heroSection.getBoundingClientRect();
-        // Show navbar when any part of hero section is visible or when at the top
-        setIsVisible(window.scrollY === 0 || heroRect.bottom > 0);
+        // Show navbar when hero section is visible (top of hero is above bottom of viewport)
+        setIsVisible(heroRect.bottom > 100); // Give some margin for better UX
+      } else {
+        // Fallback: show navbar when at top of page
+        setIsVisible(window.scrollY < 200);
       }
     };
 
-    // Initial check
+    // Initial check - navbar visible by default
+    setIsVisible(true);
     handleScroll();
     
     window.addEventListener('scroll', handleScroll);
@@ -70,7 +74,7 @@ const Navbar = () => {
 
   return (
     <div className={cn(
-      "hidden md:block transition-all duration-300",
+      "hidden md:block transition-all duration-300 relative z-50",
       isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
     )}>
       <NavBar items={navItems} rightActions={rightActions} logo={logo} />
