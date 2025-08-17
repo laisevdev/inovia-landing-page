@@ -13,18 +13,17 @@ const Navbar = () => {
     const handleScroll = () => {
       const heroSection = document.getElementById('hero');
       if (heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        const currentScroll = window.scrollY + 100; // Add offset for better UX
-        
-        // Show navbar when in hero section or at the top
-        setIsVisible(currentScroll <= heroBottom);
+        const heroRect = heroSection.getBoundingClientRect();
+        // Show navbar when any part of hero section is visible or when at the top
+        setIsVisible(window.scrollY === 0 || heroRect.bottom > 0);
       }
     };
 
+    // Initial check
+    handleScroll();
+    
     window.addEventListener('scroll', handleScroll);
-    // Ensure navbar is visible on initial load
-    setIsVisible(true);
-
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
