@@ -18,9 +18,10 @@ const WhatsAppButton = () => {
     >
       <button
         onClick={handleWhatsAppClick}
-        className="w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group relative"
+        className="w-14 h-14 bg-[#25D366] hover:bg-[#20BA5A] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group relative cursor-pointer"
         aria-label="Entrar em contato via WhatsApp"
         title="Conversar no WhatsApp"
+        style={{ pointerEvents: 'auto' }}
       >
         <MessageCircle className="w-7 h-7 text-white" />
         
