@@ -10,6 +10,7 @@ import CostComparisonSection from "@/components/CostComparisonSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import ImplementationStepsSection from "@/components/ImplementationStepsSection";
 import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
 
 import MiniCalendlyCard from "@/components/MiniCalendlyCard";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -20,13 +21,13 @@ const Index = () => {
       <Navbar />
       <MobileMenu />
       <HeroSection />
-      <SolutionsSection />
-      <AgentCapabilitiesSection />
-      <ComparisonSection />
+      <SolutionsSection id="solucoes" />
+      <AgentCapabilitiesSection id="funcionalidades" />
+      <ComparisonSection id="comparacao" />
       <CostComparisonSection />
-      <BenefitsSection />
-      <ImplementationStepsSection />
-      <FAQSection />
+      <BenefitsSection id="beneficios" />
+      <ImplementationStepsSection id="implementacao" />
+      <FAQSection id="faq" />
       
       {/* WhatsApp CTA Section */}
       <section className="py-16 bg-background">
@@ -49,6 +50,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
       
       
       <MiniCalendlyCard />

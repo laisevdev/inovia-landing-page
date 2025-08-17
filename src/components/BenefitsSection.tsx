@@ -9,7 +9,11 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const BenefitsSection = () => {
+interface BenefitsSectionProps {
+  id?: string;
+}
+
+const BenefitsSection = ({ id }: BenefitsSectionProps) => {
   const benefits = [
     {
       icon: DollarSign,
@@ -47,7 +51,7 @@ const BenefitsSection = () => {
 
   return (
     <motion.section 
-      id="beneficios" 
+      id={id || "beneficios"}
       className="section-spacing bg-background-secondary/50"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
