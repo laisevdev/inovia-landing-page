@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      demo_requests: {
+        Row: {
+          created_at: string
+          desafios_objetivos: string | null
+          email_corporativo: string
+          empresa: string
+          id: string
+          nome_completo: string
+          numero_funcionarios: string | null
+          setor_atuacao: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          desafios_objetivos?: string | null
+          email_corporativo: string
+          empresa: string
+          id?: string
+          nome_completo: string
+          numero_funcionarios?: string | null
+          setor_atuacao: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          desafios_objetivos?: string | null
+          email_corporativo?: string
+          empresa?: string
+          id?: string
+          nome_completo?: string
+          numero_funcionarios?: string | null
+          setor_atuacao?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
