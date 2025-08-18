@@ -215,7 +215,7 @@ const DemoRequestForm = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 text-lg font-semibold bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105"
+                className="w-full py-4 text-base font-semibold bg-primary hover:bg-primary/90 transition-all duration-300 hover:scale-105"
                 size="lg"
               >
                 {isSubmitting ? (
