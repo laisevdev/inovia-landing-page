@@ -55,7 +55,7 @@ const Footer = () => {
 
               <div className="space-y-4">
                 <motion.a
-                  href="mailto:contato@inovia.com.br"
+                  href="https://gmail.com/"
                   className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}
