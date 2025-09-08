@@ -2,8 +2,56 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
 const PoliticaDePrivacidade = () => {
+  useEffect(() => {
+    // Update page meta tags for SEO
+    document.title = "Política de Privacidade | InovIA - Inteligência Artificial";
+    
+    // Meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Política de Privacidade da InovIA. Saiba como coletamos, usamos e protegemos suas informações pessoais em nossa plataforma de inteligência artificial.');
+    }
+
+    // Canonical URL
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', 'https://inoviatech.com.br/politica-de-privacidade');
+    }
+
+    // Structured data for privacy policy
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Política de Privacidade",
+      "description": "Política de Privacidade da InovIA - Como coletamos, usamos e protegemos suas informações pessoais",
+      "url": "https://inoviatech.com.br/politica-de-privacidade",
+      "dateModified": "2025-08-17",
+      "publisher": {
+        "@type": "Organization",
+        "name": "InovIA",
+        "url": "https://inoviatech.com.br"
+      }
+    };
+
+    // Add structured data
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+
+    // Cleanup function
+    return () => {
+      document.title = "InovIA - Soluções em Inteligência Artificial para Negócios";
+      const addedScript = document.querySelector('script[type="application/ld+json"]:not([data-original])');
+      if (addedScript) {
+        addedScript.remove();
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -31,7 +79,7 @@ const PoliticaDePrivacidade = () => {
           <article className="prose prose-gray dark:prose-invert max-w-none">
             <section className="mb-8">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações quando você visita nossa landing page em <code className="bg-muted px-1 py-0.5 rounded text-sm">inovia-landing-spark.lovable.app</code>.
+                Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações quando você visita nossa plataforma em <code className="bg-muted px-1 py-0.5 rounded text-sm">inoviatech.com.br</code>.
               </p>
             </section>
 
