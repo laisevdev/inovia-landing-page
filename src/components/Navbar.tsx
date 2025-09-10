@@ -37,6 +37,7 @@ const Navbar = () => {
     { name: "Capacidades", url: "#capacidades", icon: TrendingUp },
     { name: "Como Funciona", url: "#etapas", icon: TrendingUp },
     { name: "Benefícios", url: "#beneficios", icon: Heart },
+    { name: "Blog", url: "/blog", icon: HelpCircle },
   ];
 
   const logo = (

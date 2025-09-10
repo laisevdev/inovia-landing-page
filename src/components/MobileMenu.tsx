@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Settings, TrendingUp, Heart, Brain } from "lucide-react";
+import { Menu, X, Settings, TrendingUp, Heart, Brain, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -19,16 +19,23 @@ const MobileMenu = () => {
     { name: "Capacidades", url: "#capacidades", icon: TrendingUp },
     { name: "Como Funciona", url: "#etapas", icon: TrendingUp },
     { name: "Benefícios", url: "#beneficios", icon: Heart },
+    { name: "Blog", url: "/blog", icon: HelpCircle },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLinkClick = (url: string) => {
     setIsOpen(false);
-    // Smooth scroll to section
-    const element = document.querySelector(url);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    // Handle external routes (like /blog) vs anchor links (like #hero)
+    if (url.startsWith('#')) {
+      // Smooth scroll to section
+      const element = document.querySelector(url);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Navigate to external route
+      window.location.href = url;
     }
   };
 
