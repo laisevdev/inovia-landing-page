@@ -15,7 +15,7 @@ const Blog = () => {
       title: "Como a IA está transformando o atendimento ao cliente",
       description: "Descubra como agentes virtuais inteligentes estão revolucionando a experiência do cliente e aumentando a eficiência das empresas.",
       date: "2024-03-15",
-      readTime: "5 min",
+      readTime: "12 min",
       category: "Tecnologia",
       likes: 0
     },
@@ -151,8 +151,11 @@ const Blog = () => {
                 <Button 
                   variant="ghost" 
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  asChild
                 >
-                  Ler artigo
+                  <Link to={`/blog/${post.id}`}>
+                    Ler artigo
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
