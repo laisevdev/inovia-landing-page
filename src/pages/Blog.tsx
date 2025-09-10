@@ -4,6 +4,9 @@ import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { SEOHead } from "@/components/SEOHead";
+import { BlogSchema } from "@/components/BlogSchema";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 
 const Blog = () => {
   const { toast } = useToast();
@@ -69,8 +72,25 @@ const Blog = () => {
     }
   };
 
+  const currentUrl = "https://inoviatech.com.br/blog";
+  
+  const breadcrumbItems = [
+    { name: "Início", url: "https://inoviatech.com.br" },
+    { name: "Blog", url: currentUrl }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Blog InovIA - Insights sobre Inteligência Artificial"
+        description="Acompanhe as últimas novidades sobre IA, automação e transformação digital. Artigos exclusivos sobre como aplicar inteligência artificial no seu negócio."
+        canonical={currentUrl}
+        type="website"
+        author="Laíse Alves"
+      />
+      <BlogSchema posts={blogPosts} url={currentUrl} />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      
       {/* Header */}
       <header className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">

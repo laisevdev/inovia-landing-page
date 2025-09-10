@@ -14,6 +14,10 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
+import { SEOHead } from "@/components/SEOHead";
+import { ArticleSchema } from "@/components/ArticleSchema";
+import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { RelatedArticles } from "@/components/RelatedArticles";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -160,8 +164,29 @@ const BlogPost = () => {
   };
 
 
+  const currentUrl = `https://inoviatech.com.br/blog/${post.id}`;
+  
+  const breadcrumbItems = [
+    { name: "Início", url: "https://inoviatech.com.br" },
+    { name: "Blog", url: "https://inoviatech.com.br/blog" },
+    { name: post.title, url: currentUrl }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${post.subtitle || post.title} | Blog InovIA`}
+        description={post.description}
+        canonical={currentUrl}
+        type="article"
+        author="Laíse Alves"
+        publishedTime={new Date(post.date).toISOString()}
+        modifiedTime={new Date(post.date).toISOString()}
+        tags={["inteligência artificial", "IA", post.category, "atendimento ao cliente", "automação"]}
+      />
+      <ArticleSchema article={post} url={currentUrl} />
+      <BreadcrumbSchema items={breadcrumbItems} />
+      
       {/* Header */}
       <header className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
@@ -288,6 +313,13 @@ const BlogPost = () => {
             />
           </div>
         </footer>
+
+        {/* Related Articles */}
+        <RelatedArticles 
+          currentArticleId={post.id} 
+          articles={blogPosts}
+          maxResults={2}
+        />
 
         {/* Navigation */}
         <nav className="mt-12 pt-8 border-t border-border/50">
