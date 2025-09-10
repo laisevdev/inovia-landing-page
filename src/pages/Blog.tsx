@@ -2,8 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Blog = () => {
+  const { toast } = useToast();
+  const [likedPosts, setLikedPosts] = useState<number[]>([]);
+
   const blogPosts = [
     {
       id: 1,
@@ -33,6 +38,36 @@ const Blog = () => {
       likes: 0
     }
   ];
+
+  const [postLikes, setPostLikes] = useState<{[key: number]: number}>(() => {
+    const initialLikes: {[key: number]: number} = {};
+    blogPosts.forEach(post => {
+      initialLikes[post.id] = post.likes;
+    });
+    return initialLikes;
+  });
+
+  const handleLike = (postId: number) => {
+    const isLiked = likedPosts.includes(postId);
+    
+    if (isLiked) {
+      // Remove like
+      setLikedPosts(prev => prev.filter(id => id !== postId));
+      setPostLikes(prev => ({ ...prev, [postId]: prev[postId] - 1 }));
+      toast({
+        description: "Like removido!",
+        duration: 2000,
+      });
+    } else {
+      // Add like
+      setLikedPosts(prev => [...prev, postId]);
+      setPostLikes(prev => ({ ...prev, [postId]: prev[postId] + 1 }));
+      toast({
+        description: "Obrigado pelo like! 👍",
+        duration: 2000,
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -68,7 +103,11 @@ const Blog = () => {
 
         {/* Blog Posts Grid */}
         <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.map((post) => (
+          {blogPosts.map((post) => {
+            const isLiked = likedPosts.includes(post.id);
+            const currentLikes = postLikes[post.id] || 0;
+            
+            return (
             <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm">
               <CardHeader>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
@@ -95,10 +134,19 @@ const Blog = () => {
                       {post.readTime}
                     </div>
                   </div>
-                  <div className="flex items-center gap-1 text-primary">
-                    <ThumbsUp className="w-4 h-4" />
-                    <span className="font-medium">{post.likes}</span>
-                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleLike(post.id)}
+                    className={`flex items-center gap-1 p-2 h-auto transition-colors ${
+                      isLiked 
+                        ? 'text-primary hover:text-primary/80' 
+                        : 'text-muted-foreground hover:text-primary'
+                    }`}
+                  >
+                    <ThumbsUp className={`w-4 h-4 transition-all ${isLiked ? 'fill-current' : ''}`} />
+                    <span className="font-medium text-xs">{currentLikes}</span>
+                  </Button>
                 </div>
                 <Button 
                   variant="ghost" 
@@ -108,7 +156,8 @@ const Blog = () => {
                 </Button>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </section>
 
         {/* Coming Soon Section */}
