@@ -12,6 +12,7 @@ import { Calendar, Clock, ArrowLeft, ThumbsUp, Share2 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import DemoModal from "@/components/DemoModal";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -280,11 +281,11 @@ const BlogPost = () => {
               </Button>
             </div>
             
-            <Button asChild>
-              <Link to="/#demo">
+            <DemoModal>
+              <Button>
                 Solicitar demonstração
-              </Link>
-            </Button>
+              </Button>
+            </DemoModal>
           </div>
         </footer>
 
