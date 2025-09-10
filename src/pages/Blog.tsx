@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
@@ -11,7 +11,8 @@ const Blog = () => {
       description: "Descubra como agentes virtuais inteligentes estão revolucionando a experiência do cliente e aumentando a eficiência das empresas.",
       date: "2024-03-15",
       readTime: "5 min",
-      category: "Tecnologia"
+      category: "Tecnologia",
+      likes: 42
     },
     {
       id: 2,
@@ -19,7 +20,8 @@ const Blog = () => {
       description: "Análise detalhada do retorno sobre investimento ao implementar agentes virtuais no seu negócio.",
       date: "2024-03-10",
       readTime: "7 min",
-      category: "Negócios"
+      category: "Negócios",
+      likes: 38
     },
     {
       id: 3,
@@ -27,7 +29,8 @@ const Blog = () => {
       description: "Passo a passo para implementar soluções de inteligência artificial na sua empresa de forma eficiente.",
       date: "2024-03-05",
       readTime: "10 min",
-      category: "Tutorial"
+      category: "Tutorial",
+      likes: 56
     }
   ];
 
@@ -81,19 +84,25 @@ const Blog = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(post.date).toLocaleDateString('pt-BR')}
+                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {new Date(post.date).toLocaleDateString('pt-BR')}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {post.readTime}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {post.readTime}
+                  <div className="flex items-center gap-1 text-primary">
+                    <ThumbsUp className="w-4 h-4" />
+                    <span className="font-medium">{post.likes}</span>
                   </div>
                 </div>
                 <Button 
                   variant="ghost" 
-                  className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                 >
                   Ler artigo
                 </Button>
