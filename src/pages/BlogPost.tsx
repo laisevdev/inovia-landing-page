@@ -8,11 +8,12 @@ import {
   BreadcrumbSeparator, 
   BreadcrumbPage 
 } from "@/components/ui/breadcrumb";
-import { Calendar, Clock, ArrowLeft, ThumbsUp, Share2 } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
+import { SocialShareButtons } from "@/components/SocialShareButtons";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -158,21 +159,6 @@ const BlogPost = () => {
     }
   };
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: post.title,
-        text: post.description,
-        url: window.location.href,
-      });
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      toast({
-        description: "Link copiado para a área de transferência!",
-        duration: 2000,
-      });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -247,11 +233,16 @@ const BlogPost = () => {
                 <ThumbsUp className={`w-4 h-4 transition-all ${isLiked ? 'fill-current' : ''}`} />
                 <span className="ml-1">{likes}</span>
               </Button>
-              <Button variant="ghost" size="sm" onClick={handleShare}>
-                <Share2 className="w-4 h-4" />
-                <span className="ml-1">Compartilhar</span>
-              </Button>
             </div>
+          </div>
+          
+          {/* Social Share Buttons */}
+          <div className="mt-4">
+            <SocialShareButtons
+              title={post.title}
+              description={post.description}
+              url={window.location.href}
+            />
           </div>
         </header>
 
@@ -263,7 +254,7 @@ const BlogPost = () => {
 
         {/* Article Footer */}
         <footer className="mt-12 pt-8 border-t border-border/50">
-          <div className="flex items-center justify-between flex-wrap gap-4">
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
@@ -286,6 +277,15 @@ const BlogPost = () => {
                 Solicitar demonstração
               </Button>
             </DemoModal>
+          </div>
+          
+          {/* Social Share Buttons Footer */}
+          <div className="border-t border-border/50 pt-6">
+            <SocialShareButtons
+              title={post.title}
+              description={post.description}
+              url={window.location.href}
+            />
           </div>
         </footer>
 
