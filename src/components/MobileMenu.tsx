@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Settings, TrendingUp, Heart, Brain, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 interface NavItem {
@@ -24,18 +25,12 @@ const MobileMenu = () => {
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const handleLinkClick = (url: string) => {
+  const handleSectionClick = (sectionId: string) => {
     setIsOpen(false);
-    // Handle external routes (like /blog) vs anchor links (like #hero)
-    if (url.startsWith('#')) {
-      // Smooth scroll to section
-      const element = document.querySelector(url);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // Navigate to external route
-      window.location.href = url;
+    // Smooth scroll to section
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -145,16 +140,30 @@ const MobileMenu = () => {
                       animate="open"
                       exit="closed"
                     >
-                      <button
-                        onClick={() => handleLinkClick(item.url)}
-                        className={cn(
-                          "w-full text-left text-2xl font-medium py-4",
-                          "text-foreground hover:text-primary transition-colors",
-                          "focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg px-2"
-                        )}
-                      >
-                        {item.name}
-                      </button>
+                      {item.url.startsWith('#') ? (
+                        <button
+                          onClick={() => handleSectionClick(item.url)}
+                          className={cn(
+                            "w-full text-left text-2xl font-medium py-4",
+                            "text-foreground hover:text-primary transition-colors",
+                            "focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg px-2"
+                          )}
+                        >
+                          {item.name}
+                        </button>
+                      ) : (
+                        <Link
+                          to={item.url}
+                          onClick={() => setIsOpen(false)}
+                          className={cn(
+                            "block w-full text-left text-2xl font-medium py-4",
+                            "text-foreground hover:text-primary transition-colors",
+                            "focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg px-2"
+                          )}
+                        >
+                          {item.name}
+                        </Link>
+                      )}
                     </motion.li>
                   ))}
                 </ul>
