@@ -12,7 +12,7 @@ const Blog = () => {
       date: "2024-03-15",
       readTime: "5 min",
       category: "Tecnologia",
-      likes: 42
+      likes: 0
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const Blog = () => {
       date: "2024-03-10",
       readTime: "7 min",
       category: "Negócios",
-      likes: 38
+      likes: 0
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const Blog = () => {
       date: "2024-03-05",
       readTime: "10 min",
       category: "Tutorial",
-      likes: 56
+      likes: 0
     }
   ];
 
