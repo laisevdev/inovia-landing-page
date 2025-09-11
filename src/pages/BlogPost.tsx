@@ -18,6 +18,7 @@ import { ArticleSchema } from "@/components/ArticleSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { RelatedArticles } from "@/components/RelatedArticles";
 import { useLikes } from "@/context/LikesContext";
+import Footer from "@/components/Footer";
 
 const BlogPost = () => {
   const { id } = useParams();
@@ -344,6 +345,8 @@ const BlogPost = () => {
           </div>
         </nav>
       </article>
+      
+      <Footer />
     </div>
   );
 };
