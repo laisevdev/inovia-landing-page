@@ -2,15 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { SEOHead } from "@/components/SEOHead";
 import { BlogSchema } from "@/components/BlogSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
+import { useLikes } from "@/context/LikesContext";
 
 const Blog = () => {
   const { toast } = useToast();
-  const [likedPosts, setLikedPosts] = useState<number[]>([]);
+  const { likePost, isPostLiked, getPostLikes } = useLikes();
 
   const blogPosts = [
     {
@@ -20,7 +20,7 @@ const Blog = () => {
       date: "2025-09-08",
       readTime: "12 min",
       category: "Tecnologia",
-      likes: 0
+      likes: 24
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ const Blog = () => {
       date: "2025-09-09",
       readTime: "7 min",
       category: "Negócios",
-      likes: 0
+      likes: 18
     },
     {
       id: 3,
@@ -38,38 +38,18 @@ const Blog = () => {
       date: "2025-09-10",
       readTime: "10 min",
       category: "Tutorial",
-      likes: 0
+      likes: 15
     }
   ];
 
-  const [postLikes, setPostLikes] = useState<{[key: number]: number}>(() => {
-    const initialLikes: {[key: number]: number} = {};
-    blogPosts.forEach(post => {
-      initialLikes[post.id] = post.likes;
-    });
-    return initialLikes;
-  });
-
   const handleLike = (postId: number) => {
-    const isLiked = likedPosts.includes(postId);
+    likePost(postId);
+    const isLiked = isPostLiked(postId);
     
-    if (isLiked) {
-      // Remove like
-      setLikedPosts(prev => prev.filter(id => id !== postId));
-      setPostLikes(prev => ({ ...prev, [postId]: prev[postId] - 1 }));
-      toast({
-        description: "Like removido!",
-        duration: 2000,
-      });
-    } else {
-      // Add like
-      setLikedPosts(prev => [...prev, postId]);
-      setPostLikes(prev => ({ ...prev, [postId]: prev[postId] + 1 }));
-      toast({
-        description: "Obrigado pelo like! 👍",
-        duration: 2000,
-      });
-    }
+    toast({
+      description: isLiked ? "Obrigado pelo like! 👍" : "Like removido!",
+      duration: 2000,
+    });
   };
 
   const currentUrl = "https://inoviatech.com.br/blog";
@@ -124,8 +104,8 @@ const Blog = () => {
         {/* Blog Posts Grid */}
         <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {blogPosts.map((post) => {
-            const isLiked = likedPosts.includes(post.id);
-            const currentLikes = postLikes[post.id] || 0;
+            const isLiked = isPostLiked(post.id);
+            const currentLikes = getPostLikes(post.id);
             
             return (
             <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm">

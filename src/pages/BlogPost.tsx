@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
@@ -18,12 +17,12 @@ import { SEOHead } from "@/components/SEOHead";
 import { ArticleSchema } from "@/components/ArticleSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { RelatedArticles } from "@/components/RelatedArticles";
+import { useLikes } from "@/context/LikesContext";
 
 const BlogPost = () => {
   const { id } = useParams();
   const { toast } = useToast();
-  const [isLiked, setIsLiked] = useState(false);
-  const [likes, setLikes] = useState(0);
+  const { likePost, isPostLiked, getPostLikes } = useLikes();
 
   const blogPosts = [
     {
@@ -35,7 +34,7 @@ const BlogPost = () => {
       date: "2025-09-08",
       readTime: "12 min",
       category: "Tecnologia",
-      likes: 0,
+      likes: 24,
       content: `
         <div class="prose prose-lg max-w-none">
           <p class="text-xl text-muted-foreground mb-8">Como usar agentes virtuais para reduzir custos, escalar seu negócio e transformar o atendimento ao cliente em uma máquina de vendas.</p>
@@ -103,7 +102,7 @@ const BlogPost = () => {
       date: "2025-09-09",
       readTime: "7 min",
       category: "Negócios",
-      likes: 0,
+      likes: 18,
       content: `
         <div class="prose prose-lg max-w-none">
           <p class="text-xl text-muted-foreground mb-8">Em breve, análise completa sobre o retorno sobre investimento de agentes virtuais.</p>
@@ -120,7 +119,7 @@ const BlogPost = () => {
       date: "2025-09-10",
       readTime: "10 min",
       category: "Tutorial",
-      likes: 0,
+      likes: 15,
       content: `
         <div class="prose prose-lg max-w-none">
           <p class="text-xl text-muted-foreground mb-8">Guia completo para implementar IA na sua empresa será publicado em breve.</p>
@@ -146,22 +145,17 @@ const BlogPost = () => {
   }
 
   const handleLike = () => {
-    if (isLiked) {
-      setIsLiked(false);
-      setLikes(prev => prev - 1);
-      toast({
-        description: "Like removido!",
-        duration: 2000,
-      });
-    } else {
-      setIsLiked(true);
-      setLikes(prev => prev + 1);
-      toast({
-        description: "Obrigado pelo like! 👍",
-        duration: 2000,
-      });
-    }
+    likePost(post.id);
+    const isLiked = isPostLiked(post.id);
+    
+    toast({
+      description: isLiked ? "Obrigado pelo like! 👍" : "Like removido!",
+      duration: 2000,
+    });
   };
+
+  const isLiked = isPostLiked(post.id);
+  const likes = getPostLikes(post.id);
 
 
   const currentUrl = `https://inoviatech.com.br/blog/${post.id}`;
