@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Instagram, ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +16,23 @@ const Footer = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavigation = (sectionId: string) => {
+    if (sectionId === 'hero' || location.pathname === '/') {
+      // Se é "Home" ou já está na página principal, apenas rola para a seção
+      if (sectionId === 'hero') {
+        navigate('/');
+      } else {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else {
+      // Se está em outra página, navega para home com hash
+      navigate(`/#${sectionId}`);
+    }
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -107,7 +127,7 @@ const Footer = () => {
                 ].map((item, index) => (
                   <motion.li key={item.id}>
                     <motion.button
-                      onClick={() => scrollToSection(item.id)}
+                      onClick={() => handleNavigation(item.id)}
                       className="text-muted-foreground hover:text-primary transition-colors text-left"
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
