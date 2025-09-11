@@ -43,11 +43,11 @@ const Blog = () => {
   ];
 
   const handleLike = (postId: number) => {
+    const wasLiked = isPostLiked(postId);
     likePost(postId);
-    const isLiked = isPostLiked(postId);
     
     toast({
-      description: isLiked ? "Obrigado pelo like! 👍" : "Like removido!",
+      description: !wasLiked ? "Obrigado pelo like! 👍" : "Like removido!",
       duration: 2000,
     });
   };

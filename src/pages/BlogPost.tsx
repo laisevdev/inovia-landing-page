@@ -145,11 +145,11 @@ const BlogPost = () => {
   }
 
   const handleLike = () => {
+    const wasLiked = isPostLiked(post.id);
     likePost(post.id);
-    const isLiked = isPostLiked(post.id);
     
     toast({
-      description: isLiked ? "Obrigado pelo like! 👍" : "Like removido!",
+      description: !wasLiked ? "Obrigado pelo like! 👍" : "Like removido!",
       duration: 2000,
     });
   };
