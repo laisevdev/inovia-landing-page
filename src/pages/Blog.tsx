@@ -17,7 +17,7 @@ const Blog = () => {
       id: 1,
       title: "Como a IA está transformando o atendimento ao cliente",
       description: "Descubra como agentes virtuais inteligentes estão revolucionando a experiência do cliente e aumentando a eficiência das empresas.",
-      date: "2024-03-15",
+      date: "2025-09-08",
       readTime: "12 min",
       category: "Tecnologia",
       likes: 0
