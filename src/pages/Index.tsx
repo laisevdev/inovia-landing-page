@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import MobileMenu from "@/components/MobileMenu";
 import HeroSection from "@/components/HeroSection";
 import SolutionsSection from "@/components/SolutionsSection";
@@ -18,6 +20,26 @@ import { SEOHead } from "@/components/SEOHead";
 import { WebSiteSchema } from "@/components/WebSiteSchema";
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Verifica se há um hash na URL ao carregar a página
+    if (location.hash) {
+      // Remove o # do hash para obter apenas o ID
+      const sectionId = location.hash.substring(1);
+      
+      // Aguarda um pequeno delay para garantir que a página terminou de renderizar
+      const timer = setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash]);
+
   return (
     <div className="min-h-screen">
       <SEOHead
