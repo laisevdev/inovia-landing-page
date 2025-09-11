@@ -26,7 +26,7 @@ const Blog = () => {
       id: 2,
       title: "ROI de agentes virtuais: números que impressionam",
       description: "Análise detalhada do retorno sobre investimento ao implementar agentes virtuais no seu negócio.",
-      date: "2024-03-10",
+      date: "2025-09-09",
       readTime: "7 min",
       category: "Negócios",
       likes: 0
@@ -35,7 +35,7 @@ const Blog = () => {
       id: 3,
       title: "Implementação de IA: guia completo para empresas",
       description: "Passo a passo para implementar soluções de inteligência artificial na sua empresa de forma eficiente.",
-      date: "2024-03-05",
+      date: "2025-09-10",
       readTime: "10 min",
       category: "Tutorial",
       likes: 0
