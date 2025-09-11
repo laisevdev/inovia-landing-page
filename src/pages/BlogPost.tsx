@@ -21,7 +21,7 @@ import { useLikes } from "@/context/LikesContext";
 import Footer from "@/components/Footer";
 
 const BlogPost = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { toast } = useToast();
   const { likePost, isPostLiked, getPostLikes } = useLikes();
 
@@ -130,7 +130,7 @@ const BlogPost = () => {
     }
   ];
 
-  const post = blogPosts.find(p => p.id === parseInt(id || '1'));
+  const post = blogPosts.find(p => p.slug === slug);
 
   if (!post) {
     return (
@@ -159,7 +159,7 @@ const BlogPost = () => {
   const likes = getPostLikes(post.id);
 
 
-  const currentUrl = `https://inoviatech.com.br/blog/${post.id}`;
+  const currentUrl = `https://inoviatech.com.br/blog/${post.slug}`;
   
   const breadcrumbItems = [
     { name: "Início", url: "https://inoviatech.com.br" },
@@ -329,14 +329,14 @@ const BlogPost = () => {
             <div className="flex gap-2">
               {post.id > 1 && (
                 <Button variant="outline" asChild size="sm">
-                  <Link to={`/blog/${post.id - 1}`}>
+                  <Link to={`/blog/${blogPosts.find(p => p.id === post.id - 1)?.slug}`}>
                     Artigo anterior
                   </Link>
                 </Button>
               )}
               {post.id < blogPosts.length && (
                 <Button variant="outline" asChild size="sm">
-                  <Link to={`/blog/${post.id + 1}`}>
+                  <Link to={`/blog/${blogPosts.find(p => p.id === post.id + 1)?.slug}`}>
                     Próximo artigo
                   </Link>
                 </Button>

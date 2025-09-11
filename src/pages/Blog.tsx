@@ -16,6 +16,7 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      slug: "como-a-ia-esta-transformando-o-atendimento-ao-cliente",
       title: "Como a IA está transformando o atendimento ao cliente",
       description: "Descubra como agentes virtuais inteligentes estão revolucionando a experiência do cliente e aumentando a eficiência das empresas.",
       date: "2025-09-08",
@@ -25,6 +26,7 @@ const Blog = () => {
     },
     {
       id: 2,
+      slug: "roi-de-agentes-virtuais",
       title: "ROI de agentes virtuais: números que impressionam",
       description: "Análise detalhada do retorno sobre investimento ao implementar agentes virtuais no seu negócio.",
       date: "2025-09-09",
@@ -34,6 +36,7 @@ const Blog = () => {
     },
     {
       id: 3,
+      slug: "implementacao-de-ia-guia-completo",
       title: "Implementação de IA: guia completo para empresas",
       description: "Passo a passo para implementar soluções de inteligência artificial na sua empresa de forma eficiente.",
       date: "2025-09-10",
@@ -154,7 +157,7 @@ const Blog = () => {
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                   asChild
                 >
-                  <Link to={`/blog/${post.id}`}>
+                  <Link to={`/blog/${post.slug}`}>
                     Ler artigo
                   </Link>
                 </Button>

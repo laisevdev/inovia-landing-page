@@ -2,6 +2,7 @@ import { JsonLd } from './JsonLd';
 
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   description: string;
   date: string;
@@ -49,7 +50,7 @@ export const BlogSchema: React.FC<BlogSchemaProps> = ({ posts, url }) => {
         "@type": "Person",
         "name": "Laíse Alves"
       },
-      "url": `${url}/${post.id}`,
+      "url": `${url}/${post.slug}`,
       "articleSection": post.category,
       "timeRequired": `PT${post.readTime.match(/\d+/)?.[0] || 0}M`,
       "inLanguage": "pt-BR"
