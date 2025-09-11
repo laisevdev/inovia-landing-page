@@ -7,6 +7,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { BlogSchema } from "@/components/BlogSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { useLikes } from "@/context/LikesContext";
+import Footer from "@/components/Footer";
 
 const Blog = () => {
   const { toast } = useToast();
@@ -178,6 +179,8 @@ const Blog = () => {
           </div>
         </section>
       </main>
+      
+      <Footer />
     </div>
   );
 };
