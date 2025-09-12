@@ -8,6 +8,9 @@ import { BlogSchema } from "@/components/BlogSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { useLikes } from "@/context/LikesContext";
 import Footer from "@/components/Footer";
+import blogIaAtendimento from "@/assets/blog-ia-atendimento-cliente.jpg";
+import blogRoiAgentes from "@/assets/blog-roi-agentes-virtuais.jpg";
+import blogImplementacao from "@/assets/blog-implementacao-ia-guia.jpg";
 
 const Blog = () => {
   const { toast } = useToast();
@@ -22,7 +25,8 @@ const Blog = () => {
       date: "2025-09-08",
       readTime: "12 min",
       category: "Tecnologia",
-      likes: 24
+      likes: 24,
+      image: blogIaAtendimento
     },
     {
       id: 2,
@@ -32,7 +36,8 @@ const Blog = () => {
       date: "2025-09-09",
       readTime: "7 min",
       category: "Negócios",
-      likes: 18
+      likes: 18,
+      image: blogRoiAgentes
     },
     {
       id: 3,
@@ -42,7 +47,8 @@ const Blog = () => {
       date: "2025-09-10",
       readTime: "10 min",
       category: "Tutorial",
-      likes: 15
+      likes: 15,
+      image: blogImplementacao
     }
   ];
 
@@ -112,13 +118,20 @@ const Blog = () => {
             const currentLikes = getPostLikes(post.id);
             
             return (
-            <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm">
-              <CardHeader>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                  <span className="px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+            <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-2 py-1 rounded-full bg-primary/90 text-primary-foreground text-xs font-medium backdrop-blur-sm">
                     {post.category}
                   </span>
                 </div>
+              </div>
+              <CardHeader>
                 <CardTitle className="group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
