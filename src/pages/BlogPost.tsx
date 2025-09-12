@@ -222,7 +222,7 @@ const BlogPost = () => {
           </h1>
           
           {post.subtitle && (
-            <p className="text-xl text-muted-foreground mb-6">
+            <p className="text-xl text-muted-foreground mb-6 text-justify">
               {post.description}
             </p>
           )}
@@ -268,7 +268,7 @@ const BlogPost = () => {
 
         {/* Article Content */}
         <div 
-          className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-ul:text-muted-foreground"
+          className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-ul:text-muted-foreground [&_p]:text-justify [&_li]:text-justify"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 

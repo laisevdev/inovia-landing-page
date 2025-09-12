@@ -106,7 +106,7 @@ const Blog = () => {
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
             Últimas Novidades
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-justify">
             Acompanhe as tendências em inteligência artificial e descubra como transformar seu negócio
           </p>
         </section>
@@ -135,7 +135,7 @@ const Blog = () => {
                 <CardTitle className="group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
-                <CardDescription className="line-clamp-3">
+                <CardDescription className="line-clamp-3 text-justify">
                   {post.description}
                 </CardDescription>
               </CardHeader>
@@ -184,7 +184,7 @@ const Blog = () => {
         <section className="mt-16 text-center">
           <div className="max-w-md mx-auto p-8 rounded-lg border border-border/50 bg-card/30 backdrop-blur-sm">
             <h3 className="text-2xl font-bold mb-4 text-foreground">Em breve mais conteúdo!</h3>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-6 text-justify">
               Estamos preparando artigos exclusivos sobre IA, automação e transformação digital.
             </p>
             <Button asChild>
