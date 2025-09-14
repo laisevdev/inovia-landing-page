@@ -10,6 +10,9 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import aiCustomerService from "@/assets/ai-customer-service.jpg";
+import automationEfficiency from "@/assets/automation-efficiency.jpg";
+import dataAnalyticsAi from "@/assets/data-analytics-ai.jpg";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
@@ -46,6 +49,10 @@ const BlogPost = () => {
           
           <p>Se você ainda pensa em IA como uma tecnologia cara e complexa, restrita a gigantes da tecnologia, está na hora de rever seus conceitos. Hoje, a IA é uma ferramenta estratégica e acessível que pode nivelar o jogo, permitindo que sua empresa não apenas compita, mas se destaque.</p>
           
+          <div class="my-8">
+            <img src="${aiCustomerService}" alt="Atendimento ao cliente com IA - agente virtual moderno ajudando clientes" class="w-full rounded-lg shadow-lg" />
+          </div>
+          
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">Menos Custos, Mais Eficiência: O ROI da IA</h2>
           
           <p>O principal benefício para qualquer negócio é o retorno sobre o investimento (ROI). No atendimento ao cliente, a IA oferece isso de forma clara e direta.</p>
@@ -55,6 +62,10 @@ const BlogPost = () => {
           
           <h3 class="text-xl font-semibold mt-8 mb-4 text-foreground">Operação 24/7 sem Custo Adicional</h3>
           <p>Seu negócio pode continuar atendendo e até vendendo enquanto você dorme. Um agente virtual não precisa de pausas, férias ou pagamento de horas extras. Ele é seu funcionário mais produtivo, trabalhando 24 horas por dia para garantir que nenhuma oportunidade seja perdida.</p>
+          
+          <div class="my-8">
+            <img src="${automationEfficiency}" alt="Automação de processos e eficiência empresarial com IA" class="w-full rounded-lg shadow-lg" />
+          </div>
           
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">Escale seu Atendimento, Não seus Problemas</h2>
           
@@ -71,6 +82,10 @@ const BlogPost = () => {
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">Transforme Dados em Vantagem Competitiva</h2>
           
           <p>Cada interação de um cliente é uma fonte de dados valiosos. Você está aproveitando isso? A IA não apenas atende; ela aprende.</p>
+          
+          <div class="my-8">
+            <img src="${dataAnalyticsAi}" alt="Análise de dados e insights com inteligência artificial" class="w-full rounded-lg shadow-lg" />
+          </div>
           
           <h3 class="text-xl font-semibold mt-8 mb-4 text-foreground">Identifique Padrões e Oportunidades</h3>
           <p>Quais são as dúvidas mais comuns? Quais produtos geram mais problemas? A IA compila e analisa esses dados em tempo real, fornecendo insights poderosos para você melhorar seus produtos, otimizar seu marketing e tomar decisões estratégicas baseadas em informações concretas, não em achismos.</p>
