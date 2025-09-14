@@ -95,40 +95,6 @@ const BlogPost = () => {
       `
     },
     {
-      id: 2,
-      slug: "roi-de-agentes-virtuais",
-      title: "ROI de agentes virtuais: números que impressionam",
-      subtitle: "Análise detalhada do retorno sobre investimento",
-      description: "Análise detalhada do retorno sobre investimento ao implementar agentes virtuais no seu negócio.",
-      date: "2025-09-09",
-      readTime: "7 min",
-      category: "Negócios",
-      likes: 18,
-      content: `
-        <div class="prose prose-lg max-w-none">
-          <p class="text-xl text-muted-foreground mb-8">Em breve, análise completa sobre o retorno sobre investimento de agentes virtuais.</p>
-          <p>Este artigo está sendo desenvolvido e em breve trará dados concretos sobre ROI, estudos de caso e métricas de sucesso.</p>
-        </div>
-      `
-    },
-    {
-      id: 3,
-      slug: "implementacao-de-ia-guia-completo",
-      title: "Implementação de IA: guia completo para empresas",
-      subtitle: "Passo a passo para implementar soluções de IA",
-      description: "Passo a passo para implementar soluções de inteligência artificial na sua empresa de forma eficiente.",
-      date: "2025-09-10",
-      readTime: "10 min",
-      category: "Tutorial",
-      likes: 15,
-      content: `
-        <div class="prose prose-lg max-w-none">
-          <p class="text-xl text-muted-foreground mb-8">Guia completo para implementar IA na sua empresa será publicado em breve.</p>
-          <p>Este artigo abordará desde o planejamento inicial até a implementação completa de soluções de IA.</p>
-        </div>
-      `
-    },
-    {
       id: 4,
       slug: "automatizacao-processos-7-erros-para-evitar",
       title: "Automatização de processos: 7 erros para evitar em seu negócio",

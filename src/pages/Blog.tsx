@@ -30,28 +30,6 @@ const Blog = () => {
       image: blogIaAtendimento
     },
     {
-      id: 2,
-      slug: "roi-de-agentes-virtuais",
-      title: "ROI de agentes virtuais: números que impressionam",
-      description: "Análise detalhada do retorno sobre investimento ao implementar agentes virtuais no seu negócio.",
-      date: "2025-09-09",
-      readTime: "7 min",
-      category: "Negócios",
-      likes: 18,
-      image: blogRoiAgentes
-    },
-    {
-      id: 3,
-      slug: "implementacao-de-ia-guia-completo",
-      title: "Implementação de IA: guia completo para empresas",
-      description: "Passo a passo para implementar soluções de inteligência artificial na sua empresa de forma eficiente.",
-      date: "2025-09-10",
-      readTime: "10 min",
-      category: "Tutorial",
-      likes: 15,
-      image: blogImplementacao
-    },
-    {
       id: 4,
       slug: "automatizacao-processos-7-erros-para-evitar",
       title: "Automatização de processos: 7 erros para evitar em seu negócio",
