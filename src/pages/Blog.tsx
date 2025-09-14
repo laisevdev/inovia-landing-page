@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import blogIaAtendimento from "@/assets/blog-ia-atendimento-cliente.jpg";
 import blogRoiAgentes from "@/assets/blog-roi-agentes-virtuais.jpg";
 import blogImplementacao from "@/assets/blog-implementacao-ia-guia.jpg";
+import blogAutomatizacaoErros from "@/assets/blog-automatizacao-processos-erros.jpg";
 
 const Blog = () => {
   const { toast } = useToast();
@@ -49,6 +50,17 @@ const Blog = () => {
       category: "Tutorial",
       likes: 15,
       image: blogImplementacao
+    },
+    {
+      id: 4,
+      slug: "automatizacao-processos-7-erros-para-evitar",
+      title: "Automatização de processos: 7 erros para evitar em seu negócio",
+      description: "Conheça os principais erros que podem comprometer sua automatização e como evitá-los para garantir o sucesso da implementação.",
+      date: "2025-09-14",
+      readTime: "15 min",
+      category: "Processos",
+      likes: 8,
+      image: blogAutomatizacaoErros
     }
   ];
 
