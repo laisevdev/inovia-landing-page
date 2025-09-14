@@ -13,6 +13,10 @@ import { Link, useParams } from "react-router-dom";
 import aiCompetitionAdvantage from "@/assets/ai-competition-advantage.jpg";
 import automationEfficiency from "@/assets/automation-efficiency.jpg";
 import dashboardAnalytics from "@/assets/dashboard-analytics.jpg";
+import planningObjectives from "@/assets/planning-objectives.jpg";
+import teamAutomationCollaboration from "@/assets/team-automation-collaboration.jpg";
+import automationAnalysis from "@/assets/automation-analysis.jpg";
+import automationSecurity from "@/assets/automation-security.jpg";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
@@ -129,6 +133,10 @@ const BlogPost = () => {
           
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">1. Falta de clareza nos objetivos</h2>
           
+          <div class="my-8">
+            <img src="${planningObjectives}" alt="Planejamento estratégico e definição de objetivos claros para automatização" class="w-full rounded-lg shadow-lg" />
+          </div>
+          
           <p>Parece mais fácil do que é, mas muita gente começa a automatizar sem saber exatamente o que quer resolver. Quem nunca ouviu "queremos ser mais ágeis"? Só que, na prática, é preciso ser muito mais específico.</p>
           
           <ul class="list-disc pl-6 space-y-2 my-6">
@@ -151,6 +159,10 @@ const BlogPost = () => {
           
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">3. Não considerar as pessoas envolvidas</h2>
           
+          <div class="my-8">
+            <img src="${teamAutomationCollaboration}" alt="Colaboração entre equipes e automação - pessoas trabalhando junto com IA" class="w-full rounded-lg shadow-lg" />
+          </div>
+          
           <p>Automatização não é só tecnologia, é transformação de cultura. Ignorar quem faz parte do processo é um convite ao fracasso. Ninguém gosta de sentir que seu trabalho será "engolido pela máquina". Aliás, essa insegurança é normal.</p>
           
           <p>Ouça as equipes. Explique como a automação vai tirar o peso das tarefas repetitivas, não os valores de cada colaborador. Envolver todo mundo na implementação faz a diferença, tanto para aceitação quanto para adaptar as soluções da IA ao mundo real do seu negócio.</p>
@@ -166,6 +178,10 @@ const BlogPost = () => {
           </blockquote>
           
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">5. Falta de acompanhamento e análise de resultados</h2>
+          
+          <div class="my-8">
+            <img src="${automationAnalysis}" alt="Profissionais analisando relatórios e métricas de automação" class="w-full rounded-lg shadow-lg" />
+          </div>
           
           <p>Implantar e esquecer nunca foi boa ideia. Mas acontece. Automatizou? Agora monitore! Não basta colocar o robô para trabalhar se ninguém verifica se ele cumpre o objetivo.</p>
           
@@ -184,6 +200,10 @@ const BlogPost = () => {
           <p>A automação é uma ferramenta poderosa, mas precisa de bom senso e acompanhamento constante. Em certos casos, algum grau de intervenção manual continua fazendo toda a diferença. E está tudo bem.</p>
           
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">7. Desconsiderar segurança e privacidade</h2>
+          
+          <div class="my-8">
+            <img src="${automationSecurity}" alt="Segurança e proteção de dados em sistemas de automação" class="w-full rounded-lg shadow-lg" />
+          </div>
           
           <p>Ao automatizar, acaba-se lidando com dados, informações confidenciais e fluxos críticos. Se não houver atenção com segurança e privacidade, o risco cresce.</p>
           
