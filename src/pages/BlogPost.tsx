@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import aiCustomerService from "@/assets/ai-customer-service.jpg";
+import aiCompetitionAdvantage from "@/assets/ai-competition-advantage.jpg";
 import automationEfficiency from "@/assets/automation-efficiency.jpg";
 import dashboardAnalytics from "@/assets/dashboard-analytics.jpg";
 import { useToast } from "@/hooks/use-toast";
@@ -50,7 +50,7 @@ const BlogPost = () => {
           <p>Se você ainda pensa em IA como uma tecnologia cara e complexa, restrita a gigantes da tecnologia, está na hora de rever seus conceitos. Hoje, a IA é uma ferramenta estratégica e acessível que pode nivelar o jogo, permitindo que sua empresa não apenas compita, mas se destaque.</p>
           
           <div class="my-8">
-            <img src="${aiCustomerService}" alt="Atendimento ao cliente com IA - agente virtual moderno ajudando clientes" class="w-full rounded-lg shadow-lg" />
+            <img src="${aiCompetitionAdvantage}" alt="Vantagem competitiva com IA no atendimento ao cliente" class="w-full rounded-lg shadow-lg" />
           </div>
           
           <h2 class="text-3xl font-bold mt-12 mb-6 text-foreground">Menos Custos, Mais Eficiência: O ROI da IA</h2>
