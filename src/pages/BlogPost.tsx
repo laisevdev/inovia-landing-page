@@ -12,7 +12,7 @@ import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import aiCustomerService from "@/assets/ai-customer-service.jpg";
 import automationEfficiency from "@/assets/automation-efficiency.jpg";
-import clearDataAnalytics from "@/assets/clear-data-analytics.jpg";
+import professionalDashboard from "@/assets/professional-dashboard.jpg";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
@@ -84,7 +84,7 @@ const BlogPost = () => {
           <p>Cada interação de um cliente é uma fonte de dados valiosos. Você está aproveitando isso? A IA não apenas atende; ela aprende.</p>
           
           <div class="my-8">
-            <img src="${clearDataAnalytics}" alt="Dashboard com dados nítidos de atendimento e métricas detalhadas" class="w-full rounded-lg shadow-lg" />
+            <img src="${professionalDashboard}" alt="Dashboard profissional com dados nítidos de atendimento e métricas detalhadas" class="w-full rounded-lg shadow-lg" />
           </div>
           
           <h3 class="text-xl font-semibold mt-8 mb-4 text-foreground">Identifique Padrões e Oportunidades</h3>
