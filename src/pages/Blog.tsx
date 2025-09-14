@@ -8,6 +8,7 @@ import { BlogSchema } from "@/components/BlogSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { useLikes } from "@/context/LikesContext";
 import Footer from "@/components/Footer";
+import { DemoRequestModal } from "@/components/DemoRequestModal";
 import blogIaAtendimento from "@/assets/blog-ia-atendimento-cliente.jpg";
 import blogRoiAgentes from "@/assets/blog-roi-agentes-virtuais.jpg";
 import blogImplementacao from "@/assets/blog-implementacao-ia-guia.jpg";
@@ -177,11 +178,11 @@ const Blog = () => {
             <p className="text-muted-foreground mb-6 text-justify">
               Estamos preparando artigos exclusivos sobre IA, automação e transformação digital.
             </p>
-            <Button asChild>
-              <Link to="/#demo">
+            <DemoRequestModal>
+              <Button className="w-full">
                 Solicitar demonstração
-              </Link>
-            </Button>
+              </Button>
+            </DemoRequestModal>
           </div>
         </section>
       </main>
