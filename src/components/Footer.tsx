@@ -18,7 +18,10 @@ const Footer = () => {
   }, []);
 
   const handleNavigation = (sectionId: string) => {
-    if (sectionId === 'hero' || location.pathname === '/') {
+    if (sectionId === 'blog') {
+      // Navega para a página do blog
+      navigate('/blog');
+    } else if (sectionId === 'hero' || location.pathname === '/') {
       // Se é "Home" ou já está na página principal, apenas rola para a seção
       if (sectionId === 'hero') {
         navigate('/');
@@ -120,6 +123,7 @@ const Footer = () => {
               <ul className="space-y-4">
                 {[
                   { name: 'Home', id: 'hero' },
+                  { name: 'Blog', id: 'blog' },
                   { name: 'Soluções', id: 'solucoes' },
                   { name: 'Capacidades', id: 'funcionalidades' },
                   { name: 'Como Funciona', id: 'etapas' },
