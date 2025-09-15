@@ -88,7 +88,7 @@ const Footer = () => {
                 </motion.a>
                 
                 <motion.a
-                  href="https://wa.me/556599254990?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20agentes%20de%20IA"
+                  href="https://wa.me/556540420989?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20agentes%20de%20IA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
