@@ -64,7 +64,7 @@ const Navbar = () => {
         )}
       >
         <a 
-          href="https://wa.me/556540420989?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta"
+          href="https://wa.me/556540420989?text=Ol%C3%A1+Inovia%2C+quero+agendar+uma+chamada"
           target="_blank"
           rel="noopener noreferrer"
         >
