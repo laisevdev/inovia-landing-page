@@ -25,7 +25,7 @@ export const BlogSchema: React.FC<BlogSchemaProps> = ({ posts, url }) => {
     "author": {
       "@type": "Person",
       "name": "Laíse Alves",
-      "jobTitle": "Especialista em IA",
+      "jobTitle": "Desenvolvedora Full-Stack e Especialista em IA",
       "affiliation": {
         "@type": "Organization",
         "name": "InovIA"

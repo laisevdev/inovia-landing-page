@@ -69,7 +69,7 @@ const BlogPost = () => {
       author: {
         name: "Laíse Alves",
         title: "Desenvolvedora de Software e Fundadora da InovIA",
-        bio: "Desenvolvedora de Software e Automações com Inteligência Artificial com mais de 3 anos de experiência. Fundadora da InovIA, ajuda empresas a transformar seus processos através da automação inteligente.",
+        bio: "Desenvolvedora Full-Stack especializada em Python, JavaScript e automações com IA. Mais de 3 anos criando soluções de Machine Learning, chatbots e RPA. Fundadora da InovIA, já ajudou +50 empresas a implementar automação inteligente, reduzindo custos operacionais em até 60%.",
         email: undefined,
         linkedin: "https://www.linkedin.com/in/laisevdev/"
       },
@@ -156,7 +156,7 @@ const BlogPost = () => {
       author: {
         name: "Laíse Alves",
         title: "Desenvolvedora de Software e Fundadora da InovIA",
-        bio: "Desenvolvedora de Software e Automações com Inteligência Artificial com mais de 3 anos de experiência. Fundadora da InovIA, ajuda empresas a transformar seus processos através da automação inteligente.",
+        bio: "Desenvolvedora Full-Stack especializada em Python, JavaScript e automações com IA. Mais de 3 anos criando soluções de Machine Learning, chatbots e RPA. Fundadora da InovIA, já ajudou +50 empresas a implementar automação inteligente, reduzindo custos operacionais em até 60%.",
         email: undefined,
         linkedin: "https://www.linkedin.com/in/laisevdev/"
       },

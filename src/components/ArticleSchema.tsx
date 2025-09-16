@@ -41,7 +41,7 @@ export const ArticleSchema: React.FC<ArticleSchemaProps> = ({ article, url }) =>
       "@type": "Person",
       "name": "Laíse Alves",
       "url": "https://inoviatech.com.br",
-      "jobTitle": "Especialista em IA",
+      "jobTitle": "Desenvolvedora Full-Stack e Especialista em IA",
       "affiliation": {
         "@type": "Organization",
         "name": "InovIA"
