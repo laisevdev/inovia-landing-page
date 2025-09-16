@@ -25,7 +25,30 @@ import { ArticleSchema } from "@/components/ArticleSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { RelatedArticles } from "@/components/RelatedArticles";
 import { useLikes } from "@/context/LikesContext";
+import { AuthorCard } from "@/components/AuthorCard";
 import Footer from "@/components/Footer";
+
+interface Author {
+  name: string;
+  title: string;
+  bio: string;
+  email?: string;
+  linkedin?: string;
+}
+
+interface BlogPostType {
+  id: number;
+  slug: string;
+  title: string;
+  subtitle?: string;
+  description: string;
+  date: string;
+  readTime: string;
+  category: string;
+  likes: number;
+  author: Author;
+  content: string;
+}
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -43,6 +66,13 @@ const BlogPost = () => {
       readTime: "12 min",
       category: "Tecnologia",
       likes: 24,
+      author: {
+        name: "Laíse Alves",
+        title: "Especialista em IA e Fundadora da InovIA",
+        bio: "Especialista em Inteligência Artificial com mais de 8 anos de experiência em desenvolvimento de soluções corporativas. Fundadora da InovIA, ajuda empresas a transformar seus processos através da automação inteligente.",
+        email: "laise@inoviatech.com.br",
+        linkedin: "https://linkedin.com/in/laise-alves"
+      },
       content: `
         <div class="prose prose-lg max-w-none">
           <p class="text-xl text-muted-foreground mb-8">Como usar agentes virtuais para reduzir custos, escalar seu negócio e transformar o atendimento ao cliente em uma máquina de vendas.</p>
@@ -123,6 +153,13 @@ const BlogPost = () => {
       readTime: "15 min",
       category: "Processos",
       likes: 8,
+      author: {
+        name: "Laíse Alves",
+        title: "Especialista em IA e Fundadora da InovIA",
+        bio: "Especialista em Inteligência Artificial com mais de 8 anos de experiência em desenvolvimento de soluções corporativas. Fundadora da InovIA, ajuda empresas a transformar seus processos através da automação inteligente.",
+        email: "laise@inoviatech.com.br",
+        linkedin: "https://linkedin.com/in/laise-alves"
+      },
       content: `
         <div class="prose prose-lg max-w-none">
           <p class="text-xl text-muted-foreground mb-8">Automatizar processos dentro de uma empresa parece o caminho natural para quem busca ganhar fôlego e tempo para focar no que realmente importa.</p>
@@ -434,6 +471,15 @@ const BlogPost = () => {
             />
           </div>
         </footer>
+
+        {/* Author Card */}
+        <AuthorCard
+          name={post.author.name}
+          title={post.author.title}
+          bio={post.author.bio}
+          email={post.author.email}
+          linkedin={post.author.linkedin}
+        />
 
         {/* Related Articles */}
         <RelatedArticles 
