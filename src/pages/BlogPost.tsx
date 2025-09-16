@@ -70,8 +70,8 @@ const BlogPost = () => {
         name: "Laíse Alves",
         title: "Desenvolvedora de Software e Fundadora da InovIA",
         bio: "Desenvolvedora de Software e Automações com Inteligência Artificial com mais de 3 anos de experiência. Fundadora da InovIA, ajuda empresas a transformar seus processos através da automação inteligente.",
-        email: "laise@inoviatech.com.br",
-        linkedin: "https://linkedin.com/in/laise-alves"
+        email: undefined,
+        linkedin: "https://www.linkedin.com/in/laisevdev/"
       },
       content: `
         <div class="prose prose-lg max-w-none">
@@ -157,8 +157,8 @@ const BlogPost = () => {
         name: "Laíse Alves",
         title: "Desenvolvedora de Software e Fundadora da InovIA",
         bio: "Desenvolvedora de Software e Automações com Inteligência Artificial com mais de 3 anos de experiência. Fundadora da InovIA, ajuda empresas a transformar seus processos através da automação inteligente.",
-        email: "laise@inoviatech.com.br",
-        linkedin: "https://linkedin.com/in/laise-alves"
+        email: undefined,
+        linkedin: "https://www.linkedin.com/in/laisevdev/"
       },
       content: `
         <div class="prose prose-lg max-w-none">
