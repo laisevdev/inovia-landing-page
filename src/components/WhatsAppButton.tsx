@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
     console.log("WhatsApp button clicked!");
-    window.open("https://wa.me/556540420989?text=Ol%C3%A1+La%C3%ADse+,+quero+agendar+uma+consulta", "_blank");
+    window.open("https://wa.me/556540420989?text=Ol%C3%A1+Inovia%2C+quero+agendar+uma+chamada", "_blank");
   };
 
   return (
