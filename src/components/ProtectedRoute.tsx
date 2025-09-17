@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useUserRole } from '@/hooks/useUserRole';
+import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, ArrowLeft } from 'lucide-react';
@@ -11,15 +11,70 @@ interface ProtectedRouteProps {
 }
 
 export const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) => {
-  const { userRole, loading, error, hasAdminAccess } = useUserRole();
+  const [loading, setLoading] = useState(true);
+  const [hasAccess, setHasAccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Se não há usuário autenticado, redireciona para login
-    if (!loading && error && error.includes('não autorizado')) {
-      navigate('/auth');
-    }
-  }, [loading, error, navigate]);
+    const checkAccess = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!session) {
+          navigate('/auth');
+          return;
+        }
+
+        const { data: profile, error: profileError } = await supabase
+          .from('user_profiles')
+          .select('role')
+          .eq('user_id', session.user.id)
+          .single();
+
+        if (profileError) {
+          if (profileError.code === 'PGRST116') {
+            setError('Usuário não autorizado');
+          } else {
+            setError('Erro ao verificar permissões');
+          }
+          setHasAccess(false);
+        } else {
+          const userRole = profile.role;
+          const hasValidRole = userRole === 'admin' || userRole === 'manager';
+          setHasAccess(hasValidRole);
+          
+          if (!hasValidRole) {
+            setError('Permissão insuficiente');
+          }
+        }
+      } catch (err) {
+        setError('Erro interno');
+        setHasAccess(false);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAccess();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        if (event === 'SIGNED_OUT') {
+          navigate('/auth');
+        } else if (event === 'SIGNED_IN') {
+          setTimeout(() => {
+            checkAccess();
+          }, 0);
+        }
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
 
   // Loading state
   if (loading) {
@@ -38,7 +93,7 @@ export const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) 
   }
 
   // Error or no access
-  if (error || !hasAdminAccess) {
+  if (error || !hasAccess) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
         <Card className="w-full max-w-md">
