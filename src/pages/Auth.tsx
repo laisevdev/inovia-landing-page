@@ -32,6 +32,27 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Primeiro, verifica se o usuário já tem um perfil (pré-autorização)
+      const { data: existingProfile, error: profileError } = await supabase
+        .from('user_profiles')
+        .select('email')
+        .eq('email', email)
+        .single();
+
+      if (profileError && profileError.code !== 'PGRST116') {
+        throw new Error('Erro ao verificar autorização');
+      }
+
+      if (!existingProfile) {
+        toast({
+          title: "Acesso Restrito",
+          description: "Este email não está autorizado para cadastro. Entre em contato com o administrador.",
+          variant: "destructive"
+        });
+        setLoading(false);
+        return;
+      }
+
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -52,10 +73,10 @@ const Auth = () => {
           description: "Verifique seu email para confirmar a conta."
         });
       }
-    } catch (error) {
+    } catch (error: any) {
       toast({
-        title: "Erro inesperado",
-        description: "Tente novamente mais tarde.",
+        title: "Erro interno",
+        description: error.message || "Tente novamente mais tarde",
         variant: "destructive"
       });
     } finally {

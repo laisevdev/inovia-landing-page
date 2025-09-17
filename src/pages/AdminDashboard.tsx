@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { useUserRole } from '@/hooks/useUserRole';
 import { Plus, Edit, Trash2, Eye, LogOut, Brain, FileText, Calendar } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -32,6 +33,7 @@ const AdminDashboard = () => {
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { userRole, hasAdminAccess } = useUserRole();
 
   useEffect(() => {
     checkAuth();
@@ -44,6 +46,7 @@ const AdminDashboard = () => {
       navigate('/auth');
       return;
     }
+    
     setUser(session.user);
 
     // Listen for auth changes

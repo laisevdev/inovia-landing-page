@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
@@ -31,9 +32,9 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/meupainel" element={<AdminDashboard />} />
-              <Route path="/meupainel/blog/novo" element={<BlogEditor />} />
-              <Route path="/meupainel/blog/editar/:id" element={<BlogEditor />} />
+              <Route path="/meupainel" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+              <Route path="/meupainel/blog/novo" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
+              <Route path="/meupainel/blog/editar/:id" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
