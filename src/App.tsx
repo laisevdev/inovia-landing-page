@@ -9,6 +9,9 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import PoliticaDePrivacidade from "./pages/PoliticaDePrivacidade";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
+import AdminDashboard from "./pages/AdminDashboard";
+import BlogEditor from "./pages/BlogEditor";
 import { SEOValidator } from "@/components/SEOValidator";
 import { LikesProvider } from "@/context/LikesContext";
 
@@ -27,6 +30,10 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+              <Route path="/admin/blog/novo" element={<BlogEditor />} />
+              <Route path="/admin/blog/editar/:id" element={<BlogEditor />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
