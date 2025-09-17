@@ -332,7 +332,7 @@ Precisa de ajuda para implementar automação sem erros? Nossa equipe especializ
   }
 ];
 
-export const migrateLegacyPosts = async () => {
+export const migrateLegacyPosts = async (authorId: string) => {
   try {
     console.log('Iniciando migração dos posts legados...');
     
@@ -349,7 +349,7 @@ export const migrateLegacyPosts = async () => {
         continue;
       }
 
-      // Create new post
+      // Create new post with author_id from the start
       const { error } = await supabase
         .from('blog_posts')
         .insert({
@@ -363,11 +363,12 @@ export const migrateLegacyPosts = async () => {
           read_time: legacyPost.readTime,
           likes: legacyPost.likes,
           published_at: new Date(legacyPost.date).toISOString(),
-          // author_id will be set by the calling function
+          author_id: authorId, // Set author_id directly to avoid RLS issues
         });
 
       if (error) {
         console.error(`Erro ao migrar post ${legacyPost.slug}:`, error);
+        return { success: false, message: `Erro ao migrar post ${legacyPost.slug}`, error };
       } else {
         console.log(`Post ${legacyPost.slug} migrado com sucesso!`);
       }

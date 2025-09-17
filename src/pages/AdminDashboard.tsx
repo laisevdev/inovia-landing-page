@@ -206,30 +206,13 @@ const AdminDashboard = () => {
 
     setMigrating(true);
     try {
-      // Update author_id for migrated posts to current user
-      const modifiedMigrateLegacyPosts = async () => {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) throw new Error('Usuário não autenticado');
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        throw new Error('Usuário não autenticado');
+      }
 
-        // Call the migration with current user as author
-        const result = await migrateLegacyPosts();
-        
-        // Update all posts without author_id to current user
-        if (result.success) {
-          const { error: updateError } = await supabase
-            .from('blog_posts')
-            .update({ author_id: user.id })
-            .is('author_id', null);
-
-          if (updateError) {
-            console.error('Erro ao atualizar author_id:', updateError);
-          }
-        }
-        
-        return result;
-      };
-
-      const result = await modifiedMigrateLegacyPosts();
+      // Call the migration with current user as author
+      const result = await migrateLegacyPosts(user.id);
       
       if (result.success) {
         toast({
