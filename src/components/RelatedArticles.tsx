@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 interface Article {
   id: number;
+  slug: string;
   title: string;
   description: string;
   date: string;
@@ -73,7 +74,7 @@ export const RelatedArticles: React.FC<RelatedArticlesProps> = ({
                 className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                 asChild
               >
-                <Link to={`/blog/${article.id}`}>
+                <Link to={`/blog/${article.slug}`}>
                   Ler artigo
                 </Link>
               </Button>
