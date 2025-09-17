@@ -211,7 +211,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <TooltipProvider>
+    <TooltipProvider delayDuration={300} skipDelayDuration={100} disableHoverableContent={false}>
       <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b bg-card">
