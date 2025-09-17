@@ -7,7 +7,8 @@ import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
 import { useUserRole } from '@/hooks/useUserRole';
-import { Plus, Edit, Trash2, Eye, LogOut, Brain, FileText, Calendar, Users } from 'lucide-react';
+import { migrateLegacyPosts } from '@/utils/migrateBlogPosts';
+import { Plus, Edit, Trash2, Eye, LogOut, Brain, FileText, Calendar, Users, Download } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
@@ -31,6 +32,7 @@ interface BlogPost {
 const AdminDashboard = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [migrating, setMigrating] = useState(false);
   const [user, setUser] = useState<any>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -199,6 +201,61 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleMigrateLegacyPosts = async () => {
+    if (!confirm('Deseja migrar os artigos legados para o banco de dados? Esta ação irá importar os artigos que ainda não existem no banco.')) return;
+
+    setMigrating(true);
+    try {
+      // Update author_id for migrated posts to current user
+      const modifiedMigrateLegacyPosts = async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('Usuário não autenticado');
+
+        // Call the migration with current user as author
+        const result = await migrateLegacyPosts();
+        
+        // Update all posts without author_id to current user
+        if (result.success) {
+          const { error: updateError } = await supabase
+            .from('blog_posts')
+            .update({ author_id: user.id })
+            .is('author_id', null);
+
+          if (updateError) {
+            console.error('Erro ao atualizar author_id:', updateError);
+          }
+        }
+        
+        return result;
+      };
+
+      const result = await modifiedMigrateLegacyPosts();
+      
+      if (result.success) {
+        toast({
+          title: "Migração concluída!",
+          description: "Os artigos legados foram importados com sucesso."
+        });
+        fetchPosts(); // Refresh the posts list
+      } else {
+        toast({
+          title: "Erro na migração",
+          description: result.message || "Ocorreu um erro durante a migração",
+          variant: "destructive"
+        });
+      }
+    } catch (error) {
+      console.error('Erro na migração:', error);
+      toast({
+        title: "Erro na migração",
+        description: "Ocorreu um erro inesperado durante a migração",
+        variant: "destructive"
+      });
+    } finally {
+      setMigrating(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -254,12 +311,31 @@ const AdminDashboard = () => {
               Crie, edite e publique artigos do seu blog
             </p>
           </div>
-          <Button asChild>
-            <Link to="/meupainel/blog/novo">
-              <Plus className="h-4 w-4 mr-2" />
-              Novo Artigo
-            </Link>
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button 
+              variant="outline" 
+              onClick={handleMigrateLegacyPosts}
+              disabled={migrating}
+            >
+              {migrating ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
+                  Migrando...
+                </>
+              ) : (
+                <>
+                  <Download className="h-4 w-4 mr-2" />
+                  Migrar Artigos Legados
+                </>
+              )}
+            </Button>
+            <Button asChild>
+              <Link to="/meupainel/blog/novo">
+                <Plus className="h-4 w-4 mr-2" />
+                Novo Artigo
+              </Link>
+            </Button>
+          </div>
         </div>
 
         {/* Stats Cards */}

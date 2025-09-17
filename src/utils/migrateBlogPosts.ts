@@ -363,7 +363,7 @@ export const migrateLegacyPosts = async () => {
           read_time: legacyPost.readTime,
           likes: legacyPost.likes,
           published_at: new Date(legacyPost.date).toISOString(),
-          // Note: author_id will need to be set after user logs in
+          // author_id will be set by the calling function
         });
 
       if (error) {
