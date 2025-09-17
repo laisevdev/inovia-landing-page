@@ -342,7 +342,7 @@ export const migrateLegacyPosts = async (authorId: string) => {
         .from('blog_posts')
         .select('id')
         .eq('slug', legacyPost.slug)
-        .single();
+        .maybeSingle();
 
       if (existingPost) {
         console.log(`Post ${legacyPost.slug} já existe, pulando...`);
