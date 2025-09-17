@@ -34,8 +34,8 @@ const Blog = () => {
     {
       id: 2,
       slug: "chatbots-vs-agentes-personalizados-diferencas-praticas",
-      title: "Chatbots vs. agentes personalizados: diferenças práticas",
-      description: "Entenda as principais diferenças entre chatbots tradicionais e agentes personalizados, e descubra qual é a melhor opção para seu negócio.",
+      title: "Chatbots vs. Agentes de IA",
+      description: "Entenda as principais diferenças entre chatbots tradicionais e Agentes de IA, e descubra qual é a melhor opção para seu negócio.",
       date: "2025-09-16",
       readTime: "18 min",
       category: "Tecnologia",
