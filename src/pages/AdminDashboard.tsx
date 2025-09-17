@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { useUserRole } from '@/hooks/useUserRole';
-import { Plus, Edit, Trash2, Eye, LogOut, Brain, FileText, Calendar } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, LogOut, Brain, FileText, Calendar, Users } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
@@ -188,6 +188,14 @@ const AdminDashboard = () => {
               <span className="text-sm text-muted-foreground">
                 Bem-vindo, {user?.email}
               </span>
+              {hasAdminAccess && userRole === 'admin' && (
+                <Button variant="outline" size="sm" asChild>
+                  <Link to="/meupainel/usuarios">
+                    <Users className="h-4 w-4 mr-2" />
+                    Usuários
+                  </Link>
+                </Button>
+              )}
               <Button variant="outline" size="sm" onClick={handleSignOut}>
                 <LogOut className="h-4 w-4 mr-2" />
                 Sair

@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
 import BlogEditor from "./pages/BlogEditor";
+import UserManagement from "./pages/UserManagement";
 import { SEOValidator } from "@/components/SEOValidator";
 import { LikesProvider } from "@/context/LikesContext";
 
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/meupainel" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+              <Route path="/meupainel/usuarios" element={<ProtectedRoute requiredRole="admin"><UserManagement /></ProtectedRoute>} />
               <Route path="/meupainel/blog/novo" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
               <Route path="/meupainel/blog/editar/:id" element={<ProtectedRoute><BlogEditor /></ProtectedRoute>} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
