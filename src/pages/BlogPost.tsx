@@ -18,6 +18,8 @@ import planningObjectives from "@/assets/planning-objectives.jpg";
 import teamAutomationCollaboration from "@/assets/team-automation-collaboration.jpg";
 import automationAnalysis from "@/assets/automation-analysis.jpg";
 import automationSecurity from "@/assets/automation-security.jpg";
+import blogIaAtendimento from "@/assets/blog-ia-atendimento-cliente.jpg";
+import blogAutomatizacaoErros from "@/assets/blog-automatizacao-processos-erros.jpg";
 import { useToast } from "@/hooks/use-toast";
 import DemoModal from "@/components/DemoModal";
 import { SocialShareButtons } from "@/components/SocialShareButtons";
@@ -49,6 +51,7 @@ interface BlogPostType {
   likes: number;
   author: Author;
   content: string;
+  image: string;
 }
 
 const BlogPost = () => {
@@ -72,6 +75,7 @@ const BlogPost = () => {
       readTime: "12 min",
       category: "Tecnologia",
       likes: 24,
+      image: blogIaAtendimento,
       author: {
         name: "Laíse Alves",
         title: "Desenvolvedora de Software e Fundadora da InovIA",
@@ -159,6 +163,7 @@ const BlogPost = () => {
       readTime: "15 min",
       category: "Processos",
       likes: 8,
+      image: blogAutomatizacaoErros,
       author: {
         name: "Laíse Alves",
         title: "Desenvolvedora de Software e Fundadora da InovIA",

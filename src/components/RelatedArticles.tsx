@@ -11,6 +11,7 @@ interface Article {
   date: string;
   readTime: string;
   category: string;
+  image: string;
 }
 
 interface RelatedArticlesProps {
@@ -41,7 +42,14 @@ export const RelatedArticles: React.FC<RelatedArticlesProps> = ({
       
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {relatedArticles.map((article) => (
-          <Card key={article.id} className="group hover:shadow-md transition-all duration-300">
+          <Card key={article.id} className="group hover:shadow-md transition-all duration-300 overflow-hidden">
+            <div className="aspect-video overflow-hidden">
+              <img 
+                src={article.image} 
+                alt={article.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
             <CardHeader className="pb-3">
               <div className="text-xs text-muted-foreground mb-2">
                 <span className="px-2 py-1 rounded-full bg-primary/10 text-primary">
