@@ -1,29 +1,29 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface LikesContextType {
-  likes: { [key: number]: number };
-  likedPosts: number[];
-  likePost: (postId: number) => void;
-  isPostLiked: (postId: number) => boolean;
-  getPostLikes: (postId: number) => number;
+  likes: { [key: string]: number };
+  likedPosts: string[];
+  likePost: (postId: string) => void;
+  isPostLiked: (postId: string) => boolean;
+  getPostLikes: (postId: string) => number;
 }
 
 const LikesContext = createContext<LikesContextType | undefined>(undefined);
 
 const INITIAL_LIKES = {
-  1: 24,
-  2: 18,
-  3: 15
+  "1": 24,
+  "2": 18,
+  "3": 15
 };
 
 export const LikesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   // Initialize from localStorage or use initial values
-  const [likes, setLikes] = useState<{ [key: number]: number }>(() => {
+  const [likes, setLikes] = useState<{ [key: string]: number }>(() => {
     const stored = localStorage.getItem('blog-likes');
     return stored ? JSON.parse(stored) : INITIAL_LIKES;
   });
 
-  const [likedPosts, setLikedPosts] = useState<number[]>(() => {
+  const [likedPosts, setLikedPosts] = useState<string[]>(() => {
     const stored = localStorage.getItem('liked-posts');
     return stored ? JSON.parse(stored) : [];
   });
@@ -37,7 +37,7 @@ export const LikesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     localStorage.setItem('liked-posts', JSON.stringify(likedPosts));
   }, [likedPosts]);
 
-  const likePost = (postId: number) => {
+  const likePost = (postId: string) => {
     const isLiked = likedPosts.includes(postId);
     
     if (isLiked) {
@@ -51,11 +51,11 @@ export const LikesProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
   };
 
-  const isPostLiked = (postId: number): boolean => {
+  const isPostLiked = (postId: string): boolean => {
     return likedPosts.includes(postId);
   };
 
-  const getPostLikes = (postId: number): number => {
+  const getPostLikes = (postId: string): number => {
     return likes[postId] || 0;
   };
 

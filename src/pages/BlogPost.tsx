@@ -8,9 +8,10 @@ import {
   BreadcrumbSeparator, 
   BreadcrumbPage 
 } from "@/components/ui/breadcrumb";
-import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ThumbsUp, Loader2 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import aiCompetitionAdvantage from "@/assets/ai-competition-advantage.jpg";
 import automationEfficiency from "@/assets/automation-efficiency.jpg";
 import dashboardAnalytics from "@/assets/dashboard-analytics.jpg";
@@ -41,7 +42,7 @@ interface Author {
 }
 
 interface BlogPostType {
-  id: number;
+  id: string;
   slug: string;
   title: string;
   subtitle?: string;
@@ -59,11 +60,98 @@ const BlogPost = () => {
   const { slug } = useParams();
   const { toast } = useToast();
   const { likePost, isPostLiked, getPostLikes } = useLikes();
+  const [blogPost, setBlogPost] = useState<BlogPostType | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Scroll to top when slug changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [slug]);
+
+  useEffect(() => {
+    const fetchBlogPost = async () => {
+      if (!slug) return;
+
+      try {
+        setLoading(true);
+        
+        // Fetch the specific blog post
+        const { data: postData, error: postError } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('slug', slug)
+          .eq('status', 'published')
+          .maybeSingle();
+
+        if (postError) throw postError;
+        if (!postData) throw new Error('Post não encontrado');
+
+        // Fetch related posts (same category, different post)
+        const { data: relatedData, error: relatedError } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('status', 'published')
+          .eq('category', postData.category)
+          .neq('id', postData.id)
+          .limit(3);
+
+        if (relatedError) throw relatedError;
+
+        // Default author info
+        const defaultAuthor = {
+          name: "Laíse Alves",
+          title: "Desenvolvedora de Software e Fundadora da InovIA",
+          bio: "Desenvolvedora Full-Stack especializada em Python, JavaScript e automações com IA. Mais de 3 anos criando soluções tecnológicas. Fundadora da InovIA, focada em ajudar empresas a transformar seus processos através da automação inteligente.",
+          email: undefined,
+          linkedin: "https://www.linkedin.com/in/laisevdev/"
+        };
+
+        // Map data to expected format
+        const mappedPost: BlogPostType = {
+          id: String(postData.id), // Convert to string for consistency
+          slug: postData.slug,
+          title: postData.title,
+          subtitle: postData.description,
+          description: postData.description || "",
+          content: postData.content,
+          date: postData.published_at || postData.created_at,
+          readTime: postData.read_time || "5 min",
+          category: postData.category,
+          likes: getPostLikes(String(postData.id)) || postData.likes || 0,
+          image: postData.featured_image || "",
+          author: defaultAuthor
+        };
+
+        const mappedRelated = relatedData?.map(post => ({
+          id: String(post.id), // Convert to string for consistency
+          slug: post.slug,
+          title: post.title,
+          subtitle: post.description,
+          description: post.description || "",
+          content: post.content,
+          date: post.published_at || post.created_at,
+          readTime: post.read_time || "5 min",
+          category: post.category,
+          likes: getPostLikes(String(post.id)) || post.likes || 0,
+          image: post.featured_image || "",
+          author: defaultAuthor
+        })) || [];
+
+        setBlogPost(mappedPost);
+        setRelatedPosts(mappedRelated);
+      } catch (err) {
+        console.error('Error fetching blog post:', err);
+        setError('Artigo não encontrado');
+        setBlogPost(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPost();
+  }, [slug, getPostLikes]);
 
   const blogPosts = [
     {
@@ -497,8 +585,9 @@ const BlogPost = () => {
   }
 
   const handleLike = () => {
-    const wasLiked = isPostLiked(post.id);
-    likePost(post.id);
+    if (!blogPost) return;
+    const wasLiked = isPostLiked(blogPost.id);
+    likePost(blogPost.id);
     
     toast({
       description: !wasLiked ? "Obrigado pelo like! 👍" : "Like removido!",
@@ -506,8 +595,8 @@ const BlogPost = () => {
     });
   };
 
-  const isLiked = isPostLiked(post.id);
-  const likes = getPostLikes(post.id);
+  const isLiked = blogPost ? isPostLiked(blogPost.id) : false;
+  const likes = blogPost ? getPostLikes(blogPost.id) : 0;
 
 
   const currentUrl = `https://inoviatech.com.br/blog/${post.slug}`;

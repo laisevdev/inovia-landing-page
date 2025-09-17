@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, ThumbsUp, Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { SEOHead } from "@/components/SEOHead";
@@ -9,53 +9,54 @@ import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { useLikes } from "@/context/LikesContext";
 import Footer from "@/components/Footer";
 import { DemoRequestModal } from "@/components/DemoRequestModal";
-import blogIaAtendimento from "@/assets/blog-ia-atendimento-cliente.jpg";
-import blogRoiAgentes from "@/assets/blog-roi-agentes-virtuais.jpg";
-import blogImplementacao from "@/assets/blog-implementacao-ia-guia.jpg";
-import blogAutomatizacaoErros from "@/assets/blog-automatizacao-processos-erros.jpg";
-import blogChatbotsVsAgentes from "@/assets/blog-chatbots-vs-agentes-personalizados.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import { useState, useEffect } from "react";
 
 const Blog = () => {
   const { toast } = useToast();
   const { likePost, isPostLiked, getPostLikes } = useLikes();
+  const [blogPosts, setBlogPosts] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const blogPosts = [
-    {
-      id: 1,
-      slug: "como-a-ia-esta-transformando-o-atendimento-ao-cliente",
-      title: "Como a IA está transformando o atendimento ao cliente",
-      description: "Descubra como agentes virtuais inteligentes estão revolucionando a experiência do cliente e aumentando a eficiência das empresas.",
-      date: "2025-09-08",
-      readTime: "12 min",
-      category: "Tecnologia",
-      likes: 24,
-      image: blogIaAtendimento
-    },
-    {
-      id: 2,
-      slug: "chatbots-vs-agentes-personalizados-diferencas-praticas",
-      title: "Chatbots vs. Agentes de IA",
-      description: "Entenda as principais diferenças entre chatbots tradicionais e Agentes de IA, e descubra qual é a melhor opção para seu negócio.",
-      date: "2025-09-16",
-      readTime: "18 min",
-      category: "Tecnologia",
-      likes: 0,
-      image: blogChatbotsVsAgentes
-    },
-    {
-      id: 4,
-      slug: "automatizacao-processos-7-erros-para-evitar",
-      title: "Automatização de processos: 7 erros para evitar em seu negócio",
-      description: "Conheça os principais erros que podem comprometer sua automatização e como evitá-los para garantir o sucesso da implementação.",
-      date: "2025-09-14",
-      readTime: "15 min",
-      category: "Processos",
-      likes: 8,
-      image: blogAutomatizacaoErros
-    }
-  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        setLoading(true);
+        const { data, error } = await supabase
+          .from('blog_posts')
+          .select('*')
+          .eq('status', 'published')
+          .order('published_at', { ascending: false });
 
-  const handleLike = (postId: number) => {
+        if (error) throw error;
+
+        // Map Supabase data to expected format
+        const mappedPosts = data?.map(post => ({
+          id: String(post.id), // Convert to string for consistency
+          slug: post.slug,
+          title: post.title,
+          description: post.description,
+          date: post.published_at || post.created_at,
+          readTime: post.read_time || "5 min",
+          category: post.category,
+          likes: getPostLikes(String(post.id)) || post.likes || 0,
+          image: post.featured_image
+        })) || [];
+
+        setBlogPosts(mappedPosts);
+      } catch (err) {
+        console.error('Error fetching blog posts:', err);
+        setError('Erro ao carregar os artigos');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogPosts();
+  }, [getPostLikes]);
+
+  const handleLike = (postId: string) => {
     const wasLiked = isPostLiked(postId);
     likePost(postId);
     
@@ -114,9 +115,26 @@ const Blog = () => {
           </p>
         </section>
 
+        {/* Loading State */}
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <Loader2 className="h-8 w-8 animate-spin" />
+            <span className="ml-2">Carregando artigos...</span>
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="text-center py-12">
+            <p className="text-destructive">{error}</p>
+          </div>
+        )}
+
         {/* Blog Posts Grid */}
-        <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {[...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => {
+        {!loading && !error && (
+          <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {blogPosts.length > 0 ? (
+              blogPosts.map((post) => {
             const isLiked = isPostLiked(post.id);
             const currentLikes = getPostLikes(post.id);
             
@@ -179,9 +197,15 @@ const Blog = () => {
                 </Button>
               </CardContent>
             </Card>
-            );
-          })}
-        </section>
+              );
+              })
+            ) : (
+              <div className="text-center py-12">
+                <p>Nenhum artigo encontrado.</p>
+              </div>
+            )}
+          </section>
+        )}
 
         {/* Coming Soon Section */}
         <section className="mt-16 text-center">
