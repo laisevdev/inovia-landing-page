@@ -53,7 +53,7 @@ const Blog = () => {
       likes: 8,
       image: blogAutomatizacaoErros
     }
-  ];
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const handleLike = (postId: number) => {
     const wasLiked = isPostLiked(postId);
