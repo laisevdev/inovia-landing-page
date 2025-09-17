@@ -4,6 +4,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useToast } from '@/hooks/use-toast';
 import { useUserRole } from '@/hooks/useUserRole';
 import { Plus, Edit, Trash2, Eye, LogOut, Brain, FileText, Calendar, Users } from 'lucide-react';
@@ -210,7 +211,8 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <TooltipProvider>
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4">
@@ -342,35 +344,63 @@ const AdminDashboard = () => {
                     </div>
                     <div className="flex items-center gap-2 ml-4">
                       {post.status === 'published' && (
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link to={`/blog/${post.slug}`} target="_blank">
-                            <Eye className="h-4 w-4" />
-                          </Link>
-                        </Button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="ghost" size="sm" asChild>
+                              <Link to={`/blog/${post.slug}`} target="_blank">
+                                <Eye className="h-4 w-4" />
+                              </Link>
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Visualizar artigo publicado</p>
+                          </TooltipContent>
+                        </Tooltip>
                       )}
                       {post.status === 'draft' && (
-                        <Button 
-                          variant="default" 
-                          size="sm"
-                          onClick={() => publishPost(post.id)}
-                          className="bg-green-600 hover:bg-green-700"
-                        >
-                          Publicar
-                        </Button>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button 
+                              variant="default" 
+                              size="sm"
+                              onClick={() => publishPost(post.id)}
+                              className="bg-green-600 hover:bg-green-700"
+                            >
+                              Publicar
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Publicar artigo</p>
+                          </TooltipContent>
+                        </Tooltip>
                       )}
-                      <Button variant="ghost" size="sm" asChild>
-                        <Link to={`/meupainel/blog/editar/${post.id}`}>
-                          <Edit className="h-4 w-4" />
-                        </Link>
-                      </Button>
-                      <Button 
-                        variant="ghost" 
-                        size="sm"
-                        onClick={() => deletePost(post.id)}
-                        className="text-destructive hover:text-destructive hover:bg-destructive/10"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button variant="ghost" size="sm" asChild>
+                            <Link to={`/meupainel/blog/editar/${post.id}`}>
+                              <Edit className="h-4 w-4" />
+                            </Link>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Editar artigo</p>
+                        </TooltipContent>
+                      </Tooltip>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button 
+                            variant="ghost" 
+                            size="sm"
+                            onClick={() => deletePost(post.id)}
+                            className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Excluir artigo</p>
+                        </TooltipContent>
+                      </Tooltip>
                     </div>
                   </div>
                 </CardContent>
@@ -379,7 +409,8 @@ const AdminDashboard = () => {
           )}
         </div>
       </main>
-    </div>
+      </div>
+    </TooltipProvider>
   );
 };
 
