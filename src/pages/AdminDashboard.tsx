@@ -164,6 +164,40 @@ const AdminDashboard = () => {
     return email.split('@')[0];
   };
 
+  const publishPost = async (id: string) => {
+    if (!confirm('Tem certeza que deseja publicar este artigo?')) return;
+
+    try {
+      const { error } = await supabase
+        .from('blog_posts')
+        .update({ 
+          status: 'published',
+          published_at: new Date().toISOString()
+        })
+        .eq('id', id);
+
+      if (error) {
+        toast({
+          title: "Erro ao publicar",
+          description: error.message,
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Artigo publicado!",
+          description: "O artigo foi publicado com sucesso e está disponível no blog."
+        });
+        fetchPosts();
+      }
+    } catch (error) {
+      toast({
+        title: "Erro inesperado",
+        description: "Tente novamente mais tarde",
+        variant: "destructive"
+      });
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -312,6 +346,16 @@ const AdminDashboard = () => {
                           <Link to={`/blog/${post.slug}`} target="_blank">
                             <Eye className="h-4 w-4" />
                           </Link>
+                        </Button>
+                      )}
+                      {post.status === 'draft' && (
+                        <Button 
+                          variant="default" 
+                          size="sm"
+                          onClick={() => publishPost(post.id)}
+                          className="bg-green-600 hover:bg-green-700"
+                        >
+                          Publicar
                         </Button>
                       )}
                       <Button variant="ghost" size="sm" asChild>
