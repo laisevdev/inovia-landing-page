@@ -1,5 +1,5 @@
-import React from 'react';
-import { Linkedin, MessageCircle, Twitter, Mail } from 'lucide-react';
+import React, { useState } from 'react';
+import { Linkedin, MessageCircle, Twitter, Mail, Copy, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface SocialShareButtonsProps {
@@ -13,6 +13,7 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
   description, 
   url 
 }) => {
+  const [copied, setCopied] = useState(false);
   const shareUrls = {
     linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
     whatsapp: `https://wa.me/?text=${encodeURIComponent(`${title} - ${url}`)}`,
@@ -25,6 +26,16 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
       window.location.href = shareUrl;
     } else {
       window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+  };
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
     }
   };
 
@@ -70,6 +81,22 @@ export const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
       >
         <Mail className="h-4 w-4" />
         <span className="hidden sm:inline ml-1">Email</span>
+      </Button>
+
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={copyToClipboard}
+        className={`transition-colors ${
+          copied 
+            ? 'text-green-600 border-green-600/20 bg-green-50 hover:bg-green-100' 
+            : 'text-muted-foreground border-muted-foreground/20 hover:bg-muted hover:border-muted-foreground/40'
+        }`}
+      >
+        {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+        <span className="hidden sm:inline ml-1">
+          {copied ? 'Copiado!' : 'Copiar link'}
+        </span>
       </Button>
     </div>
   );
