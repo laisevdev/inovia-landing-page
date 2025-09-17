@@ -116,7 +116,7 @@ const Blog = () => {
 
         {/* Blog Posts Grid */}
         <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {blogPosts.map((post) => {
+          {[...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => {
             const isLiked = isPostLiked(post.id);
             const currentLikes = getPostLikes(post.id);
             

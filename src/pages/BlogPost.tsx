@@ -477,7 +477,11 @@ const BlogPost = () => {
     }
   ];
 
-  const post = blogPosts.find(p => p.slug === slug);
+  // Sort posts by date (most recent first) to ensure consistent navigation
+  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
+  const post = sortedPosts.find(p => p.slug === slug);
+  const currentIndex = sortedPosts.findIndex(p => p.slug === slug);
 
   if (!post) {
     return (
@@ -668,7 +672,7 @@ const BlogPost = () => {
         {/* Related Articles */}
         <RelatedArticles 
           currentArticleId={post.id} 
-          articles={blogPosts}
+          articles={sortedPosts}
           maxResults={2}
         />
 
@@ -683,17 +687,17 @@ const BlogPost = () => {
             </Button>
             
             <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-              {post.id > 1 && (
+              {currentIndex < sortedPosts.length - 1 && (
                 <Button variant="outline" asChild size="sm" className="w-full sm:w-auto">
-                  <Link to={`/blog/${blogPosts.find(p => p.id === post.id - 1)?.slug}`}>
+                  <Link to={`/blog/${sortedPosts[currentIndex + 1].slug}`}>
                     <span className="hidden sm:inline">Artigo anterior</span>
                     <span className="sm:hidden">Anterior</span>
                   </Link>
                 </Button>
               )}
-              {post.id < blogPosts.length && (
+              {currentIndex > 0 && (
                 <Button variant="outline" asChild size="sm" className="w-full sm:w-auto">
-                  <Link to={`/blog/${blogPosts.find(p => p.id === post.id + 1)?.slug}`}>
+                  <Link to={`/blog/${sortedPosts[currentIndex - 1].slug}`}>
                     <span className="hidden sm:inline">Próximo artigo</span>
                     <span className="sm:hidden">Próximo</span>
                   </Link>
