@@ -204,7 +204,7 @@ const AdminDashboard = () => {
             </p>
           </div>
           <Button asChild>
-            <Link to="/admin/blog/novo">
+            <Link to="/meupainel/blog/novo">
               <Plus className="h-4 w-4 mr-2" />
               Novo Artigo
             </Link>
@@ -257,7 +257,7 @@ const AdminDashboard = () => {
                   Comece criando seu primeiro artigo para o blog
                 </p>
                 <Button asChild>
-                  <Link to="/admin/blog/novo">
+                  <Link to="/meupainel/blog/novo">
                     <Plus className="h-4 w-4 mr-2" />
                     Criar Primeiro Artigo
                   </Link>
@@ -300,7 +300,7 @@ const AdminDashboard = () => {
                         </Button>
                       )}
                       <Button variant="ghost" size="sm" asChild>
-                        <Link to={`/admin/blog/editar/${post.id}`}>
+                        <Link to={`/meupainel/blog/editar/${post.id}`}>
                           <Edit className="h-4 w-4" />
                         </Link>
                       </Button>

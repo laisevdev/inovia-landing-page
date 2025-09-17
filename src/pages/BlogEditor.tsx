@@ -77,7 +77,7 @@ const BlogEditor = () => {
           description: error.message,
           variant: "destructive"
         });
-        navigate('/admin');
+        navigate('/meupainel');
       } else {
         setPost(data as BlogPost);
       }
@@ -87,7 +87,7 @@ const BlogEditor = () => {
         description: "Tente novamente mais tarde",
         variant: "destructive"
       });
-      navigate('/admin');
+      navigate('/meupainel');
     }
   };
 
@@ -207,7 +207,7 @@ const BlogEditor = () => {
           : "Suas alterações foram salvas como rascunho."
       });
 
-      navigate('/admin');
+      navigate('/meupainel');
     } catch (error: any) {
       toast({
         title: "Erro ao salvar",
@@ -236,7 +236,7 @@ const BlogEditor = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <Button variant="ghost" size="sm" asChild>
-                <Link to="/admin">
+                <Link to="/meupainel">
                   <ArrowLeft className="h-4 w-4 mr-2" />
                   Voltar
                 </Link>

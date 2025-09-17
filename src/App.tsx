@@ -31,9 +31,9 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/politica-de-privacidade" element={<PoliticaDePrivacidade />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/admin" element={<AdminDashboard />} />
-              <Route path="/admin/blog/novo" element={<BlogEditor />} />
-              <Route path="/admin/blog/editar/:id" element={<BlogEditor />} />
+              <Route path="/meupainel" element={<AdminDashboard />} />
+              <Route path="/meupainel/blog/novo" element={<BlogEditor />} />
+              <Route path="/meupainel/blog/editar/:id" element={<BlogEditor />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -21,7 +21,7 @@ const Auth = () => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate('/admin');
+        navigate('/meupainel');
       }
     };
     checkUser();
@@ -36,7 +36,7 @@ const Auth = () => {
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/admin`
+          emailRedirectTo: `${window.location.origin}/meupainel`
         }
       });
 
@@ -84,7 +84,7 @@ const Auth = () => {
           title: "Login realizado!",
           description: "Redirecionando para o painel..."
         });
-        navigate('/admin');
+        navigate('/meupainel');
       }
     } catch (error) {
       toast({

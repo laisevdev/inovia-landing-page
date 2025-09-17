@@ -64,25 +64,6 @@ const Navbar = () => {
         )}
       >
         <a 
-          href="/admin"
-          className="flex items-center gap-1"
-        >
-          <User className="w-4 h-4" />
-          <span className="lg:inline md:hidden">Admin</span>
-        </a>
-      </Button>
-      <Button
-        variant="ghost"
-        size="sm"
-        asChild
-        className={cn(
-          "relative cursor-pointer font-semibold rounded-full transition-colors",
-          "text-foreground/80 hover:text-primary hover:bg-muted/50",
-          "text-sm md:text-xs lg:text-sm px-4 py-2 md:px-3 md:py-1.5 lg:px-4 lg:py-2",
-          "hidden md:flex"
-        )}
-      >
-        <a 
           href="https://wa.me/556540420989?text=Ol%C3%A1+Inovia%2C+quero+agendar+uma+chamada"
           target="_blank"
           rel="noopener noreferrer"
