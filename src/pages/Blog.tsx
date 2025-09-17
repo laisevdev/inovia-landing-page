@@ -13,6 +13,7 @@ import blogIaAtendimento from "@/assets/blog-ia-atendimento-cliente.jpg";
 import blogRoiAgentes from "@/assets/blog-roi-agentes-virtuais.jpg";
 import blogImplementacao from "@/assets/blog-implementacao-ia-guia.jpg";
 import blogAutomatizacaoErros from "@/assets/blog-automatizacao-processos-erros.jpg";
+import blogChatbotsVsAgentes from "@/assets/blog-chatbots-vs-agentes-personalizados.jpg";
 
 const Blog = () => {
   const { toast } = useToast();
@@ -29,6 +30,17 @@ const Blog = () => {
       category: "Tecnologia",
       likes: 24,
       image: blogIaAtendimento
+    },
+    {
+      id: 2,
+      slug: "chatbots-vs-agentes-personalizados-diferencas-praticas",
+      title: "Chatbots vs. agentes personalizados: diferenças práticas",
+      description: "Entenda as principais diferenças entre chatbots tradicionais e agentes personalizados, e descubra qual é a melhor opção para seu negócio.",
+      date: "2025-09-16",
+      readTime: "18 min",
+      category: "Tecnologia",
+      likes: 0,
+      image: blogChatbotsVsAgentes
     },
     {
       id: 4,
