@@ -674,26 +674,28 @@ const BlogPost = () => {
 
         {/* Navigation */}
         <nav className="mt-12 pt-8 border-t border-border/50">
-          <div className="flex justify-between items-center">
-            <Button variant="ghost" asChild>
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <Button variant="ghost" asChild className="w-full md:w-auto justify-start">
               <Link to="/blog" className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
                 Voltar ao blog
               </Link>
             </Button>
             
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
               {post.id > 1 && (
-                <Button variant="outline" asChild size="sm">
+                <Button variant="outline" asChild size="sm" className="w-full sm:w-auto">
                   <Link to={`/blog/${blogPosts.find(p => p.id === post.id - 1)?.slug}`}>
-                    Artigo anterior
+                    <span className="hidden sm:inline">Artigo anterior</span>
+                    <span className="sm:hidden">Anterior</span>
                   </Link>
                 </Button>
               )}
               {post.id < blogPosts.length && (
-                <Button variant="outline" asChild size="sm">
+                <Button variant="outline" asChild size="sm" className="w-full sm:w-auto">
                   <Link to={`/blog/${blogPosts.find(p => p.id === post.id + 1)?.slug}`}>
-                    Próximo artigo
+                    <span className="hidden sm:inline">Próximo artigo</span>
+                    <span className="sm:hidden">Próximo</span>
                   </Link>
                 </Button>
               )}
