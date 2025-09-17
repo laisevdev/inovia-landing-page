@@ -32,27 +32,7 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      // Primeiro, verifica se o usuário já tem um perfil (pré-autorização)
-      const { data: existingProfile, error: profileError } = await supabase
-        .from('user_profiles')
-        .select('email')
-        .eq('email', email)
-        .single();
-
-      if (profileError && profileError.code !== 'PGRST116') {
-        throw new Error('Erro ao verificar autorização');
-      }
-
-      if (!existingProfile) {
-        toast({
-          title: "Acesso Restrito",
-          description: "Este email não está autorizado para cadastro. Entre em contato com o administrador.",
-          variant: "destructive"
-        });
-        setLoading(false);
-        return;
-      }
-
+      // Deixar o banco decidir via trigger se o email está autorizado
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -62,15 +42,24 @@ const Auth = () => {
       });
 
       if (error) {
+        // Melhorar mensagens de erro baseadas no que vem do banco
+        let errorMessage = error.message;
+        
+        if (errorMessage.includes('Email não autorizado')) {
+          errorMessage = "Este email não está autorizado para cadastro. Entre em contato com o administrador.";
+        } else if (errorMessage.includes('User already registered')) {
+          errorMessage = "Este email já está cadastrado. Use a aba 'Login' para entrar.";
+        }
+        
         toast({
           title: "Erro no cadastro",
-          description: error.message,
+          description: errorMessage,
           variant: "destructive"
         });
       } else {
         toast({
           title: "Cadastro realizado!",
-          description: "Verifique seu email para confirmar a conta."
+          description: "Verifique seu email para confirmar o cadastro, depois faça login."
         });
       }
     } catch (error: any) {
@@ -189,7 +178,8 @@ const Auth = () => {
               <CardHeader>
                 <CardTitle>Criar Conta</CardTitle>
                 <CardDescription>
-                  Crie uma nova conta para gerenciar o blog
+                  Se você foi autorizado pelo administrador, crie sua conta aqui.
+                  Confirme seu email se necessário, depois use a aba "Login".
                 </CardDescription>
               </CardHeader>
               <CardContent>
