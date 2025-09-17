@@ -10,16 +10,17 @@ import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, UserPlus, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-interface UserProfile {
+interface AuthorizedEmail {
   id: string;
-  user_id: string;
   email: string;
   role: 'admin' | 'manager' | 'user';
   created_at: string;
+  used: boolean;
+  used_at: string | null;
 }
 
 const UserManagement = () => {
-  const [users, setUsers] = useState<UserProfile[]>([]);
+  const [authorizedEmails, setAuthorizedEmails] = useState<AuthorizedEmail[]>([]);
   const [loading, setLoading] = useState(true);
   const [newUserEmail, setNewUserEmail] = useState('');
   const [newUserRole, setNewUserRole] = useState<'admin' | 'manager' | 'user'>('user');
@@ -28,24 +29,24 @@ const UserManagement = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchUsers();
+    fetchAuthorizedEmails();
   }, []);
 
-  const fetchUsers = async () => {
+  const fetchAuthorizedEmails = async () => {
     try {
       setLoading(true);
       const { data, error } = await supabase
-        .from('user_profiles')
+        .from('authorized_emails')
         .select('*')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
-      setUsers(data || []);
+      setAuthorizedEmails(data || []);
     } catch (error) {
-      console.error('Erro ao buscar usuários:', error);
+      console.error('Erro ao buscar emails autorizados:', error);
       toast({
         title: "Erro",
-        description: "Não foi possível carregar os usuários",
+        description: "Não foi possível carregar os emails autorizados",
         variant: "destructive",
       });
     } finally {
@@ -66,30 +67,33 @@ const UserManagement = () => {
     try {
       setAddingUser(true);
       
-      // Verificar se o usuário já existe
-      const { data: existingUser } = await supabase
-        .from('user_profiles')
+      // Verificar se o email já está autorizado
+      const { data: existingEmail } = await supabase
+        .from('authorized_emails')
         .select('email')
         .eq('email', newUserEmail.trim())
         .single();
 
-      if (existingUser) {
+      if (existingEmail) {
         toast({
           title: "Erro",
-          description: "Este email já está cadastrado",
+          description: "Este email já está autorizado",
           variant: "destructive",
         });
         return;
       }
 
-      // Criar perfil de usuário (sem user_id por enquanto, será preenchido quando o usuário se registrar)
+      // Obter o usuário atual para authorized_by
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      // Criar email autorizado
       const { error } = await supabase
-        .from('user_profiles')
+        .from('authorized_emails')
         .insert([
           {
             email: newUserEmail.trim(),
             role: newUserRole,
-            user_id: '00000000-0000-0000-0000-000000000000' // Placeholder temporário
+            authorized_by: session?.user.id
           }
         ]);
 
@@ -97,17 +101,17 @@ const UserManagement = () => {
 
       toast({
         title: "Sucesso",
-        description: "Usuário autorizado com sucesso",
+        description: "Email autorizado com sucesso! O usuário já pode se cadastrar.",
       });
 
       setNewUserEmail('');
       setNewUserRole('user');
-      fetchUsers();
+      fetchAuthorizedEmails();
     } catch (error) {
-      console.error('Erro ao adicionar usuário:', error);
+      console.error('Erro ao autorizar email:', error);
       toast({
         title: "Erro",
-        description: "Não foi possível autorizar o usuário",
+        description: "Não foi possível autorizar o email",
         variant: "destructive",
       });
     } finally {
@@ -115,28 +119,28 @@ const UserManagement = () => {
     }
   };
 
-  const deleteUser = async (userId: string) => {
-    if (!confirm('Tem certeza que deseja remover este usuário?')) return;
+  const deleteAuthorizedEmail = async (emailId: string) => {
+    if (!confirm('Tem certeza que deseja remover esta autorização?')) return;
 
     try {
       const { error } = await supabase
-        .from('user_profiles')
+        .from('authorized_emails')
         .delete()
-        .eq('id', userId);
+        .eq('id', emailId);
 
       if (error) throw error;
 
       toast({
         title: "Sucesso",
-        description: "Usuário removido com sucesso",
+        description: "Autorização removida com sucesso",
       });
 
-      fetchUsers();
+      fetchAuthorizedEmails();
     } catch (error) {
-      console.error('Erro ao remover usuário:', error);
+      console.error('Erro ao remover autorização:', error);
       toast({
         title: "Erro",
-        description: "Não foi possível remover o usuário",
+        description: "Não foi possível remover a autorização",
         variant: "destructive",
       });
     }
@@ -169,7 +173,7 @@ const UserManagement = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Carregando usuários...</p>
+          <p className="text-muted-foreground">Carregando emails autorizados...</p>
         </div>
       </div>
     );
@@ -240,48 +244,56 @@ const UserManagement = () => {
             </CardContent>
           </Card>
 
-          {/* Lista de Usuários */}
+          {/* Lista de Emails Autorizados */}
           <Card>
             <CardHeader>
-              <CardTitle>Usuários Cadastrados</CardTitle>
+              <CardTitle>Emails Autorizados</CardTitle>
               <CardDescription>
-                {users.length} usuário{users.length !== 1 ? 's' : ''} encontrado{users.length !== 1 ? 's' : ''}
+                {authorizedEmails.length} email{authorizedEmails.length !== 1 ? 's' : ''} autorizado{authorizedEmails.length !== 1 ? 's' : ''}
               </CardDescription>
             </CardHeader>
             <CardContent>
-              {users.length === 0 ? (
+              {authorizedEmails.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
-                  Nenhum usuário encontrado
+                  Nenhum email autorizado
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {users.map((user) => (
+                  {authorizedEmails.map((email) => (
                     <div
-                      key={user.id}
+                      key={email.id}
                       className="flex items-center justify-between p-4 border rounded-lg"
                     >
                       <div className="flex-1">
                         <div className="flex items-center gap-3">
                           <div>
-                            <p className="font-medium">{user.email}</p>
+                            <p className="font-medium">{email.email}</p>
                             <p className="text-sm text-muted-foreground">
-                              Cadastrado em {new Date(user.created_at).toLocaleDateString('pt-BR')}
+                              Autorizado em {new Date(email.created_at).toLocaleDateString('pt-BR')}
+                              {email.used && email.used_at && ` • Usado em ${new Date(email.used_at).toLocaleDateString('pt-BR')}`}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Badge className={getRoleColor(user.role)}>
-                          {getRoleText(user.role)}
+                        <Badge className={getRoleColor(email.role)}>
+                          {getRoleText(email.role)}
                         </Badge>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => deleteUser(user.id)}
-                          className="text-destructive hover:text-destructive"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
+                        {email.used && (
+                          <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
+                            Cadastrado
+                          </Badge>
+                        )}
+                        {!email.used && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => deleteAuthorizedEmail(email.id)}
+                            className="text-destructive hover:text-destructive"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        )}
                       </div>
                     </div>
                   ))}

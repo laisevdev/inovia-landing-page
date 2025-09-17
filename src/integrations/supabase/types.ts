@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      authorized_emails: {
+        Row: {
+          authorized_by: string | null
+          created_at: string
+          email: string
+          id: string
+          role: Database["public"]["Enums"]["user_role"]
+          used: boolean
+          used_at: string | null
+        }
+        Insert: {
+          authorized_by?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          used?: boolean
+          used_at?: string | null
+        }
+        Update: {
+          authorized_by?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          used?: boolean
+          used_at?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author_id: string | null
@@ -136,6 +166,10 @@ export type Database = {
       get_current_user_role: {
         Args: Record<PropertyKey, never>
         Returns: Database["public"]["Enums"]["user_role"]
+      }
+      is_email_authorized: {
+        Args: { email_to_check: string }
+        Returns: boolean
       }
     }
     Enums: {
