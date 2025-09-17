@@ -160,6 +160,10 @@ const AdminDashboard = () => {
     }
   };
 
+  const getUsernameFromEmail = (email: string) => {
+    return email.split('@')[0];
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -186,7 +190,7 @@ const AdminDashboard = () => {
             </div>
             <div className="flex items-center gap-4">
               <span className="text-sm text-muted-foreground">
-                Bem-vindo, {user?.email}
+                Bem-vindo, {user?.email ? getUsernameFromEmail(user.email) : ''}
               </span>
               {hasAdminAccess && userRole === 'admin' && (
                 <Button variant="outline" size="sm" asChild>
