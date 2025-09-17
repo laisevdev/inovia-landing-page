@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Calendar, Clock, ArrowLeft, ThumbsUp } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import aiCompetitionAdvantage from "@/assets/ai-competition-advantage.jpg";
 import automationEfficiency from "@/assets/automation-efficiency.jpg";
 import dashboardAnalytics from "@/assets/dashboard-analytics.jpg";
@@ -54,6 +55,11 @@ const BlogPost = () => {
   const { slug } = useParams();
   const { toast } = useToast();
   const { likePost, isPostLiked, getPostLikes } = useLikes();
+
+  // Scroll to top when slug changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [slug]);
 
   const blogPosts = [
     {
