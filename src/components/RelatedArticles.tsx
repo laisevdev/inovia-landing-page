@@ -4,7 +4,7 @@ import { Calendar, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface Article {
-  id: number;
+  id: string;
   slug: string;
   title: string;
   description: string;
@@ -15,7 +15,7 @@ interface Article {
 }
 
 interface RelatedArticlesProps {
-  currentArticleId: number;
+  currentArticleId: string;
   articles: Article[];
   maxResults?: number;
 }

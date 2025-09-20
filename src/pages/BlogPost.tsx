@@ -565,13 +565,20 @@ const BlogPost = () => {
     }
   ];
 
-  // Sort posts by date (most recent first) to ensure consistent navigation
-  const sortedPosts = [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  
-  const post = sortedPosts.find(p => p.slug === slug);
-  const currentIndex = sortedPosts.findIndex(p => p.slug === slug);
+  // Handle loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
+          <p className="text-muted-foreground">Carregando artigo...</p>
+        </div>
+      </div>
+    );
+  }
 
-  if (!post) {
+  // Handle error state
+  if (error || !blogPost) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
@@ -583,6 +590,9 @@ const BlogPost = () => {
       </div>
     );
   }
+
+  // Use the fetched blogPost from Supabase
+  const post = blogPost;
 
   const handleLike = () => {
     if (!blogPost) return;
@@ -761,7 +771,7 @@ const BlogPost = () => {
         {/* Related Articles */}
         <RelatedArticles 
           currentArticleId={post.id} 
-          articles={sortedPosts}
+          articles={relatedPosts}
           maxResults={2}
         />
 
@@ -774,25 +784,6 @@ const BlogPost = () => {
                 Voltar ao blog
               </Link>
             </Button>
-            
-            <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
-              {currentIndex < sortedPosts.length - 1 && (
-                <Button variant="outline" asChild size="sm" className="w-full sm:w-auto">
-                  <Link to={`/blog/${sortedPosts[currentIndex + 1].slug}`}>
-                    <span className="hidden sm:inline">Artigo anterior</span>
-                    <span className="sm:hidden">Anterior</span>
-                  </Link>
-                </Button>
-              )}
-              {currentIndex > 0 && (
-                <Button variant="outline" asChild size="sm" className="w-full sm:w-auto">
-                  <Link to={`/blog/${sortedPosts[currentIndex - 1].slug}`}>
-                    <span className="hidden sm:inline">Próximo artigo</span>
-                    <span className="sm:hidden">Próximo</span>
-                  </Link>
-                </Button>
-              )}
-            </div>
           </div>
         </nav>
       </article>
