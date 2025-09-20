@@ -29,6 +29,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { ArticleSchema } from "@/components/ArticleSchema";
 import { BreadcrumbSchema } from "@/components/BreadcrumbSchema";
 import { RelatedArticles } from "@/components/RelatedArticles";
+import ReactMarkdown from "react-markdown";
 import { useLikes } from "@/context/LikesContext";
 import { AuthorCard } from "@/components/AuthorCard";
 import Footer from "@/components/Footer";
@@ -717,10 +718,9 @@ const BlogPost = () => {
         </header>
 
         {/* Article Content */}
-        <div 
-          className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-ul:text-muted-foreground [&_p]:text-justify [&_li]:text-justify"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-ul:text-muted-foreground [&_p]:text-justify [&_li]:text-justify">
+          <ReactMarkdown>{post.content}</ReactMarkdown>
+        </div>
 
         {/* Article Footer */}
         <footer className="mt-12 pt-8 border-t border-border/50">
