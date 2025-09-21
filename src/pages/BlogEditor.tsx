@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Save, Eye, Upload, Image } from 'lucide-react';
+import { useDraftPersistence } from '@/hooks/useDraftPersistence';
+import { ArrowLeft, Save, Eye, Upload, Image, Clock } from 'lucide-react';
 import MDEditor from '@uiw/react-md-editor';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
@@ -38,6 +39,7 @@ const BlogEditor = () => {
   const [user, setUser] = useState<any>(null);
   const [imageUploading, setImageUploading] = useState(false);
   const [inlineImageUploading, setInlineImageUploading] = useState(false);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
   
   const [post, setPost] = useState<BlogPost>({
     title: '',
@@ -48,12 +50,59 @@ const BlogEditor = () => {
     status: 'draft'
   });
 
+  const { 
+    saveDraft, 
+    loadDraft, 
+    clearDraft, 
+    markAsChanged, 
+    hasUnsavedChanges, 
+    lastSaved 
+  } = useDraftPersistence(id);
+
+  // Auto-save quando o post muda
+  const handlePostChange = useCallback((newPost: BlogPost) => {
+    setPost(newPost);
+    if (initialLoadComplete) {
+      markAsChanged();
+    }
+  }, [markAsChanged, initialLoadComplete]);
+
+  // Auto-save listener
+  useEffect(() => {
+    const handleAutoSave = () => {
+      if (hasUnsavedChanges && (post.title || post.content)) {
+        saveDraft(post, true);
+      }
+    };
+
+    window.addEventListener('autoSaveDraft', handleAutoSave);
+    return () => window.removeEventListener('autoSaveDraft', handleAutoSave);
+  }, [hasUnsavedChanges, post, saveDraft]);
+
   useEffect(() => {
     checkAuth();
     if (id) {
       fetchPost(id);
+    } else {
+      // Tentar carregar rascunho para novo post
+      const savedDraft = loadDraft();
+      if (savedDraft) {
+        const shouldRestore = window.confirm(
+          'Encontramos um rascunho salvo. Deseja restaurá-lo?'
+        );
+        if (shouldRestore) {
+          setPost(prev => ({ ...prev, ...savedDraft }));
+          toast({
+            title: "Rascunho restaurado",
+            description: "Suas alterações anteriores foram recuperadas."
+          });
+        } else {
+          clearDraft();
+        }
+      }
+      setInitialLoadComplete(true);
     }
-  }, [id]);
+  }, [id, loadDraft, clearDraft, toast]);
 
   const checkAuth = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -81,6 +130,7 @@ const BlogEditor = () => {
         navigate('/meupainel');
       } else {
         setPost(data as BlogPost);
+        setInitialLoadComplete(true);
       }
     } catch (error) {
       toast({
@@ -111,11 +161,12 @@ const BlogEditor = () => {
   };
 
   const handleTitleChange = (title: string) => {
-    setPost(prev => ({
-      ...prev,
+    const newPost = {
+      ...post,
       title,
       slug: generateSlug(title)
-    }));
+    };
+    handlePostChange(newPost);
   };
 
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -144,10 +195,11 @@ const BlogEditor = () => {
         .from('blog-images')
         .getPublicUrl(fileName);
 
-      setPost(prev => ({
-        ...prev,
+      const newPost = {
+        ...post,
         featured_image: data.publicUrl
-      }));
+      };
+      handlePostChange(newPost);
 
       toast({
         title: "Imagem enviada!",
@@ -213,10 +265,11 @@ const BlogEditor = () => {
       const imageUrl = await handleInlineImageUpload(file);
       if (imageUrl) {
         const imageMarkdown = `![${file.name}](${imageUrl})`;
-        setPost(prev => ({
-          ...prev,
-          content: prev.content + '\n' + imageMarkdown
-        }));
+        const newPost = {
+          ...post,
+          content: post.content + '\n' + imageMarkdown
+        };
+        handlePostChange(newPost);
       }
     }
   };
@@ -235,10 +288,11 @@ const BlogEditor = () => {
         const imageUrl = await handleInlineImageUpload(file);
         if (imageUrl) {
           const imageMarkdown = `![Imagem colada](${imageUrl})`;
-          setPost(prev => ({
-            ...prev,
-            content: prev.content + '\n' + imageMarkdown
-          }));
+          const newPost = {
+            ...post,
+            content: post.content + '\n' + imageMarkdown
+          };
+          handlePostChange(newPost);
         }
       }
     }
@@ -259,10 +313,11 @@ const BlogEditor = () => {
           const imageUrl = await handleInlineImageUpload(file);
           if (imageUrl) {
             const imageMarkdown = `![${file.name}](${imageUrl})`;
-            setPost(prev => ({
-              ...prev,
-              content: prev.content + '\n' + imageMarkdown
-            }));
+            const newPost = {
+              ...post,
+              content: post.content + '\n' + imageMarkdown
+            };
+            handlePostChange(newPost);
           }
         }
       };
@@ -306,6 +361,9 @@ const BlogEditor = () => {
 
         if (error) throw error;
       }
+
+      // Limpar rascunho após salvar com sucesso
+      clearDraft();
 
       toast({
         title: status === 'published' ? "Artigo publicado!" : "Rascunho salvo!",
@@ -353,6 +411,17 @@ const BlogEditor = () => {
               </h1>
             </div>
             <div className="flex items-center gap-2">
+              {lastSaved && (
+                <div className="flex items-center gap-1 text-sm text-gray-400 mr-4">
+                  <Clock className="h-3 w-3" />
+                  Salvo {lastSaved.toLocaleTimeString()}
+                </div>
+              )}
+              {hasUnsavedChanges && (
+                <div className="text-sm text-orange-400 mr-4">
+                  Alterações não salvas
+                </div>
+              )}
               <Button 
                 variant="outline" 
                 onClick={() => handleSave('draft')}
@@ -397,7 +466,7 @@ const BlogEditor = () => {
                 <Input
                   id="slug"
                   value={post.slug}
-                  onChange={(e) => setPost(prev => ({ ...prev, slug: e.target.value }))}
+                  onChange={(e) => handlePostChange({ ...post, slug: e.target.value })}
                   placeholder="url-do-artigo"
                 />
               </div>
@@ -407,7 +476,7 @@ const BlogEditor = () => {
                 <Textarea
                   id="description"
                   value={post.description}
-                  onChange={(e) => setPost(prev => ({ ...prev, description: e.target.value }))}
+                  onChange={(e) => handlePostChange({ ...post, description: e.target.value })}
                   placeholder="Breve descrição do artigo (para SEO e prévia)"
                   rows={3}
                 />
@@ -418,7 +487,7 @@ const BlogEditor = () => {
                   <Label htmlFor="category">Categoria</Label>
                   <Select
                     value={post.category}
-                    onValueChange={(value) => setPost(prev => ({ ...prev, category: value }))}
+                    onValueChange={(value) => handlePostChange({ ...post, category: value })}
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -478,7 +547,7 @@ const BlogEditor = () => {
               <div data-color-mode="dark">
                 <MDEditor
                   value={post.content}
-                  onChange={(value) => setPost(prev => ({ ...prev, content: value || '' }))}
+                  onChange={(value) => handlePostChange({ ...post, content: value || '' })}
                   preview="edit"
                   height={500}
                   visibleDragbar={false}
