@@ -719,7 +719,9 @@ const BlogPost = () => {
 
         {/* Article Content */}
         <div className="prose prose-lg max-w-none prose-headings:text-white prose-p:text-gray-300 prose-strong:text-white prose-ul:text-gray-300 prose-li:text-gray-300 prose-blockquote:text-gray-300 prose-blockquote:border-gray-600 [&_p]:text-justify [&_li]:text-justify [&_h2]:text-white [&_h3]:text-white [&_h4]:text-white [&_h5]:text-white [&_h6]:text-white">
-          <MDEditor.Markdown source={post.content} style={{ whiteSpace: 'pre-wrap' }} />
+          <div data-color-mode="dark">
+            <MDEditor.Markdown source={post.content} style={{ whiteSpace: 'pre-wrap', backgroundColor: 'transparent' }} />
+          </div>
         </div>
 
         {/* Article Footer */}
