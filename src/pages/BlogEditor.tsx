@@ -229,9 +229,9 @@ const BlogEditor = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="border-b bg-card sticky top-0 z-10">
+      <header className="border-b border-gray-800 bg-gray-900 sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
@@ -270,9 +270,9 @@ const BlogEditor = () => {
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="space-y-6">
           {/* Basic Info Card */}
-          <Card>
+          <Card className="bg-gray-900 border-gray-800">
             <CardHeader>
-              <CardTitle>Informações Básicas</CardTitle>
+              <CardTitle className="text-white">Informações Básicas</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -363,12 +363,12 @@ const BlogEditor = () => {
           </Card>
 
           {/* Content Editor Card */}
-          <Card>
+          <Card className="bg-gray-900 border-gray-800">
             <CardHeader>
-              <CardTitle>Conteúdo do Artigo *</CardTitle>
+              <CardTitle className="text-white">Conteúdo do Artigo *</CardTitle>
             </CardHeader>
             <CardContent>
-              <div data-color-mode="auto">
+              <div data-color-mode="dark">
                 <MDEditor
                   value={post.content}
                   onChange={(value) => setPost(prev => ({ ...prev, content: value || '' }))}

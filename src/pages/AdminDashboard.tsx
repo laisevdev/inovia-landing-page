@@ -241,7 +241,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
           <p>Carregando...</p>
@@ -252,9 +252,9 @@ const AdminDashboard = () => {
 
   return (
     <TooltipProvider delayDuration={300} skipDelayDuration={100} disableHoverableContent={false}>
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <header className="border-b bg-card">
+      <header className="border-b border-gray-800 bg-gray-900">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
@@ -265,7 +265,7 @@ const AdminDashboard = () => {
               <h1 className="text-xl font-semibold">Painel Administrativo</h1>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-gray-400">
                 Bem-vindo, {user?.email ? getUsernameFromEmail(user.email) : ''}
               </span>
               {hasAdminAccess && userRole === 'admin' && (
@@ -290,7 +290,7 @@ const AdminDashboard = () => {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-bold">Gerenciar Artigos</h2>
-            <p className="text-muted-foreground">
+            <p className="text-gray-400">
               Crie, edite e publique artigos do seu blog
             </p>
           </div>
@@ -323,33 +323,33 @@ const AdminDashboard = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card>
+          <Card className="bg-gray-900 border-gray-800">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total de Artigos</CardTitle>
-              <FileText className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-white">Total de Artigos</CardTitle>
+              <FileText className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{posts.length}</div>
+              <div className="text-2xl font-bold text-white">{posts.length}</div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-gray-900 border-gray-800">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Publicados</CardTitle>
-              <Eye className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-white">Publicados</CardTitle>
+              <Eye className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-white">
                 {posts.filter(p => p.status === 'published').length}
               </div>
             </CardContent>
           </Card>
-          <Card>
+          <Card className="bg-gray-900 border-gray-800">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Rascunhos</CardTitle>
-              <Edit className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium text-white">Rascunhos</CardTitle>
+              <Edit className="h-4 w-4 text-gray-400" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-white">
                 {posts.filter(p => p.status === 'draft').length}
               </div>
             </CardContent>
@@ -359,11 +359,11 @@ const AdminDashboard = () => {
         {/* Posts List */}
         <div className="space-y-4">
           {posts.length === 0 ? (
-            <Card>
+            <Card className="bg-gray-900 border-gray-800">
               <CardContent className="p-8 text-center">
-                <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Nenhum artigo encontrado</h3>
-                <p className="text-muted-foreground mb-4">
+                <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-semibold mb-2 text-white">Nenhum artigo encontrado</h3>
+                <p className="text-gray-400 mb-4">
                   Comece criando seu primeiro artigo para o blog
                 </p>
                 <Button asChild>
@@ -376,21 +376,21 @@ const AdminDashboard = () => {
             </Card>
           ) : (
             posts.map((post) => (
-              <Card key={post.id}>
+              <Card key={post.id} className="bg-gray-900 border-gray-800">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="font-semibold text-lg">{post.title}</h3>
+                        <h3 className="font-semibold text-lg text-white">{post.title}</h3>
                         <Badge className={getStatusColor(post.status)}>
                           {getStatusText(post.status)}
                         </Badge>
                         <Badge variant="outline">{post.category}</Badge>
                       </div>
-                      <p className="text-muted-foreground mb-3 line-clamp-2">
+                      <p className="text-gray-400 mb-3 line-clamp-2">
                         {post.description}
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-4 text-sm text-gray-400">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
                           Criado em {format(new Date(post.created_at), 'dd/MM/yyyy', { locale: ptBR })}
