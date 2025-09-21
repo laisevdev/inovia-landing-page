@@ -129,11 +129,17 @@ export const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) 
   }, [navigate, requiredRole, getCachedAccess, setCachedAccess]);
 
   useEffect(() => {
-    checkAccess(true);
+    let initialCheckDone = false;
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        if (event === 'SIGNED_OUT') {
+        if (event === 'INITIAL_SESSION') {
+          // Aguarda a sessão inicial ser carregada antes de verificar acesso
+          if (!initialCheckDone) {
+            checkAccess(true);
+            initialCheckDone = true;
+          }
+        } else if (event === 'SIGNED_OUT') {
           sessionStorage.removeItem(ACCESS_CACHE_KEY);
           navigate('/auth');
         } else if (event === 'SIGNED_IN') {
@@ -147,7 +153,7 @@ export const ProtectedRoute = ({ children, requiredRole }: ProtectedRouteProps) 
     );
 
     return () => subscription.unsubscribe();
-  }, [checkAccess]);
+  }, [checkAccess, navigate]);
 
   // Loading state
   if (loading) {

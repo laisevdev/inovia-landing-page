@@ -80,38 +80,38 @@ const BlogEditor = () => {
   }, [hasUnsavedChanges, post, saveDraft]);
 
   useEffect(() => {
-    checkAuth();
-    if (id) {
-      fetchPost(id);
-    } else {
-      // Tentar carregar rascunho para novo post
-      const savedDraft = loadDraft();
-      if (savedDraft) {
-        const shouldRestore = window.confirm(
-          'Encontramos um rascunho salvo. Deseja restaurá-lo?'
-        );
-        if (shouldRestore) {
-          setPost(prev => ({ ...prev, ...savedDraft }));
-          toast({
-            title: "Rascunho restaurado",
-            description: "Suas alterações anteriores foram recuperadas."
-          });
-        } else {
-          clearDraft();
-        }
+    const initializeEditor = async () => {
+      // Get current user from session
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        setUser(session.user);
       }
-      setInitialLoadComplete(true);
-    }
-  }, [id, loadDraft, clearDraft, toast]);
 
-  const checkAuth = async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) {
-      navigate('/auth');
-      return;
-    }
-    setUser(session.user);
-  };
+      if (id) {
+        fetchPost(id);
+      } else {
+        // Tentar carregar rascunho para novo post
+        const savedDraft = loadDraft();
+        if (savedDraft) {
+          const shouldRestore = window.confirm(
+            'Encontramos um rascunho salvo. Deseja restaurá-lo?'
+          );
+          if (shouldRestore) {
+            setPost(prev => ({ ...prev, ...savedDraft }));
+            toast({
+              title: "Rascunho restaurado",
+              description: "Suas alterações anteriores foram recuperadas."
+            });
+          } else {
+            clearDraft();
+          }
+        }
+        setInitialLoadComplete(true);
+      }
+    };
+
+    initializeEditor();
+  }, [id, loadDraft, clearDraft, toast]);
 
   const fetchPost = async (postId: string) => {
     try {

@@ -11,7 +11,7 @@ interface BlogPost {
 }
 
 const DRAFT_STORAGE_KEY = 'blog_editor_draft';
-const AUTO_SAVE_INTERVAL = 30000; // 30 segundos
+const DEBOUNCED_SAVE_DELAY = 1000; // 1 segundo
 
 export const useDraftPersistence = (postId?: string) => {
   const { toast } = useToast();
@@ -82,17 +82,42 @@ export const useDraftPersistence = (postId?: string) => {
     setHasUnsavedChanges(true);
   }, []);
 
-  // Auto-save
+  // Auto-save com debounce
   useEffect(() => {
     if (!hasUnsavedChanges) return;
 
-    const autoSaveTimeout = setTimeout(() => {
+    const debouncedSaveTimeout = setTimeout(() => {
       // Esta função será chamada pelo componente pai
       const event = new CustomEvent('autoSaveDraft');
       window.dispatchEvent(event);
-    }, AUTO_SAVE_INTERVAL);
+    }, DEBOUNCED_SAVE_DELAY);
 
-    return () => clearTimeout(autoSaveTimeout);
+    return () => clearTimeout(debouncedSaveTimeout);
+  }, [hasUnsavedChanges]);
+
+  // Salvar antes de sair da página (visibilitychange, pagehide, beforeunload)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden' && hasUnsavedChanges) {
+        const event = new CustomEvent('autoSaveDraft');
+        window.dispatchEvent(event);
+      }
+    };
+
+    const handlePageHide = () => {
+      if (hasUnsavedChanges) {
+        const event = new CustomEvent('autoSaveDraft');
+        window.dispatchEvent(event);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pagehide', handlePageHide);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pagehide', handlePageHide);
+    };
   }, [hasUnsavedChanges]);
 
   // Prevenir saída com mudanças não salvas
