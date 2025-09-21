@@ -248,7 +248,7 @@ const BlogEditor = () => {
     name: 'image-upload',
     keyCommand: 'image-upload',
     buttonProps: { 'aria-label': 'Upload de imagem', title: 'Upload de imagem' },
-    icon: (<Image size={12} />),
+    icon: (<Upload size={12} />),
     execute: () => {
       const input = document.createElement('input');
       input.type = 'file';
