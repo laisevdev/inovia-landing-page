@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Save, Eye, Upload } from 'lucide-react';
+import { ArrowLeft, Save, Eye, Upload, Image } from 'lucide-react';
 import MDEditor from '@uiw/react-md-editor';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
@@ -37,6 +37,7 @@ const BlogEditor = () => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState<any>(null);
   const [imageUploading, setImageUploading] = useState(false);
+  const [inlineImageUploading, setInlineImageUploading] = useState(false);
   
   const [post, setPost] = useState<BlogPost>({
     title: '',
@@ -160,6 +161,112 @@ const BlogEditor = () => {
       });
     } finally {
       setImageUploading(false);
+    }
+  };
+
+  const handleInlineImageUpload = async (file: File): Promise<string | null> => {
+    if (!user) return null;
+
+    setInlineImageUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}/inline/${Date.now()}.${fileExt}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from('blog-images')
+        .upload(fileName, file);
+
+      if (uploadError) {
+        toast({
+          title: "Erro no upload",
+          description: uploadError.message,
+          variant: "destructive"
+        });
+        return null;
+      }
+
+      const { data } = supabase.storage
+        .from('blog-images')
+        .getPublicUrl(fileName);
+
+      return data.publicUrl;
+    } catch (error) {
+      toast({
+        title: "Erro inesperado",
+        description: "Tente novamente mais tarde",
+        variant: "destructive"
+      });
+      return null;
+    } finally {
+      setInlineImageUploading(false);
+    }
+  };
+
+  const handleDrop = async (event: React.DragEvent) => {
+    event.preventDefault();
+    const files = Array.from(event.dataTransfer.files);
+    const imageFiles = files.filter(file => file.type.startsWith('image/'));
+    
+    if (imageFiles.length === 0) return;
+
+    for (const file of imageFiles) {
+      const imageUrl = await handleInlineImageUpload(file);
+      if (imageUrl) {
+        const imageMarkdown = `![${file.name}](${imageUrl})`;
+        setPost(prev => ({
+          ...prev,
+          content: prev.content + '\n' + imageMarkdown
+        }));
+      }
+    }
+  };
+
+  const handlePaste = async (event: React.ClipboardEvent) => {
+    const items = Array.from(event.clipboardData.items);
+    const imageItems = items.filter(item => item.type.startsWith('image/'));
+    
+    if (imageItems.length === 0) return;
+
+    event.preventDefault();
+    
+    for (const item of imageItems) {
+      const file = item.getAsFile();
+      if (file) {
+        const imageUrl = await handleInlineImageUpload(file);
+        if (imageUrl) {
+          const imageMarkdown = `![Imagem colada](${imageUrl})`;
+          setPost(prev => ({
+            ...prev,
+            content: prev.content + '\n' + imageMarkdown
+          }));
+        }
+      }
+    }
+  };
+
+  const customImageCommand = {
+    name: 'image-upload',
+    keyCommand: 'image-upload',
+    buttonProps: { 'aria-label': 'Upload de imagem', title: 'Upload de imagem' },
+    icon: (<Image size={12} />),
+    execute: () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = async (event) => {
+        const file = (event.target as HTMLInputElement).files?.[0];
+        if (file) {
+          const imageUrl = await handleInlineImageUpload(file);
+          if (imageUrl) {
+            const imageMarkdown = `![${file.name}](${imageUrl})`;
+            setPost(prev => ({
+              ...prev,
+              content: prev.content + '\n' + imageMarkdown
+            }));
+          }
+        }
+      };
+      input.click();
     }
   };
 
@@ -375,7 +482,15 @@ const BlogEditor = () => {
                   preview="edit"
                   height={500}
                   visibleDragbar={false}
+                  onDrop={handleDrop}
+                  onPaste={handlePaste}
+                  extraCommands={[customImageCommand]}
                 />
+                {inlineImageUploading && (
+                  <div className="mt-2 text-sm text-gray-400">
+                    Fazendo upload da imagem...
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
