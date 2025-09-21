@@ -619,7 +619,7 @@ const BlogPost = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       <SEOHead
         title={`${post.subtitle || post.title} | Blog InovIA`}
         description={post.description}
@@ -634,24 +634,24 @@ const BlogPost = () => {
       <BreadcrumbSchema items={breadcrumbItems} />
       
       {/* Header */}
-      <header className="border-b border-border/50 bg-background/80 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-gray-700 bg-black/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/">Início</Link>
+                  <Link to="/" className="text-gray-400 hover:text-white">Início</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="text-gray-500" />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/blog">Blog</Link>
+                  <Link to="/blog" className="text-gray-400 hover:text-white">Blog</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator />
+              <BreadcrumbSeparator className="text-gray-500" />
               <BreadcrumbItem>
-                <BreadcrumbPage className="max-w-[200px] truncate">{post.title}</BreadcrumbPage>
+                <BreadcrumbPage className="max-w-[200px] truncate text-white">{post.title}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -663,23 +663,23 @@ const BlogPost = () => {
         {/* Article Header */}
         <header className="mb-8">
           <div className="flex items-center gap-2 mb-4">
-            <Badge variant="secondary" className="bg-primary/10 text-primary">
+            <Badge variant="secondary" className="bg-gray-800 text-gray-200">
               {post.category}
             </Badge>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
             {post.subtitle || post.title}
           </h1>
           
           {post.subtitle && (
-            <p className="text-xl text-muted-foreground mb-6 text-justify">
+            <p className="text-xl text-gray-300 mb-6 text-justify">
               {post.description}
             </p>
           )}
 
-          <div className="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-border/50">
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+          <div className="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-gray-700">
+            <div className="flex items-center gap-6 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 {new Date(post.date).toLocaleDateString('pt-BR')}
@@ -697,8 +697,8 @@ const BlogPost = () => {
                 onClick={handleLike}
                 className={`transition-colors ${
                   isLiked 
-                    ? 'text-primary hover:text-primary/80' 
-                    : 'text-muted-foreground hover:text-primary'
+                    ? 'text-blue-400 hover:text-blue-300' 
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
                 <ThumbsUp className={`w-4 h-4 transition-all ${isLiked ? 'fill-current' : ''}`} />
@@ -718,12 +718,12 @@ const BlogPost = () => {
         </header>
 
         {/* Article Content */}
-        <div className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-strong:text-foreground prose-ul:text-muted-foreground [&_p]:text-justify [&_li]:text-justify">
+        <div className="prose prose-lg max-w-none prose-headings:text-white prose-p:text-gray-300 prose-strong:text-white prose-ul:text-gray-300 prose-li:text-gray-300 prose-blockquote:text-gray-300 prose-blockquote:border-gray-600 [&_p]:text-justify [&_li]:text-justify [&_h2]:text-white [&_h3]:text-white [&_h4]:text-white [&_h5]:text-white [&_h6]:text-white">
           <MDEditor.Markdown source={post.content} style={{ whiteSpace: 'pre-wrap' }} />
         </div>
 
         {/* Article Footer */}
-        <footer className="mt-12 pt-8 border-t border-border/50">
+        <footer className="mt-12 pt-8 border-t border-gray-700">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
             <div className="flex items-center gap-2">
               <Button
@@ -731,8 +731,8 @@ const BlogPost = () => {
                 onClick={handleLike}
                 className={`transition-colors ${
                   isLiked 
-                    ? 'text-primary hover:text-primary/80' 
-                    : 'text-muted-foreground hover:text-primary'
+                    ? 'text-blue-400 hover:text-blue-300' 
+                    : 'text-gray-400 hover:text-white'
                 }`}
               >
                 <ThumbsUp className={`w-4 h-4 transition-all ${isLiked ? 'fill-current' : ''}`} />
@@ -750,7 +750,7 @@ const BlogPost = () => {
           </div>
           
           {/* Social Share Buttons Footer */}
-          <div className="border-t border-border/50 pt-6">
+          <div className="border-t border-gray-700 pt-6">
             <SocialShareButtons
               title={post.title}
               description={post.description}
@@ -776,9 +776,9 @@ const BlogPost = () => {
         />
 
         {/* Navigation */}
-        <nav className="mt-12 pt-8 border-t border-border/50">
+        <nav className="mt-12 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-            <Button variant="ghost" asChild className="w-full md:w-auto justify-start">
+            <Button variant="ghost" asChild className="w-full md:w-auto justify-start text-gray-400 hover:text-white">
               <Link to="/blog" className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
                 Voltar ao blog
